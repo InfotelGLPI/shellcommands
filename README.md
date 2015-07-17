@@ -1,2 +1,2 @@
 # shellcommands
-Plugin shellcommands pour GLPI
+Plugin shellcommands pour GLPI 0.90
