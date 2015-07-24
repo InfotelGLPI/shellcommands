@@ -66,7 +66,7 @@ function plugin_version_shellcommands() {
        'license' => 'GPLv2+',
        'oldname' => 'cmd',
        'author' => 'Xavier Caillaud',
-       'homepage' => 'https://forge.indepnet.net/projects/show/shellcommands',
+       'homepage' => 'https://github.com/InfotelGLPI/shellcommands',
        'minGlpiVersion' => '0.90',
    );
 }
