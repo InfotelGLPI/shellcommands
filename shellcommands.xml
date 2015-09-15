@@ -10,14 +10,15 @@
          <en><![CDATA[Shell Commands. This plugin allow you to launch shell commands and commands groups (Example : Ping, Tracert, Nslookup ou Wake on lan) with equiments of GLPI.]]></en>
       </short>
       <long>
-         <fr><![CDATA[Ce plugin vous permet de lancer des commandes shell et des groupes de commandes :<br />-Ping (sur le nom ou l'ip),<br />-Tracert (sur le nom ou l'ip),<br />-Nslookup (sur le domaine),<br />-Wake on lan (sur l'ip),<br />-Vous associez une commande à des types de matériels et vous pouvez directement depuis le détail du matériel, et lancer vos commandes.<br />-Vous pouvez aussi créer de nouvelles commandes.]]></fr>
-         <en><![CDATA[This plugin allow you to launch shell commands and commands groups :<br />-Ping (with name or ip),<br />-Tracert (with name or ip),<br />-Nslookup (with domain),<br />-Wake on lan (with ip),<br />-You associate a command with equipment types and you can directly from equipment detail, launch commands.<br />-You can create new commands.]]></en>n
+         <fr><![CDATA[Ce plugin vous permet de lancer des commandes shell et des groupes de commandes :<br />- Ping (sur le nom ou l'ip),<br />-Tracert (sur le nom ou l'ip),<br />- Nslookup (sur le domaine),<br />- Wake on lan (sur l'ip),<br />- Vous associez une commande à des types de matériels et vous pouvez directement depuis le détail du matériel, et lancer vos commandes.<br />- Vous pouvez aussi créer de nouvelles commandes.]]></fr>
+         <en><![CDATA[This plugin allow you to launch shell commands and commands groups :<br />- Ping (with name or ip),<br />- Tracert (with name or ip),<br />- Nslookup (with domain),<br />- Wake on lan (with ip),<br />- You associate a command with equipment types and you can directly from equipment detail, launch commands.<br />- You can create new commands.]]></en>n
       </long>
    </description>
    <homepage>https://github.com/InfotelGLPI/shellcommands</homepage>
    <download>https://github.com/InfotelGLPI/shellcommands/releases</download>
    <authors>
-      <author>Xavier Caillaud / Infotel</author>
+      <author>Xavier Caillaud</author>
+      <author>Infotel</author>
    </authors>
    <versions>
       <version>
