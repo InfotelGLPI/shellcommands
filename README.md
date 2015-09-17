@@ -1,6 +1,12 @@
 # shellcommands
 Plugin shellcommands pour GLPI 0.90
 
+Ce plugin est sur Transifex - Aidez-nous à le traduire :
+https://www.transifex.com/tsmr/GLPI_shellcommands/
+
+This plugin is on Transifex - Help us to translate :
+https://www.transifex.com/tsmr/GLPI_shellcommands/
+
 Ce plugin vous permet de lancer des commandes shell :
 
 > * Ping (sur le nom ou l'ip),
