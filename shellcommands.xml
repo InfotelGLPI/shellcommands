@@ -3,7 +3,7 @@
    <name>Launch Shell Commands</name>
    <key>shellcommands</key>
    <state>stable</state>
-   <logo></logo>
+   <logo>https://raw.githubusercontent.com/InfotelGLPI/shellcommands/master/shellcommands.png</logo>
    <description>
       <short>
          <fr><![CDATA[Commandes Shell. Ce plugin vous permet de lancer des commandes shell et des groupes de commandes (exemple Ping, Tracert, Nslookup ou Wake on lan) sur le matériel recensé dans GLPI.]]></fr>
