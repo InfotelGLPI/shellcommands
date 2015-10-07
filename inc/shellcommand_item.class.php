@@ -422,10 +422,6 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       }
 
       $width = 200;
-      
-      $canedit = $item->canadditem('PluginShellcommandsShellcommand');
-      $rand = mt_rand();
-      $is_recursive = $item->isRecursive();
 
       $query = "SELECT `glpi_plugin_shellcommands_shellcommands_items`.`id` AS assocID,
                        `glpi_entities`.`id` AS entity,
@@ -437,14 +433,11 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
                 LEFT JOIN `glpi_entities` ON (`glpi_plugin_shellcommands_shellcommands`.`entities_id`=`glpi_entities`.`id`)
                 WHERE `glpi_plugin_shellcommands_shellcommands_items`.`itemtype` = '".$item->getType()."' 
                   AND !`glpi_plugin_shellcommands_shellcommands`.`is_deleted`";
-
       $query .= getEntitiesRestrictRequest(" AND", "glpi_plugin_shellcommands_shellcommands", '', '', true);
-
       $query .= " ORDER BY `assocName`";
 
       $result = $DB->query($query);
       $number = $DB->numrows($result);
-      $i = 0;
 
       $shells = array();
       if ($numrows = $DB->numrows($result)) {
@@ -460,17 +453,14 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       echo "</tr>";
 
       if ($number) {
-
          Session::initNavigateListItems('PluginShellcommandsShellcommand',
                  //TRANS : %1$s is the itemtype name,
                  //        %2$s is the name of the item (used for headings of a list)
                  sprintf(__('%1$s = %2$s'), $item->getTypeName(1), $item->getName()));
          
          $selectCommandName[0] = Dropdown::EMPTY_VALUE;
-//         $countCommand = self::countForItem($item, array('type' => 'ALL'));
          foreach ($shells as $data) {
-//            if(isset($countCommand[$data['link'].$data['id']]))
-               $selectCommandName[$data['link'].'-'.$data['id']] = $data['assocName'];
+            $selectCommandName[$data['link'].'-'.$data['id']] = $data['assocName'];
          }
          
          echo "<tr class='tab_bg_2'>

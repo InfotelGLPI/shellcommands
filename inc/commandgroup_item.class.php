@@ -407,7 +407,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
             echo "<form method='post' action='$target'>";
             echo "<input type='hidden' name='id' value='".$field["id"]."'>";
             echo "<input type='image' name='up' value=\"".__s('Bring up')."\" src='".
-                   $CFG_GLPI["root_doc"]."/pics/puce-up2.png' alt=\"".
+                   $CFG_GLPI["root_doc"]."/pics/puce-up.png' alt=\"".
                    __s('Bring up')."\"  title=\"".__s('Bring up')."\">";
             Html::closeForm();
             echo "</td>";
@@ -421,7 +421,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
             echo "<form method='post' action='$target'>";
             echo "<input type='hidden' name='id' value='".$field["id"]."'>";
             echo "<input type='image' name='down' value=\"".__s('Bring down')."\" src='".
-                   $CFG_GLPI["root_doc"]."/pics/puce-down2.png' alt=\"".
+                   $CFG_GLPI["root_doc"]."/pics/puce-down.png' alt=\"".
                    __s('Bring down')."\" title=\"".__s('Bring down')."\">";
             Html::closeForm();
             echo "</td>";
