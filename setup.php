@@ -62,7 +62,7 @@ function plugin_init_shellcommands() {
 function plugin_version_shellcommands() {
    return array(
        'name' => _n('Shell Command', 'Shell Commands', 2, 'shellcommands'),
-       'version' => '1.9.0',
+       'version' => '1.9.1',
        'license' => 'GPLv2+',
        'oldname' => 'cmd',
        'author' => 'Xavier Caillaud',
