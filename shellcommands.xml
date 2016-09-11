@@ -16,6 +16,8 @@
    </description>
    <homepage>https://github.com/InfotelGLPI/shellcommands</homepage>
    <download>https://github.com/InfotelGLPI/shellcommands/releases</download>
+   <issues>https://github.com/InfotelGLPI/shellcommands/issues</issues>
+   <readme>https://raw.githubusercontent.com/InfotelGLPI/shellcommands/master/README.md</readme>
    <authors>
       <author>Xavier Caillaud</author>
       <author>Infotel</author>
