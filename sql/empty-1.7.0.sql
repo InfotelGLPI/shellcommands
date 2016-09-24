@@ -1,15 +1,15 @@
 DROP TABLE IF EXISTS `glpi_plugin_shellcommands_shellcommands`;
 CREATE TABLE `glpi_plugin_shellcommands_shellcommands` (
-	`id` int(11) NOT NULL auto_increment,
-	`entities_id` int(11) NOT NULL default '0',
-	`is_recursive` tinyint(1) NOT NULL default '0',
-	`name` varchar(255) collate utf8_unicode_ci default NULL,
-	`link` varchar(255) collate utf8_unicode_ci default NULL,
-	`plugin_shellcommands_shellcommandpaths_id` int(11) NOT NULL default '0' COMMENT 'RELATION to glpi_plugin_shellcommands_shellcommandpaths (id)',
-	`parameters` varchar(255) collate utf8_unicode_ci default NULL,
-	`is_deleted` tinyint(1) NOT NULL default '0',
+   `id` int(11) NOT NULL auto_increment,
+   `entities_id` int(11) NOT NULL default '0',
+   `is_recursive` tinyint(1) NOT NULL default '0',
+   `name` varchar(255) collate utf8_unicode_ci default NULL,
+   `link` varchar(255) collate utf8_unicode_ci default NULL,
+   `plugin_shellcommands_shellcommandpaths_id` int(11) NOT NULL default '0' COMMENT 'RELATION to glpi_plugin_shellcommands_shellcommandpaths (id)',
+   `parameters` varchar(255) collate utf8_unicode_ci default NULL,
+   `is_deleted` tinyint(1) NOT NULL default '0',
         `tag_position` tinyint(1) NOT NULL default '1',
-	PRIMARY KEY  (`id`),
+   PRIMARY KEY  (`id`),
   KEY `name` (`name`),
   KEY `is_deleted` (`is_deleted`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -38,12 +38,12 @@ INSERT INTO `glpi_plugin_shellcommands_shellcommandpaths` (`ID`,`name`) VALUES
 
 DROP TABLE IF EXISTS `glpi_plugin_shellcommands_shellcommands_items`;
 CREATE TABLE `glpi_plugin_shellcommands_shellcommands_items` (
-	`id` int(11) NOT NULL auto_increment,
-	`plugin_shellcommands_shellcommands_id` int(11) NOT NULL default '0',
-	`itemtype` varchar(100) collate utf8_unicode_ci NOT NULL COMMENT 'see .class.php file',
-	PRIMARY KEY  (`id`),
-	UNIQUE KEY `FK_cmd` (`plugin_shellcommands_shellcommands_id`,`itemtype`),
-	KEY `itemtype` (`itemtype`)
+   `id` int(11) NOT NULL auto_increment,
+   `plugin_shellcommands_shellcommands_id` int(11) NOT NULL default '0',
+   `itemtype` varchar(100) collate utf8_unicode_ci NOT NULL COMMENT 'see .class.php file',
+   PRIMARY KEY  (`id`),
+   UNIQUE KEY `FK_cmd` (`plugin_shellcommands_shellcommands_id`,`itemtype`),
+   KEY `itemtype` (`itemtype`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `glpi_plugin_shellcommands_profiles`;
@@ -62,24 +62,24 @@ INSERT INTO `glpi_displaypreferences` VALUES (NULL,'PluginShellcommandsShellcomm
 
 DROP TABLE IF EXISTS `glpi_plugin_shellcommands_commandgroups_items`;
 CREATE TABLE `glpi_plugin_shellcommands_commandgroups_items` (
-	`id` int(11) NOT NULL auto_increment,
-	`plugin_shellcommands_shellcommands_id` int(11) NOT NULL default '0',
+   `id` int(11) NOT NULL auto_increment,
+   `plugin_shellcommands_shellcommands_id` int(11) NOT NULL default '0',
         `plugin_shellcommands_commandgroups_id` int(11) NOT NULL default '0',
         `rank` int(11) NOT NULL default '0',
-	PRIMARY KEY  (`id`),
-	UNIQUE KEY `FK_cmd` (`plugin_shellcommands_shellcommands_id`,`plugin_shellcommands_commandgroups_id`),
-	KEY `plugin_shellcommands_commandgroups_id` (`plugin_shellcommands_commandgroups_id`),
+   PRIMARY KEY  (`id`),
+   UNIQUE KEY `FK_cmd` (`plugin_shellcommands_shellcommands_id`,`plugin_shellcommands_commandgroups_id`),
+   KEY `plugin_shellcommands_commandgroups_id` (`plugin_shellcommands_commandgroups_id`),
         KEY `plugin_shellcommands_shellcommands_id` (`plugin_shellcommands_shellcommands_id`),
         KEY `rank` (`rank`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 DROP TABLE IF EXISTS `glpi_plugin_shellcommands_commandgroups`;
 CREATE TABLE `glpi_plugin_shellcommands_commandgroups` (
-	`id` int(11) NOT NULL auto_increment,
-	`name` varchar(255) collate utf8_unicode_ci NOT NULL,
+   `id` int(11) NOT NULL auto_increment,
+   `name` varchar(255) collate utf8_unicode_ci NOT NULL,
         `check_commands_id` int(11) NOT NULL default '0',
         `entities_id` int(11) NOT NULL default '0',
-	`is_recursive` tinyint(1) NOT NULL default '0',
-	PRIMARY KEY  (`id`),
+   `is_recursive` tinyint(1) NOT NULL default '0',
+   PRIMARY KEY  (`id`),
         KEY `entities_id` (`entities_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

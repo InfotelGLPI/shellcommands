@@ -1,31 +1,30 @@
 <?php
-
 /*
  * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
-  -------------------------------------------------------------------------
-  Shellcommands plugin for GLPI
-  Copyright (C) 2003-2011 by the Shellcommands Development Team.
+ -------------------------------------------------------------------------
+ shellcommands plugin for GLPI
+ Copyright (C) 2009-2016 by the shellcommands Development Team.
 
-  https://forge.indepnet.net/projects/shellcommands
-  -------------------------------------------------------------------------
+ https://github.com/InfotelGLPI/shellcommands
+ -------------------------------------------------------------------------
 
-  LICENSE
+ LICENSE
+      
+ This file is part of shellcommands.
 
-  This file is part of Shellcommands.
+ shellcommands is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
 
-  Shellcommands is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation; either version 2 of the License, or
-  (at your option) any later version.
+ shellcommands is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-  Shellcommands is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with shellcommands. If not, see <http://www.gnu.org/licenses/>.
-  --------------------------------------------------------------------------
+ You should have received a copy of the GNU General Public License
+ along with shellcommands. If not, see <http://www.gnu.org/licenses/>.
+ --------------------------------------------------------------------------
  */
 
 // Init the hooks of the plugins -Needed
@@ -62,7 +61,7 @@ function plugin_init_shellcommands() {
 function plugin_version_shellcommands() {
    return array(
        'name' => _n('Shell Command', 'Shell Commands', 2, 'shellcommands'),
-       'version' => '1.9.1',
+       'version' => '2.0.0',
        'license' => 'GPLv2+',
        'oldname' => 'cmd',
        'author' => 'Xavier Caillaud',
@@ -73,7 +72,7 @@ function plugin_version_shellcommands() {
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_shellcommands_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '0.90', 'lt') || version_compare(GLPI_VERSION, '0.91', 'ge')) {
+   if (version_compare(GLPI_VERSION, '0.90', 'lt') || version_compare(GLPI_VERSION, '9.2', 'ge')) {
       _e('This plugin requires GLPI >= 0.90', 'shellcommands');
       return false;
    }

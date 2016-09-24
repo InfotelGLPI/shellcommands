@@ -1,33 +1,31 @@
 <?php
 /*
- * @version $Id: setup.php 480 2012-11-09 tynet $
+ * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
  -------------------------------------------------------------------------
- Installations plugin for GLPI
- Copyright (C) 2006-2012 by the Installations Development Team.
+ shellcommands plugin for GLPI
+ Copyright (C) 2009-2016 by the shellcommands Development Team.
 
- https://forge.indepnet.net/projects/installations
+ https://github.com/InfotelGLPI/shellcommands
  -------------------------------------------------------------------------
 
  LICENSE
+      
+ This file is part of shellcommands.
 
- This file is part of Installations.
-
- Installations is free software; you can redistribute it and/or modify
+ shellcommands is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
 
- Installations is distributed in the hope that it will be useful,
+ shellcommands is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
 
  You should have received a copy of the GNU General Public License
- along with Installations. If not, see <http://www.gnu.org/licenses/>.
+ along with shellcommands. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
-
-//$AJAX_INCLUDE = 1;
 
 include ('../../../inc/includes.php');
 header("Content-Type: text/html; charset=UTF-8");

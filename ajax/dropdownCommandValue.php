@@ -1,38 +1,32 @@
 <?php
-
 /*
- * @version $Id: dropdownCommandValue.php 19878 2012-12-21 08:44:57Z remi $
-  -------------------------------------------------------------------------
-  GLPI - Gestionnaire Libre de Parc Informatique
-  Copyright (C) 2003-2012 by the INDEPNET Development Team.
+ * @version $Id: HEADER 15930 2011-10-30 15:47:55Z tsmr $
+ -------------------------------------------------------------------------
+ shellcommands plugin for GLPI
+ Copyright (C) 2009-2016 by the shellcommands Development Team.
 
-  http://indepnet.net/   http://glpi-project.org
-  -------------------------------------------------------------------------
+ https://github.com/InfotelGLPI/shellcommands
+ -------------------------------------------------------------------------
 
-  LICENSE
+ LICENSE
+      
+ This file is part of shellcommands.
 
-  This file is part of GLPI.
+ shellcommands is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
 
-  GLPI is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation; either version 2 of the License, or
-  (at your option) any later version.
+ shellcommands is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
 
-  GLPI is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with GLPI. If not, see <http://www.gnu.org/licenses/>.
-  --------------------------------------------------------------------------
+ You should have received a copy of the GNU General Public License
+ along with shellcommands. If not, see <http://www.gnu.org/licenses/>.
+ --------------------------------------------------------------------------
  */
 
-// ----------------------------------------------------------------------
-// Original Author of file: Julien Dombre
-// Purpose of file:
-// ----------------------------------------------------------------------
-// Direct access to file
 if (strpos($_SERVER['PHP_SELF'], "dropdownCommandValue.php")) {
    include ('../../../inc/includes.php');
    header("Content-Type: text/html; charset=UTF-8");
