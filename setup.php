@@ -73,7 +73,7 @@ function plugin_version_shellcommands() {
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_shellcommands_check_prerequisites() {
    if (version_compare(GLPI_VERSION, '0.90', 'lt') || version_compare(GLPI_VERSION, '9.2', 'ge')) {
-      _e('This plugin requires GLPI >= 0.90', 'shellcommands');
+      echo __('This plugin requires GLPI >= 0.90', 'shellcommands');
       return false;
    }
    return true;
