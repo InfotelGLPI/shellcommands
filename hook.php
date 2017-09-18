@@ -33,25 +33,25 @@ function plugin_shellcommands_install() {
    include_once (GLPI_ROOT."/plugins/shellcommands/inc/profile.class.php");
 
    $update = false;
-   if (!TableExists("glpi_plugin_cmd_profiles") && !TableExists("glpi_plugin_shellcommands_shellcommands")) {
+   if (!$DB->tableExists("glpi_plugin_cmd_profiles") && !$DB->tableExists("glpi_plugin_shellcommands_shellcommands")) {
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/empty-1.7.0.sql");
       
-   } else if (TableExists("glpi_plugin_cmd_profiles") && !TableExists("glpi_plugin_cmd_path")) {
+   } else if ($DB->tableExists("glpi_plugin_cmd_profiles") && !$DB->tableExists("glpi_plugin_cmd_path")) {
       $update = true;
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.1.sql");
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.2.0.sql");
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.3.0.sql");
       
-   } else if (TableExists("glpi_plugin_cmd_profiles") && FieldExists("glpi_plugin_cmd_profiles", "interface")) {
+   } else if ($DB->tableExists("glpi_plugin_cmd_profiles") && $DB->fieldExists("glpi_plugin_cmd_profiles", "interface")) {
       $update = true;
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.2.0.sql");
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.3.0.sql");
       
-   } else if (!TableExists("glpi_plugin_shellcommands_shellcommands")) {
+   } else if (!$DB->tableExists("glpi_plugin_shellcommands_shellcommands")) {
       $update = true;
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.3.0.sql");
       
-   } else if (!TableExists("glpi_plugin_shellcommands_commandgroups")) {
+   } else if (!$DB->tableExists("glpi_plugin_shellcommands_commandgroups")) {
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.7.0.sql");
    }
 
