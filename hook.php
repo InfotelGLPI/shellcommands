@@ -106,7 +106,7 @@ function plugin_shellcommands_uninstall() {
       $DB->query("DROP TABLE IF EXISTS `$table`;");
 
    $tables_glpi = array("glpi_displaypreferences",
-       "glpi_bookmarks");
+                        "glpi_savedsearches");
 
    foreach ($tables_glpi as $table_glpi)
       $DB->query("DELETE FROM `$table_glpi` WHERE `itemtype` = 'PluginShellcommandsShellcommand';");
