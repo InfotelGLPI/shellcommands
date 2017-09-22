@@ -116,8 +116,9 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       if (empty($types)) {
          return 0;
       }
-      return countElementsInTable('glpi_plugin_shellcommands_shellcommands_items', "`itemtype` IN ('$types')
-                                   AND `plugin_shellcommands_shellcommands_id` = '".$item->getID()."'");
+      $dbu = new DbUtils();
+      return $dbu->countElementsInTable('glpi_plugin_shellcommands_shellcommands_items', "`itemtype` IN ('$types')
+                                        AND `plugin_shellcommands_shellcommands_id` = '" . $item->getID() . "'");
    }
 
    static function countForItem(CommonDBTM $item, $options = array()) {

@@ -79,12 +79,18 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
       if (!$withtemplate) {
          if ($item->getType() == 'PluginShellcommandsCommandGroup') {
             if ($_SESSION['glpishow_count_on_tabs']) {
-               return self::createTabEntry(PluginShellcommandsShellcommand::getTypeName(2), countElementsInTable($this->getTable(), "`plugin_shellcommands_commandgroups_id` = '".$item->getID()."'"));
+               $dbu = new DbUtils();
+               return self::createTabEntry(PluginShellcommandsShellcommand::getTypeName(2),
+                                           $dbu->countElementsInTable($this->getTable(),
+                                                                      "`plugin_shellcommands_commandgroups_id` = '".$item->getID()."'"));
             }
          } else if ($item->getType() == 'PluginShellcommandsShellcommand'
                  && self::canView()) {
             if ($_SESSION['glpishow_count_on_tabs']) {
-               return self::createTabEntry(PluginShellcommandsCommandGroup::getTypeName(2), countElementsInTable($this->getTable(), "`plugin_shellcommands_shellcommands_id` = '".$item->getID()."'"));
+               $dbu = new DbUtils();
+               return self::createTabEntry(PluginShellcommandsCommandGroup::getTypeName(2),
+                                           $dbu->countElementsInTable($this->getTable(),
+                                                                      "`plugin_shellcommands_shellcommands_id` = '".$item->getID()."'"));
             }
             return PluginShellcommandsCommandGroup::getTypeName(2);
          }
