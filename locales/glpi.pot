@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: GLPI - Shellcommands plugin 1.5.3\n"
+"Project-Id-Version: GLPI - Shellcommands plugin 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-26 12:17+0200\n"
+"POT-Creation-Date: 2017-10-10 17:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,10 +40,6 @@ msgid_plural "Shell Commands"
 msgstr[0] ""
 msgstr[1] ""
 
-#: setup.php:76
-msgid "This plugin requires GLPI >= 0.90"
-msgstr ""
-
 #: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:470
 msgid "Advanced execution"
 msgid_plural "Advanced executions"
@@ -61,23 +57,23 @@ msgstr[1] ""
 msgid "Check command"
 msgstr ""
 
-#: inc/commandgroup_item.class.php:146
+#: inc/commandgroup_item.class.php:152
 msgid "Add a command"
 msgstr ""
 
-#: inc/commandgroup_item.class.php:196
+#: inc/commandgroup_item.class.php:202
 msgid "Add a command group"
 msgstr ""
 
-#: inc/commandgroup_item.class.php:384
+#: inc/commandgroup_item.class.php:390
 msgid "Order"
 msgstr ""
 
-#: inc/commandgroup_item.class.php:528
+#: inc/commandgroup_item.class.php:534
 msgid "Host UP"
 msgstr ""
 
-#: inc/commandgroup_item.class.php:559
+#: inc/commandgroup_item.class.php:565
 msgid "Host DOWN"
 msgstr ""
 
@@ -101,18 +97,18 @@ msgstr ""
 msgid "After parameters"
 msgstr ""
 
-#: inc/shellcommand_item.class.php:451
+#: inc/shellcommand_item.class.php:452
 msgid "Associated Commands"
 msgstr ""
 
-#: inc/shellcommand_item.class.php:804
+#: inc/shellcommand_item.class.php:805
 msgid "There is an error with socket creation"
 msgstr ""
 
-#: inc/shellcommand_item.class.php:843
+#: inc/shellcommand_item.class.php:844
 msgid "Magic packet sending to"
 msgstr ""
 
-#: inc/shellcommand_item.class.php:845
+#: inc/shellcommand_item.class.php:846
 msgid "The packet cannot be send"
 msgstr ""
