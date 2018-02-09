@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of shellcommands.
 
  shellcommands is free software; you can redistribute it and/or modify
@@ -41,4 +41,3 @@ $processor = getItemForItemtype($ma->processor);
 $processor->doMassiveAction($ma, $ids);
 
 Html::footer();
-?>

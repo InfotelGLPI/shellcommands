@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of shellcommands.
 
  shellcommands is free software; you can redistribute it and/or modify
@@ -34,27 +34,27 @@ if (!defined('GLPI_ROOT')) {
 
 /**
  * Class PluginShellcommandsCommandGroup_Item
- * 
+ *
  * This class allows to add and manage the commands used for the conforimty check of the items
- * 
+ *
  * @package    Shellcommands
  * @author     Ludovic Dupont
  */
 class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
-   
+
    // From CommonDBRelation
    static public $itemtype_1 = "PluginShellcommandsCommandGroup";
    static public $items_id_1 = 'plugin_shellcommands_commandgroups_id';
    static public $itemtype_2 = 'PluginShellcommandsShellcommand';
    static public $items_id_2 = 'plugin_shellcommands_shellcommands_id';
-   
+
    static $rightname = 'plugin_shellcommands';
-   
+
    /**
     * functions mandatory
     * getTypeName(), canCreate(), canView()
     * */
-   static function getTypeName($nb=0) {
+   static function getTypeName($nb = 0) {
       return _n('Command group', 'Command groups', $nb, 'shellcommands');
    }
 
@@ -63,10 +63,10 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
    }
 
    static function canCreate() {
-      return Session::haveRightsOr(self::$rightname, array(CREATE, UPDATE, DELETE));
+      return Session::haveRightsOr(self::$rightname, [CREATE, UPDATE, DELETE]);
    }
 
-   
+
    /**
     * Display tab for item
     *
@@ -95,10 +95,10 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
             return PluginShellcommandsCommandGroup::getTypeName(2);
          }
       }
-      
+
       return '';
    }
-   
+
    /**
     * Display content for each users
     *
@@ -113,34 +113,36 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
       if ($item->getType() == 'PluginShellcommandsCommandGroup') {
          $command = new self();
          $command->showForCommandGroup($item);
-         
-      } elseif($item->getType() == 'PluginShellcommandsShellcommand'){
+
+      } else if ($item->getType() == 'PluginShellcommandsShellcommand') {
          $command = new self();
          $command->showForShellcommand($item);
       }
-      
+
       return true;
    }
-   
+
    /**
     * Function show for record model
-    * 
+    *
     * @param type $item
     * @return boolean
     */
    function showForCommandGroup($item) {
-      
-      if (!$this->canView() || !$this->canCreate()) return false;
-      
-      $used = array();
-      
+
+      if (!$this->canView() || !$this->canCreate()) {
+         return false;
+      }
+
+      $used = [];
+
       $dataGroup = $this->find('`plugin_shellcommands_commandgroups_id` = '.$item->fields['id'], "`rank`");
-      
+
       $shellcommand = new PluginShellcommandsShellcommand();
       $canedit = $shellcommand->can($item->fields['id'], UPDATE);
-      
-      if($dataGroup){
-         foreach($dataGroup as $field){
+
+      if ($dataGroup) {
+         foreach ($dataGroup as $field) {
             $used[] = $field['plugin_shellcommands_shellcommands_id'];
          }
       }
@@ -155,10 +157,10 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
          // Dropdown group
          echo "<td class='center'>";
          echo PluginShellcommandsShellcommand::getTypeName().'&nbsp;';
-         Dropdown::show("PluginShellcommandsShellcommand", array('name' => 'plugin_shellcommands_shellcommands_id', 'used' => $used));
+         Dropdown::show("PluginShellcommandsShellcommand", ['name' => 'plugin_shellcommands_shellcommands_id', 'used' => $used]);
          echo "</td>";
          echo "</tr>";
-         
+
          echo "<tr>";
          echo "<td class='tab_bg_2 center' colspan='6'>";
          echo "<input type='submit' name='add' class='submit' value='"._sx('button', 'Add')."' >";
@@ -168,29 +170,32 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
          echo "</table></div>";
          Html::closeForm();
       }
-      if($dataGroup)
+      if ($dataGroup) {
          $this->listItems($dataGroup, $canedit);
+      }
    }
-   
+
    /**
     * Function show for record model
-    * 
+    *
     * @param type $item
     * @return boolean
     */
    function showForShellcommand($item) {
-      
-      if (!$this->canView() || !$this->canCreate()) return false;
-      
-      $used = array();
-      
+
+      if (!$this->canView() || !$this->canCreate()) {
+         return false;
+      }
+
+      $used = [];
+
       $dataGroup = $this->find('`plugin_shellcommands_shellcommands_id` = '.$item->fields['id'], "`rank`");
-      
+
       $shellcommand = new PluginShellcommandsShellcommand();
       $canedit = $shellcommand->can($item->fields['id'], UPDATE);
-      
-      if($dataGroup){
-         foreach($dataGroup as $field){
+
+      if ($dataGroup) {
+         foreach ($dataGroup as $field) {
             $used[] = $field['plugin_shellcommands_shellcommands_id'];
          }
       }
@@ -205,10 +210,10 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
          // Dropdown group
          echo "<td class='center'>";
          echo PluginShellcommandsShellcommand::getTypeName().'&nbsp;';
-         Dropdown::show("PluginShellcommandsCommandGroup", array('name' => 'plugin_shellcommands_commandgroups_id', 'used' => $used));
+         Dropdown::show("PluginShellcommandsCommandGroup", ['name' => 'plugin_shellcommands_commandgroups_id', 'used' => $used]);
          echo "</td>";
          echo "</tr>";
-         
+
          echo "<tr>";
          echo "<td class='tab_bg_2 center' colspan='6'>";
          echo "<input type='submit' name='add' class='submit' value='"._sx('button', 'Add')."' >";
@@ -218,10 +223,11 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
          echo "</table></div>";
          Html::closeForm();
       }
-      if($dataGroup)
+      if ($dataGroup) {
          $this->listItemsForShellCommand($dataGroup, $canedit);
+      }
    }
-   
+
    /**
     * Show shellcommands associated to an item
     *
@@ -249,15 +255,15 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
       if (empty($withtemplate)) {
          $withtemplate = 0;
       }
-      
+
       $width = 200;
-      
+
       $command_group = new PluginShellcommandsCommandGroup();
       $restrict = getEntitiesRestrictRequest(" AND", "glpi_plugin_shellcommands_commandgroups", '', '', true);
       $data = $command_group->find("1".$restrict);
-      $shells = array(0 => Dropdown::EMPTY_VALUE);
+      $shells = [0 => Dropdown::EMPTY_VALUE];
       if (!empty($data)) {
-         foreach($data as $val){
+         foreach ($data as $val) {
             $shells['[IP]-'.$val['id'].'-0'] = $val['name'];
          }
       }
@@ -267,15 +273,15 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
       echo "<tr>";
       echo "<th>".PluginShellcommandsCommandGroup::getTypeName(1)."</th>";
       echo "</tr>";
-         
+
       echo "<tr class='tab_bg_2'>
             <td class='center'>".PluginShellcommandsCommandGroup::getTypeName(1)." ";
-      $randSelect = Dropdown::showFromArray("name", $shells, array('width' => $width));
+      $randSelect = Dropdown::showFromArray("name", $shells, ['width' => $width]);
       echo "<span id='command_name$randSelect'></span></td>";
       echo "</tr>";
 
-      Ajax::updateItemOnSelectEvent("dropdown_name$randSelect", "command_name$randSelect", $CFG_GLPI["root_doc"]."/plugins/shellcommands/ajax/dropdownCommandValue.php", 
-              array('idtable'       => $item->getType(),
+      Ajax::updateItemOnSelectEvent("dropdown_name$randSelect", "command_name$randSelect", $CFG_GLPI["root_doc"]."/plugins/shellcommands/ajax/dropdownCommandValue.php",
+              ['idtable'       => $item->getType(),
                     'value'         => '__VALUE__',
                     'itemID'        => $ID,
                     'countItem'     => 1,
@@ -283,51 +289,50 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
                     'command_type'  => 'PluginShellcommandsCommandGroup',
                     'toupdate'      => 'command_group_result',
                     'itemtype'      => $item->getType(),
-                    'myname'        => "command_ip"));
-      
+                    'myname'        => "command_ip"]);
 
       echo "</table>";
       echo "</div>";
       echo "<div class='spaced' id='command_group_result'></div>";
    }
-   
+
       /**
     * Function list items
-    * 
+    *
     * @global type $CFG_GLPI
     * @param type $ID
     * @param type $data
     * @param type $canedit
     * @param type $rand
     */
-   private function listItemsForShellCommand($data, $canedit){
+   private function listItemsForShellCommand($data, $canedit) {
       global $CFG_GLPI;
 
       $rand = mt_rand();
       $numrows = count($data);
       $target = Toolbox::getItemTypeFormURL('PluginShellcommandsCommandGroup_Item');
-      
+
       echo "<div class='center'>";
       if ($canedit) {
          Html::openMassiveActionsForm('mass'.__CLASS__.$rand);
-         $massiveactionparams = array('item' => __CLASS__, 'container' => 'mass'.__CLASS__.$rand, 'num_displayed' => $numrows);
+         $massiveactionparams = ['item' => __CLASS__, 'container' => 'mass'.__CLASS__.$rand, 'num_displayed' => $numrows];
          Html::showMassiveActions($massiveactionparams);
       }
-      
-//      Html::printAjaxPager(self::getTypeName(2), $start, countElementsInTable($this->getTable()));
+
+      //      Html::printAjaxPager(self::getTypeName(2), $start, countElementsInTable($this->getTable()));
       echo "<table class='tab_cadre_fixehov'>";
       echo "<tr class='tab_bg_1'>";
       echo "<th width='10'>";
       if ($canedit) {
          echo Html::getCheckAllAsCheckbox('mass'.__CLASS__.$rand);
-         Html::closeForm(); 
+         Html::closeForm();
       }
       echo "</th>";
       echo "<th colspan='3'>".PluginShellcommandsCommandGroup::getTypeName(2)."</th>";
       echo "</tr>";
-      
+
       $commandgroup = new PluginShellcommandsCommandGroup();
-      
+
       $i = 0;
       foreach ($data as $field) {
          echo "<tr class='tab_bg_2'>";
@@ -340,59 +345,59 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
          $commandgroup->getFromDB($field['plugin_shellcommands_commandgroups_id']);
          echo "<td>".$commandgroup->getLink()."</td>";
          echo "</tr>";
-         
+
          $i++;
       }
 
       if ($canedit) {
          $massiveactionparams['ontop'] = false;
          Html::showMassiveActions($massiveactionparams);
-         Html::closeForm(); 
+         Html::closeForm();
       }
       echo "</table>";
       echo "</div>";
    }
-   
+
    /**
     * Function list items
-    * 
+    *
     * @global type $CFG_GLPI
     * @param type $ID
     * @param type $data
     * @param type $canedit
     * @param type $rand
     */
-   private function listItems($data, $canedit){
+   private function listItems($data, $canedit) {
       global $CFG_GLPI;
 
       $rand = mt_rand();
       $numrows = count($data);
       $target = Toolbox::getItemTypeFormURL('PluginShellcommandsCommandGroup_Item');
-      
+
       echo "<div class='center'>";
       if ($canedit) {
          Html::openMassiveActionsForm('mass'.__CLASS__.$rand);
-         $massiveactionparams = array('item' => __CLASS__, 'container' => 'mass'.__CLASS__.$rand, 'num_displayed' => $numrows);
+         $massiveactionparams = ['item' => __CLASS__, 'container' => 'mass'.__CLASS__.$rand, 'num_displayed' => $numrows];
          Html::showMassiveActions($massiveactionparams);
       }
-      
-//      Html::printAjaxPager(self::getTypeName(2), $start, countElementsInTable($this->getTable()));
+
+      //      Html::printAjaxPager(self::getTypeName(2), $start, countElementsInTable($this->getTable()));
       echo "<table class='tab_cadre_fixehov'>";
       echo "<tr class='tab_bg_1'>";
       echo "<th width='10'>";
       if ($canedit) {
          echo Html::getCheckAllAsCheckbox('mass'.__CLASS__.$rand);
-         Html::closeForm(); 
+         Html::closeForm();
       }
       echo "</th>";
       echo "<th>".PluginShellcommandsShellcommand::getTypeName(2)."</th>";
       echo "<th>"._n('Type', 'Types', 1)."</th>";
       echo "<th colspan='2'>".__('Order', 'shellcommands')."</th>";
       echo "</tr>";
-      
+
       $shellcommand = new PluginShellcommandsShellcommand();
       $shellcommand_item = new PluginShellcommandsShellcommand_Item();
-      
+
       $i = 0;
       foreach ($data as $field) {
          echo "<tr class='tab_bg_2'>";
@@ -410,7 +415,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
             echo implode("<br>", $itemtypes);
          }
          echo "</td>";
-                  
+
          // Change order
          if ($i != 0) {
             echo "<td class='center middle'>";
@@ -440,32 +445,32 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
             echo "<td>&nbsp;</td>\n";
          }
          echo "</tr>";
-         
+
          $i++;
       }
 
       if ($canedit) {
          $massiveactionparams['ontop'] = false;
          Html::showMassiveActions($massiveactionparams);
-         Html::closeForm(); 
+         Html::closeForm();
       }
       echo "</table>";
       echo "</div>";
    }
-   
+
    /**
     * Function get items for record models
-    * 
+    *
     * @global type $DB
     * @param type $commandgroups_id
     * @param type $start
     * @return type
     */
-   function getItems($commandgroups_id, $start=0){
+   function getItems($commandgroups_id, $start = 0) {
       global $DB;
-      
-      $output = array();
-      
+
+      $output = [];
+
       $query = "SELECT `".$this->getTable()."`.`id`, 
                        `".$this->getTable()."`.`plugin_shellcommands_shellcommands_id`,
                        `".$this->getTable()."`.`plugin_shellcommands_commandgroups_id`
@@ -479,15 +484,15 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
             $output[$data['id']] = $data;
          }
       }
-      
+
       return $output;
    }
-   
-  /**
+
+   /**
    * Launch a command
-   * 
+   *
    * @param array $values
-   * 
+   *
    * @return void
    */
    static function lauchCommand($values) {
@@ -542,7 +547,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
                   }
                   $shellcommands->getFromDB($val['plugin_shellcommands_shellcommands_id']);
                   $targetParam = PluginShellcommandsShellcommand_Item::resolveLinkOfCommand($val['plugin_shellcommands_shellcommands_id'], $item);
-                  
+
                   // Exec command on each targets : stop on first success
                   if ($targetParam !== false) {
                      foreach ($targetParam as $target) {
@@ -571,7 +576,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
          echo "</div>";
       }
    }
-   
+
    /**
     * Order to move an item
     *
@@ -623,7 +628,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
                 WHERE `id` = '$ID2'";
       $DB->query($query);
    }
-   
+
    /**
     * @see CommonDBTM::prepareInputForAdd()
    **/
@@ -634,10 +639,9 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
                 FROM `".$this->getTable()."`";
       $result = $DB->query($query);
 
-      $input["rank"] = $DB->result($result,0,0)+1;
+      $input["rank"] = $DB->result($result, 0, 0)+1;
 
       return $input;
    }
-   
+
 }
-?>

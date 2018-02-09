@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of shellcommands.
 
  shellcommands is free software; you can redistribute it and/or modify
@@ -32,12 +32,12 @@ if (!defined('GLPI_ROOT')) {
 }
 
 class PluginShellcommandsShellcommandPath extends CommonDropdown {
-   
-   static $rightname = 'plugin_shellcommands';
-   
-   static function getTypeName($nb=0) {
 
-      return _n('Path','Pathes',$nb, 'shellcommands');
+   static $rightname = 'plugin_shellcommands';
+
+   static function getTypeName($nb = 0) {
+
+      return _n('Path', 'Pathes', $nb, 'shellcommands');
    }
 
    static function canView() {
@@ -45,10 +45,9 @@ class PluginShellcommandsShellcommandPath extends CommonDropdown {
    }
 
    static function canCreate() {
-      return Session::haveRightsOr(self::$rightname, array(CREATE, UPDATE, DELETE));
+      return Session::haveRightsOr(self::$rightname, [CREATE, UPDATE, DELETE]);
    }
 
 
 }
 
-?>

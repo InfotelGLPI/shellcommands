@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of shellcommands.
 
  shellcommands is free software; you can redistribute it and/or modify
@@ -39,4 +39,3 @@ if ($command->canView() || Session::haveRight("config", UPDATE)) {
 }
 
 Html::footer();
-?>

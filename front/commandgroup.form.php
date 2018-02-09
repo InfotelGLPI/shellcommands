@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of shellcommands.
 
  shellcommands is free software; you can redistribute it and/or modify
@@ -42,23 +42,22 @@ if (isset($_POST["add"])) {
 
    Html::back();
 
-} elseif (isset($_POST["update"])) {
+} else if (isset($_POST["update"])) {
    // Check update rights for fields
    $commandgroup->check($_POST['id'], UPDATE, $_POST);
    $commandgroup->update($_POST);
 
    Html::back();
 
-} elseif (isset($_POST["delete"])) {
+} else if (isset($_POST["delete"])) {
    // Check delete rights for fields
    $commandgroup->check($_POST['id'], UPDATE, $_POST);
    $commandgroup->delete($_POST, 1);
    $commandgroup->redirectToList();
-   
+
 } else {
    $commandgroup->checkGlobal(READ);
    Html::header(PluginShellcommandsCommandGroup::getTypeName(2), '', "tools", "pluginshellcommandsshellcommand", "commandgroup");
-   $commandgroup->display(array('id' => $_GET["id"]));
+   $commandgroup->display(['id' => $_GET["id"]]);
    Html::footer();
 }
-?>

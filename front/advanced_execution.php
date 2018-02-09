@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of shellcommands.
 
  shellcommands is free software; you can redistribute it and/or modify
@@ -26,7 +26,7 @@
  along with shellcommands. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
- 
+
 include ('../../../inc/includes.php');
 
 Html::header(PluginShellcommandsAdvanced_Execution::getTypeName(2), '', "tools", "pluginshellcommandsshellcommand", "advanced_execution");
@@ -34,10 +34,9 @@ Html::header(PluginShellcommandsAdvanced_Execution::getTypeName(2), '', "tools",
 $advanced_execution = new PluginShellcommandsAdvanced_Execution();
 if ($advanced_execution->canView() || Session::haveRight("config", UPDATE)) {
    $advanced_execution->showForm();
-   
+
 } else {
    Html::displayRightError();
 }
 
 Html::footer();
-?>

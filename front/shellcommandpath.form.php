@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of shellcommands.
 
  shellcommands is free software; you can redistribute it and/or modify
@@ -32,4 +32,3 @@ include ('../../../inc/includes.php');
 $dropdown = new PluginShellcommandsShellcommandPath();
 include (GLPI_ROOT . "/front/dropdown.common.form.php");
 
-?>

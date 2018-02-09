@@ -23,15 +23,15 @@
  --------------------------------------------------------------------------  */
 
 
-/** 
+/**
 *  Init shellcommands advanced execution
-*  
+*
 * @param string root_doc
 * @param string toobserve
 * @param string toupdate
 */
 function shellcommand_advanced_execution(root_doc, toobserve, toupdate){
-   
+
    var command_group = $("form[name='"+toobserve+"'] input[name='plugin_shellcommands_commandgroups_id']").val();
    var items = $("form[name='"+toobserve+"'] div[id^='custom_values']");
 
@@ -44,23 +44,23 @@ function shellcommand_advanced_execution(root_doc, toobserve, toupdate){
          items_to_execute[index] = {'itemtype' : itemtype.val(), 'items_id' : items_id.val()};
       }
    });
-   
-   var params = {'command_type'     : 'PluginShellcommandsAdvanced_Execution', 
-                 'command_group'    : command_group, 
-                 'items_to_execute' : JSON.stringify(items_to_execute)};
-   
+
+   var params = {'command_type'     : 'PluginShellcommandsAdvanced_Execution',
+      'command_group'    : command_group,
+      'items_to_execute' : JSON.stringify(items_to_execute)};
+
    shellcommandsActions(root_doc, toupdate, params);
 }
 
-/** 
+/**
 *  Init shellcommands ajax actions
-*  
+*
 * @param string root_doc
 * @param string toupdate
 * @param string params
 */
 function shellcommandsActions(root_doc, toupdate, params){
-   if(toupdate != ''){
+   if (toupdate != '') {
       var item_bloc = $('#'+toupdate);
       // Loading
       item_bloc.html('<div style="width:100%;text-align:center"><img src="'+root_doc+'/plugins/shellcommands/pics/large-loading.gif"></div>');
@@ -72,9 +72,9 @@ function shellcommandsActions(root_doc, toupdate, params){
       type: "POST",
       dataType: "html",
       data: params,
-           
+
       success: function(response, opts) {
-         if(toupdate != ''){
+         if (toupdate != '') {
             item_bloc.html(response);
          }
       }
@@ -82,9 +82,9 @@ function shellcommandsActions(root_doc, toupdate, params){
 }
 
 /**
- * changeNbValue : display text input 
- * 
- * @param newValue 
+ * changeNbValue : display text input
+ *
+ * @param newValue
  */
 function changeNbValue(newValue) {
    document.getElementById('nbValue').value = newValue;
@@ -93,7 +93,7 @@ function changeNbValue(newValue) {
 
 
 /**
- * shellcommands_add_custom_values : add text input 
+ * shellcommands_add_custom_values : add text input
  */
 function shellcommands_add_custom_values(field_id, root_doc){
    var count = $('#count_custom_values').val();
@@ -103,7 +103,7 @@ function shellcommands_add_custom_values(field_id, root_doc){
       url: root_doc+'/plugins/shellcommands/ajax/addnewvalue.php',
       type: "POST",
       dataType: "html",
-      data: { 
+      data: {
          'action' : 'add',
          'count'  : $('#count_custom_values').val()
       },
@@ -112,7 +112,7 @@ function shellcommands_add_custom_values(field_id, root_doc){
          item_bloc.append(response);
 
          var scripts, scriptsFinder=/<script[^>]*>([\s\S]+?)<\/script>/gi;
-         while(scripts=scriptsFinder.exec(response)) {
+         while (scripts=scriptsFinder.exec(response)) {
             eval(scripts[1]);
          }
       }
@@ -120,13 +120,13 @@ function shellcommands_add_custom_values(field_id, root_doc){
 }
 
 /**
- * shellcommands_delete_custom_values : delete text input 
- * 
- * @param field_id  
+ * shellcommands_delete_custom_values : delete text input
+ *
+ * @param field_id
  */
 function shellcommands_delete_custom_values(field_id){
    var count = $('#count_custom_values').val();
-   if(count > 1){
+   if (count > 1) {
       $('#'+field_id+count).remove();
       $('#count_custom_values').val(parseInt(count)-1);
    }

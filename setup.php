@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of shellcommands.
 
  shellcommands is free software; you can redistribute it and/or modify
@@ -32,34 +32,34 @@ function plugin_init_shellcommands() {
    global $PLUGIN_HOOKS, $CFG_GLPI;
 
    $PLUGIN_HOOKS['csrf_compliant']['shellcommands'] = true;
-   $PLUGIN_HOOKS['change_profile']['shellcommands'] = array('PluginShellcommandsProfile', 'changeProfile');
+   $PLUGIN_HOOKS['change_profile']['shellcommands'] = ['PluginShellcommandsProfile', 'changeProfile'];
    //Clean Plugin on Profile delete
-   $PLUGIN_HOOKS['pre_item_purge']['shellcommands'] = array('Profile' => array('PluginShellcommandsProfile', 'purgeProfiles'));
-   
-   $PLUGIN_HOOKS['add_css']['shellcommands'] = array('shellcommands.css');
-   $PLUGIN_HOOKS['add_javascript']['shellcommands'] = array('shellcommands.js');
+   $PLUGIN_HOOKS['pre_item_purge']['shellcommands'] = ['Profile' => ['PluginShellcommandsProfile', 'purgeProfiles']];
+
+   $PLUGIN_HOOKS['add_css']['shellcommands'] = ['shellcommands.css'];
+   $PLUGIN_HOOKS['add_javascript']['shellcommands'] = ['shellcommands.js'];
 
    if (Session::getLoginUserID()) {
-      Plugin::registerClass('PluginShellcommandsProfile', array('addtabon' => 'Profile'));
+      Plugin::registerClass('PluginShellcommandsProfile', ['addtabon' => 'Profile']);
       if (Session::haveRight("plugin_shellcommands", READ)) {
          // Menu
          $PLUGIN_HOOKS['helpdesk_menu_entry']['shellcommands'] = '/front/menu.php';
          $PLUGIN_HOOKS['menu_entry']['shellcommands']          = 'front/menu.php';
-         $PLUGIN_HOOKS['menu_toadd']['shellcommands'] = array('tools' => 'PluginShellcommandsShellcommand');
+         $PLUGIN_HOOKS['menu_toadd']['shellcommands'] = ['tools' => 'PluginShellcommandsShellcommand'];
       }
 
       $PLUGIN_HOOKS['use_massive_action']['shellcommands'] = 1;
 
       $PLUGIN_HOOKS['post_init']['shellcommands'] = 'plugin_shellcommands_postinit';
-      
+
    }
-   
+
    $PLUGIN_HOOKS['webservices']['shellcommands'] = 'plugin_shellcommands_registerWebservicesMethods';
 }
 
 // Get the name and the version of the plugin - Needed
 function plugin_version_shellcommands() {
-   return array(
+   return [
        'name' => _n('Shell Command', 'Shell Commands', 2, 'shellcommands'),
        'version' => '2.1.0',
        'license' => 'GPLv2+',
@@ -67,7 +67,7 @@ function plugin_version_shellcommands() {
        'author' => 'Xavier Caillaud',
        'homepage' => 'https://github.com/InfotelGLPI/shellcommands',
        'minGlpiVersion' => '9.2',
-   );
+   ];
 }
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
@@ -85,4 +85,3 @@ function plugin_shellcommands_check_config() {
 }
 
 
-?>

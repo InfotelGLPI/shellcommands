@@ -58,7 +58,7 @@ td.shellcommands_menu_item:hover{
    margin-right: auto;
 }
 
-.shellcommands_show_values { 
+.shellcommands_show_values {
    padding:10px;
    margin:0px 0px 10px 0px;
    border: solid 1px #D5D5D5;
@@ -74,7 +74,7 @@ td.shellcommands_menu_item:hover{
    background-color: #ffffff;
    padding:5px;
    margin:5px;
-   
+
    -moz-border-radius: 3px;
    -webkit-border-radius: 3px;
    border-radius: 3px;

@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of shellcommands.
 
  shellcommands is free software; you can redistribute it and/or modify
@@ -35,22 +35,22 @@ function plugin_shellcommands_install() {
    $update = false;
    if (!$DB->tableExists("glpi_plugin_cmd_profiles") && !$DB->tableExists("glpi_plugin_shellcommands_shellcommands")) {
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/empty-1.7.0.sql");
-      
+
    } else if ($DB->tableExists("glpi_plugin_cmd_profiles") && !$DB->tableExists("glpi_plugin_cmd_path")) {
       $update = true;
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.1.sql");
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.2.0.sql");
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.3.0.sql");
-      
+
    } else if ($DB->tableExists("glpi_plugin_cmd_profiles") && $DB->fieldExists("glpi_plugin_cmd_profiles", "interface")) {
       $update = true;
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.2.0.sql");
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.3.0.sql");
-      
+
    } else if (!$DB->tableExists("glpi_plugin_shellcommands_shellcommands")) {
       $update = true;
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.3.0.sql");
-      
+
    } else if (!$DB->tableExists("glpi_plugin_shellcommands_commandgroups")) {
       $DB->runFile(GLPI_ROOT."/plugins/shellcommands/sql/update-1.7.0.sql");
    }
@@ -78,41 +78,44 @@ function plugin_shellcommands_install() {
    PluginShellcommandsProfile::createfirstAccess($_SESSION['glpiactiveprofile']['id']);
    $migration = new Migration("1.9.1");
    $migration->dropTable('glpi_plugin_shellcommands_profiles');
-   
+
    return true;
 }
 
 function plugin_shellcommands_uninstall() {
    global $DB;
 
-   $tables = array("glpi_plugin_shellcommands_shellcommands",
+   $tables = ["glpi_plugin_shellcommands_shellcommands",
        "glpi_plugin_shellcommands_shellcommands_items",
        "glpi_plugin_shellcommands_commandgroups",
        "glpi_plugin_shellcommands_commandgroups_items",
        "glpi_plugin_shellcommands_profiles",
-       "glpi_plugin_shellcommands_shellcommandpaths");
+       "glpi_plugin_shellcommands_shellcommandpaths"];
 
-   foreach ($tables as $table)
+   foreach ($tables as $table) {
       $DB->query("DROP TABLE IF EXISTS `$table`;");
+   }
 
-   //old versions	
-   $tables = array("glpi_plugin_cmd",
+   //old versions
+   $tables = ["glpi_plugin_cmd",
        "glpi_plugin_cmd_device",
        "glpi_plugin_cmd_setup",
        "glpi_plugin_cmd_profiles",
-       "glpi_plugin_cmd_path");
+       "glpi_plugin_cmd_path"];
 
-   foreach ($tables as $table)
+   foreach ($tables as $table) {
       $DB->query("DROP TABLE IF EXISTS `$table`;");
+   }
 
-   $tables_glpi = array("glpi_displaypreferences",
-                        "glpi_savedsearches");
+   $tables_glpi = ["glpi_displaypreferences",
+                        "glpi_savedsearches"];
 
-   foreach ($tables_glpi as $table_glpi)
+   foreach ($tables_glpi as $table_glpi) {
       $DB->query("DELETE FROM `$table_glpi` WHERE `itemtype` = 'PluginShellcommandsShellcommand';");
-   
+   }
+
    include_once (GLPI_ROOT . "/plugins/shellcommands/inc/profile.class.php");
-   
+
    PluginShellcommandsProfile::removeRightsFromSession();
    PluginShellcommandsProfile::removeRightsFromDB();
 
@@ -124,25 +127,27 @@ function plugin_shellcommands_getDatabaseRelations() {
 
    $plugin = new Plugin();
 
-   if ($plugin->isActivated("shellcommands"))
-      return array("glpi_plugin_shellcommands_shellcommandpaths" => array("glpi_plugin_shellcommands_shellcommands"        => "plugin_shellcommands_shellcommandpaths_id"),
-                   "glpi_profiles"                               => array("glpi_plugin_shellcommands_profiles"             => "profiles_id"),
-                   "glpi_plugin_shellcommands_shellcommands"     => array("glpi_plugin_shellcommands_shellcommands_items"  => "plugin_shellcommands_shellcommands_id"),
-                   "glpi_plugin_shellcommands_shellcommands"     => array("glpi_plugin_shellcommands_commandgroups_items"  => "plugin_shellcommands_shellcommands_id"),
-                   "glpi_plugin_shellcommands_commandgroups"     => array("glpi_plugin_shellcommands_commandgroups_items"  => "plugin_shellcommands_commandgroups_id"),
-                   "glpi_entities"                               => array("glpi_plugin_shellcommands_shellcommands"        => "entities_id"));
-   else
-      return array();
+   if ($plugin->isActivated("shellcommands")) {
+      return ["glpi_plugin_shellcommands_shellcommandpaths" => ["glpi_plugin_shellcommands_shellcommands"        => "plugin_shellcommands_shellcommandpaths_id"],
+                   "glpi_profiles"                               => ["glpi_plugin_shellcommands_profiles"             => "profiles_id"],
+                   "glpi_plugin_shellcommands_shellcommands"     => ["glpi_plugin_shellcommands_shellcommands_items"  => "plugin_shellcommands_shellcommands_id"],
+                   "glpi_plugin_shellcommands_shellcommands"     => ["glpi_plugin_shellcommands_commandgroups_items"  => "plugin_shellcommands_shellcommands_id"],
+                   "glpi_plugin_shellcommands_commandgroups"     => ["glpi_plugin_shellcommands_commandgroups_items"  => "plugin_shellcommands_commandgroups_id"],
+                   "glpi_entities"                               => ["glpi_plugin_shellcommands_shellcommands"        => "entities_id"]];
+   } else {
+      return [];
+   }
 }
 
 // Define Dropdown tables to be manage in GLPI :
 function plugin_shellcommands_getDropdown() {
    $plugin = new Plugin();
 
-   if ($plugin->isActivated("shellcommands"))
-      return array('PluginShellcommandsShellcommandPath' => __('Path', 'shellcommands'));
-   else
-      return array();
+   if ($plugin->isActivated("shellcommands")) {
+      return ['PluginShellcommandsShellcommandPath' => __('Path', 'shellcommands')];
+   } else {
+      return [];
+   }
 }
 
 function plugin_shellcommands_postinit() {
@@ -155,17 +160,17 @@ function plugin_shellcommands_postinit() {
 
 /**
  * Register methods for Webservices plugin (if available)
- * 
+ *
  * @return void
  */
 function plugin_shellcommands_registerWebservicesMethods() {
     global $WEBSERVICES_METHOD;
-    
+
     $plugin = new Plugin();
-    if ($plugin->isActivated('webservices')) { // If webservices plugin is active
-        $WEBSERVICES_METHOD['shellcommands.list'] = array('PluginShellcommandsWebservice', 'methodList');
-        $WEBSERVICES_METHOD['shellcommands.run'] = array('PluginShellcommandsWebservice', 'methodRun');
-    }
+   if ($plugin->isActivated('webservices')) { // If webservices plugin is active
+       $WEBSERVICES_METHOD['shellcommands.list'] = ['PluginShellcommandsWebservice', 'methodList'];
+       $WEBSERVICES_METHOD['shellcommands.run'] = ['PluginShellcommandsWebservice', 'methodRun'];
+   }
 }
 
 
@@ -218,13 +223,12 @@ function plugin_shellcommands_forceGroupBy($type) {
 
 function plugin_shellcommands_MassiveActions($type) {
 
-  if (in_array($type, PluginShellcommandsShellcommand::getTypes(true))) {
-      return array (
-               'PluginShellcommandsShellcommand'.MassiveAction::CLASS_ACTION_SEPARATOR."generate" => __('Command launch','shellcommands'),
-               'PluginShellcommandsCommandGroup'.MassiveAction::CLASS_ACTION_SEPARATOR."generate" =>  __('Command group launch','shellcommands')
-      );
+   if (in_array($type, PluginShellcommandsShellcommand::getTypes(true))) {
+      return  [
+               'PluginShellcommandsShellcommand'.MassiveAction::CLASS_ACTION_SEPARATOR."generate" => __('Command launch', 'shellcommands'),
+               'PluginShellcommandsCommandGroup'.MassiveAction::CLASS_ACTION_SEPARATOR."generate" =>  __('Command group launch', 'shellcommands')
+       ];
    }
-   return array ();
+   return  [];
 }
 
-?>

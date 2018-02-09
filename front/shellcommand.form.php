@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of shellcommands.
 
  shellcommands is free software; you can redistribute it and/or modify
@@ -29,10 +29,12 @@
 
 include ('../../../inc/includes.php');
 
-if (!isset($_GET["id"]))
+if (!isset($_GET["id"])) {
    $_GET["id"] = "";
-if (!isset($_GET["withtemplate"]))
+}
+if (!isset($_GET["withtemplate"])) {
    $_GET["withtemplate"] = "";
+}
 
 $command = new PluginShellcommandsShellcommand();
 $command_item = new PluginShellcommandsShellcommand_Item();
@@ -41,28 +43,29 @@ if (isset($_POST["add"])) {
    $command->check(-1, UPDATE, $_POST);
    $newID = $command->add($_POST);
    Html::back();
-   
+
 } else if (isset($_POST["update"])) {
    $command->check($_POST['id'], UPDATE);
    $command->update($_POST);
    Html::back();
-   
+
 } else if (isset($_POST["additem"])) {
    if (!empty($_POST['itemtype'])) {
-      if ($command->canCreate())
+      if ($command->canCreate()) {
          $command_item->addItem($_POST["plugin_shellcommands_shellcommands_id"], $_POST['itemtype']);
+      }
    }
    Html::back();
-   
+
 } else if (isset($_POST["deleteitem"])) {
-   if ($command->canCreate())
-      $command_item->delete(array('id' => $_POST["id"]));
+   if ($command->canCreate()) {
+      $command_item->delete(['id' => $_POST["id"]]);
+   }
    Html::back();
-   
+
 } else {
    $command->checkGlobal(READ);
    Html::header(PluginShellcommandsShellcommand::getTypeName(2), '', "tools", "pluginshellcommandsshellcommand", "shellcommand");
-   $command->display(array('id' => $_GET["id"]));
+   $command->display(['id' => $_GET["id"]]);
    Html::footer();
 }
-?>

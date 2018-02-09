@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of shellcommands.
 
  shellcommands is free software; you can redistribute it and/or modify
@@ -35,13 +35,12 @@ if (isset($_POST["add"])) {
    $group_item->check(-1, UPDATE, $_POST);
    $group_item->add($_POST);
    Html::back();
-   
+
 } else if (isset($_POST["up"]) || isset($_POST["up_x"])) {
-   $group_item->orderItem($_POST,'up');
+   $group_item->orderItem($_POST, 'up');
    Html::back();
 
 } else if (isset($_POST["down"]) || isset($_POST["down_x"])) {
-   $group_item->orderItem($_POST,'down');
+   $group_item->orderItem($_POST, 'down');
    Html::back();
-} 
-?>
+}

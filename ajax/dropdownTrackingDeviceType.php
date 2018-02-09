@@ -9,7 +9,7 @@
  -------------------------------------------------------------------------
 
  LICENSE
-      
+
  This file is part of shellcommands.
 
  shellcommands is free software; you can redistribute it and/or modify
@@ -46,22 +46,21 @@ if (isset($_POST["itemtype"])
    echo "&nbsp";
    $field_id = Html::cleanId("dropdown_".$_POST['myname'].$rand);
 
-   $p = array('itemtype'            => $_POST["itemtype"],
+   $p = ['itemtype'            => $_POST["itemtype"],
               'entity_restrict'     => $_POST['entity_restrict'],
               'table'               => $table,
               'width'               => $_POST["width"],
-              'myname'              => $_POST["myname"]);
-   
+              'myname'              => $_POST["myname"]];
+
    echo Html::jsAjaxDropdown($_POST['myname'], $field_id,
                               $CFG_GLPI['root_doc']."/ajax/getDropdownFindNum.php",
                               $p);
    // Auto update summary of active or just solved tickets
-   $params = array('items_id' => '__VALUE__',
-                   'itemtype' => $_POST['itemtype']);
+   $params = ['items_id' => '__VALUE__',
+                   'itemtype' => $_POST['itemtype']];
 
-   Ajax::updateItemOnSelectEvent($field_id,"item_ticket_selection_information",
+   Ajax::updateItemOnSelectEvent($field_id, "item_ticket_selection_information",
                                  $CFG_GLPI["root_doc"]."/ajax/ticketiteminformation.php",
                                  $params);
 
 }
-?>
