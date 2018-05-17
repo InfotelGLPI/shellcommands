@@ -26,7 +26,7 @@
  along with shellcommands. If not, see <http://www.gnu.org/licenses/>.
  --------------------------------------------------------------------------
  */
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 Html::header(PluginShellcommandsShellcommand::getTypeName(2), '', "tools", "pluginshellcommandsshellcommand", "shellcommand");
 

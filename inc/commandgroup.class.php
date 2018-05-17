@@ -55,30 +55,54 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
       $temp->deleteByCriteria(['plugin_shellcommands_commandgroups_id' => $this->fields['id']]);
    }
 
-   function getSearchOptions() {
+   function rowSearchOptions() {
       $tab = [];
 
-      $tab['common'] = self::getTypeName(2);
+      $tab[] = [
+         'id'   => 'common',
+         'name' => self::getTypeName(2)
+      ];
 
-      $tab[1]['table']         = $this->getTable();
-      $tab[1]['field']         = 'name';
-      $tab[1]['name']          = __('Name');
-      $tab[1]['datatype']      = 'itemlink';
+      $tab[] = [
+         'id'       => '1',
+         'table'    => $this->getTable(),
+         'field'    => 'name',
+         'name'     => __('Name'),
+         'datatype' => 'itemlink',
+         // 'massiveaction'      => false
+      ];
 
-      $tab[30]['table']        = $this->getTable();
-      $tab[30]['field']        = 'id';
-      $tab[30]['name']         = __('ID');
-      $tab[30]['datatype']     = 'integer';
+      $tab[] = [
+         'id'       => '30',
+         'table'    => $this->getTable(),
+         'field'    => 'id',
+         'name'     => __('ID'),
+         'datatype' => 'integer'
+      ];
 
-      $tab[80]['table']        = 'glpi_entities';
-      $tab[80]['field']        = 'completename';
-      $tab[80]['name']         = __('Entity');
-      $tab[80]['datatype']      = 'dropdown';
+      $tab[] = [
+         'id'       => '80',
+         'table'    => 'glpi_entities',
+         'field'    => 'completename',
+         'name'     => __('Entity'),
+         'datatype' => 'dropdown'
+      ];
 
-      $tab[81]['table']        = $this->getTable();
-      $tab[81]['field']        = 'is_recursive';
-      $tab[81]['name']         = __('Child entities');
-      $tab[81]['datatype']     = 'bool';
+      $tab[] = [
+         'id'       => '81',
+         'table'    => $this->getTable(),
+         'field'    => 'is_recursive',
+         'name'     => __('Child entities'),
+         'datatype' => 'bool'
+      ];
+
+      $tab[] = [
+         'id'       => '86',
+         'table'    => $this->getTable(),
+         'field'    => 'is_recursive',
+         'name'     => __('Child entities'),
+         'datatype' => 'bool'
+      ];
 
       return $tab;
    }
@@ -99,16 +123,16 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
       $this->showFormHeader($options);
 
       echo "<tr class='tab_bg_1'>";
-      echo "<td>".__('Name')."</td>";
+      echo "<td>" . __('Name') . "</td>";
       echo "<td>";
       Html::autocompletionTextField($this, "name");
       echo "</td>";
 
-      echo "<td>".__('Check command', 'shellcommands')."</td>";
+      echo "<td>" . __('Check command', 'shellcommands') . "</td>";
       echo "<td>";
       Dropdown::show('PluginShellcommandsShellcommand', ['name'   => "check_commands_id",
-                                                              'value'  => $this->fields['check_commands_id'],
-                                                              'entity' => $_SESSION['glpiactive_entity']]);
+                                                         'value'  => $this->fields['check_commands_id'],
+                                                         'entity' => $_SESSION['glpiactive_entity']]);
       echo "</td>";
       echo "</tr>";
 
@@ -121,7 +145,7 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
     * Main entry of the modal window for massive actions
     *
     * @return nothing: display
-   **/
+    **/
    static function showMassiveActionsSubForm(MassiveAction $ma) {
 
       $PluginShellcommandsShellcommand = new PluginShellcommandsShellcommand();
@@ -130,7 +154,7 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
          case 'generate':
             $itemtype = $ma->getItemtype(false);
             if (in_array($itemtype, PluginShellcommandsShellcommand::getTypes(true))) {
-               echo PluginShellcommandsCommandGroup::getTypeName(1)." ";
+               echo PluginShellcommandsCommandGroup::getTypeName(1) . " ";
                Dropdown::show('PluginShellcommandsCommandGroup', ['name' => 'commandgroup', 'entity' => $_SESSION['glpiactive_entity'], 'comments' => false]);
                echo "<br><br>";
             }
@@ -141,7 +165,7 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
 
    /**
     * @see CommonDBTM::processMassiveActionsForOneItemtype()
-   **/
+    **/
    static function processMassiveActionsForOneItemtype(MassiveAction $ma, CommonDBTM $item, array $ids) {
       global $CFG_GLPI;
 
@@ -151,11 +175,11 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
                $_SESSION["plugin_shellcommands"]["massiveaction"] = $ma;
                $_SESSION["plugin_shellcommands"]["ids"]           = $ids;
 
-               $ma->results['ok'] = 1;
+               $ma->results['ok']         = 1;
                $ma->display_progress_bars = false;
 
                echo "<script type='text/javascript'>";
-               echo "location.href='".$CFG_GLPI['root_doc']."/plugins/shellcommands/front/massiveexec.php';";
+               echo "location.href='" . $CFG_GLPI['root_doc'] . "/plugins/shellcommands/front/massiveexec.php';";
                echo "</script>";
 
             }
@@ -165,13 +189,13 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
 
    /**
     * Custom fonction to process shellcommand massive action
-   **/
+    **/
    function doMassiveAction(MassiveAction $ma, array $ids) {
 
       if (!empty($ids)) {
          $input = $ma->getInput();
 
-         $itemtype = $ma->getItemType(false);
+         $itemtype    = $ma->getItemType(false);
          $commands_id = $input['commandgroup'];
 
          switch ($ma->getAction()) {
@@ -179,13 +203,13 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
                echo "<div class='center'>";
                echo "<table class='tab_cadre_fixe center'>";
                echo "<tr class='tab_bg_1'>";
-               echo "<th colspan='4'>".PluginShellcommandsCommandGroup::getTypeName(2)."</th>";
+               echo "<th colspan='4'>" . PluginShellcommandsCommandGroup::getTypeName(2) . "</th>";
                echo "</tr>";
                foreach ($ids as $key => $items_id) {
-                  PluginShellcommandsCommandGroup_Item::lauchCommand(['itemID'    => $items_id,
-                                                                           'itemtype'  => $itemtype,
-                                                                           'id'        => $commands_id,
-                                                                           'value'     => null]);
+                  PluginShellcommandsCommandGroup_Item::lauchCommand(['itemID'   => $items_id,
+                                                                      'itemtype' => $itemtype,
+                                                                      'id'       => $commands_id,
+                                                                      'value'    => null]);
                }
                echo "</table>";
                echo "</div>";

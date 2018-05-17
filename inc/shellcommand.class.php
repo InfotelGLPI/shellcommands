@@ -34,7 +34,7 @@ if (!defined('GLPI_ROOT')) {
 class PluginShellcommandsShellcommand extends CommonDBTM {
 
    static $types = ['Computer', 'NetworkEquipment', 'Peripheral',
-                         'Phone', 'Printer'];
+                    'Phone', 'Printer'];
 
    static $rightname = 'plugin_shellcommands';
 
@@ -60,8 +60,8 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
    function getFromDBbyName($name) {
       global $DB;
 
-      $query = "SELECT * FROM `".$this->gettable()."` ".
-              "WHERE (`name` = '".$name."') ";
+      $query = "SELECT * FROM `" . $this->gettable() . "` " .
+               "WHERE (`name` = '" . $name . "') ";
       if ($result = $DB->query($query)) {
          if ($DB->numrows($result) != 1) {
             return false;
@@ -86,53 +86,91 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
       $path->deleteByCriteria(['plugin_shellcommands_shellcommands_id' => $this->fields['id']]);
    }
 
-   function getSearchOptions() {
+   function rowSearchOptions() {
       $tab = [];
 
-      $tab['common'] = self::getTypeName(2);
+      $tab[] = [
+         'id'   => 'common',
+         'name' => self::getTypeName(2)
+      ];
 
-      $tab[1]['table']         = $this->gettable();
-      $tab[1]['field']         = 'name';
-      $tab[1]['name']          = __('Name');
-      $tab[1]['datatype']      = 'itemlink';
+      $tab[] = [
+         'id'       => '1',
+         'table'    => $this->getTable(),
+         'field'    => 'name',
+         'name'     => __('Name'),
+         'datatype' => 'itemlink',
+         //'massiveaction'      => false
+      ];
 
-      $tab[2]['table']         = $this->gettable();
-      $tab[2]['field']         = 'link';
-      $tab[2]['name']          = __('Tag');
+      $tab[] = [
+         'id'    => '2',
+         'table' => $this->getTable(),
+         'field' => 'link',
+         'name'  => __('Tag')
+      ];
 
-      $tab[3]['table']         = 'glpi_plugin_shellcommands_shellcommandpaths';
-      $tab[3]['field']         = 'name';
-      $tab[3]['linkfield']     = 'plugin_shellcommands_shellcommandpaths_id';
-      $tab[3]['name']          = __('Path', 'shellcommands');
-      $tab[3]['datatype']      = 'itemlink';
+      $tab[] = [
+         'id'        => '3',
+         'table'     => 'glpi_plugin_shellcommands_shellcommandpaths',
+         'field'     => 'name',
+         'linkfield' => 'plugin_shellcommands_shellcommandpaths_id',
+         'name'      => __('Path', 'shellcommands'),
+         'datatype'  => 'itemlink'
+      ];
 
-      $tab[4]['table']         = $this->gettable();
-      $tab[4]['field']         = 'parameters';
-      $tab[4]['name']          = __('Windows', 'shellcommands');
+      $tab[] = [
+         'id'    => '4',
+         'table' => $this->getTable(),
+         'field' => 'parameters',
+         'name'  => __('Windows', 'shellcommands')
+      ];
 
-      $tab[5]['table']         = 'glpi_plugin_shellcommands_shellcommands_items';
-      $tab[5]['field']         = 'itemtype';
-      $tab[5]['nosearch']      = true;
-      $tab[5]['massiveaction'] = false;
-      $tab[5]['name']          = _n('Associated item type', 'Associated item types', 2);
-      $tab[5]['forcegroupby']  = true;
-      $tab[5]['joinparams']    = ['jointype' => 'child'];
-      $tab[5]['datatype']      = 'dropdown';
+      $tab[] = [
+         'id'            => '5',
+         'table'         => 'glpi_plugin_shellcommands_shellcommands_items',
+         'field'         => 'itemtype',
+         'nosearch'      => true,
+         'massiveaction' => false,
+         'name'          => _n('Associated item type', 'Associated item types', 2),
+         'forcegroupby'  => true,
+         'joinparams'    => [
+            'jointype' => 'child'
+         ],
+         'datatype'      => 'dropdown'
+      ];
 
-      $tab[30]['table']        = $this->gettable();
-      $tab[30]['field']        = 'id';
-      $tab[30]['name']         = __('ID');
-      $tab[30]['datatype']     = 'integer';
+      $tab[] = [
+         'id'       => '30',
+         'table'    => $this->getTable(),
+         'field'    => 'id',
+         'name'     => __('ID'),
+         'datatype' => 'integer'
+      ];
 
-      $tab[80]['table']        = 'glpi_entities';
-      $tab[80]['field']        = 'completename';
-      $tab[80]['name']         = __('Entity');
-      $tab[80]['datatype']      = 'dropdown';
+      $tab[] = [
+         'id'       => '80',
+         'table'    => 'glpi_entities',
+         'field'    => 'completename',
+         'name'     => __('Entity'),
+         'datatype' => 'dropdown'
+      ];
 
-      $tab[81]['table']        = $this->gettable();
-      $tab[81]['field']        = 'is_recursive';
-      $tab[81]['name']         = __('Child entities');
-      $tab[81]['datatype']     = 'bool';
+      $tab[] = [
+         'id'       => '81',
+         'table'    => $this->getTable(),
+         'field'    => 'is_recursive',
+         'name'     => __('Child entities'),
+         'datatype' => 'bool'
+      ];
+
+      $tab[] = [
+         'id'       => '86',
+         'table'    => $this->getTable(),
+         'field'    => 'is_recursive',
+         'name'     => __('Child entities'),
+         'datatype' => 'bool'
+      ];
 
       return $tab;
    }
@@ -155,23 +193,23 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
 
       echo "<tr class='tab_bg_1'>";
 
-      echo "<td>".__('Name')."</td>";
+      echo "<td>" . __('Name') . "</td>";
       echo "<td>";
       Html::autocompletionTextField($this, "name");
       echo "</td>";
 
-      echo "<td>".__('Valid tags')."</td>";
+      echo "<td>" . __('Valid tags') . "</td>";
       echo "<td>[ID], [NAME], [IP], [MAC], [NETWORK], [DOMAIN]</td>";
 
       echo "</tr>";
       echo "<tr class='tab_bg_1'>";
 
-      echo "<td>".__('Tag')."</td>";
+      echo "<td>" . __('Tag') . "</td>";
       echo "<td>";
       Html::autocompletionTextField($this, "link", ['size' => "50"]);
       echo "</td>";
 
-      echo "<td>".__('Tag position', 'shellcommands')."</td>";
+      echo "<td>" . __('Tag position', 'shellcommands') . "</td>";
       echo "<td>";
       Dropdown::showFromArray("tag_position", [__('Before parameters', 'shellcommands'), __('After parameters', 'shellcommands')], ['value' => $this->fields["tag_position"]]);
       echo "</td>";
@@ -179,12 +217,12 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
       echo "</tr>";
       echo "<tr class='tab_bg_1'>";
 
-      echo "<td>".__('Windows', 'shellcommands')."</td>";
+      echo "<td>" . __('Windows', 'shellcommands') . "</td>";
       echo "<td>";
       Html::autocompletionTextField($this, "parameters");
       echo "</td>";
 
-      echo "<td>".__('Path', 'shellcommands')."</td>";
+      echo "<td>" . __('Path', 'shellcommands') . "</td>";
       echo "<td>";
       Dropdown::show('PluginShellcommandsShellcommandPath', ['value' => $this->fields["plugin_shellcommands_shellcommandpaths_id"]]);
       echo "</td>";
@@ -205,21 +243,21 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
    function getSelectLinkedItem() {
       return "SELECT `itemtype`, `items_id`
               FROM `glpi_plugin_shellcommands_shellcommands_items`
-              WHERE `plugin_shellcommands_shellcommands_id`='".$this->fields['id']."'";
+              WHERE `plugin_shellcommands_shellcommands_id`='" . $this->fields['id'] . "'";
    }
 
    function dropdownCommands($itemtype) {
       global $DB;
 
-      $query = "SELECT `".$this->gettable()."`.`id`, `".$this->gettable()."`.`name`,`".$this->gettable()."`.`link`
-          FROM `".$this->gettable()."`,`glpi_plugin_shellcommands_shellcommands_items`
-          WHERE `".$this->gettable()."`.`id` = `glpi_plugin_shellcommands_shellcommands_items`.`plugin_shellcommands_shellcommands_id`
-          AND `glpi_plugin_shellcommands_shellcommands_items`.`itemtype` = '".$itemtype."'
-          AND `".$this->gettable()."`.`is_deleted` = '0'
-          ORDER BY `".$this->gettable()."`.`name`";
+      $query = "SELECT `" . $this->gettable() . "`.`id`, `" . $this->gettable() . "`.`name`,`" . $this->gettable() . "`.`link`
+          FROM `" . $this->gettable() . "`,`glpi_plugin_shellcommands_shellcommands_items`
+          WHERE `" . $this->gettable() . "`.`id` = `glpi_plugin_shellcommands_shellcommands_items`.`plugin_shellcommands_shellcommands_id`
+          AND `glpi_plugin_shellcommands_shellcommands_items`.`itemtype` = '" . $itemtype . "'
+          AND `" . $this->gettable() . "`.`is_deleted` = '0'
+          ORDER BY `" . $this->gettable() . "`.`name`";
 
-      $result = $DB->query($query);
-      $number = $DB->numrows($result);
+      $result   = $DB->query($query);
+      $number   = $DB->numrows($result);
       $elements = [Dropdown::EMPTY_VALUE];
       if ($number != "0") {
          while ($data = $DB->fetch_assoc($result)) {
@@ -272,10 +310,11 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
       return $types;
    }
 
-    /**
+   /**
     * Get the specific massive actions
     *
     * @since version 0.84
+    *
     * @param $checkitem link item to check right   (default NULL)
     *
     * @return an array of massive actions
@@ -283,8 +322,8 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
    public function getSpecificMassiveActions($checkitem = null) {
       $actions = parent::getSpecificMassiveActions($checkitem);
 
-      $actions['PluginShellcommandsShellcommand'.MassiveAction::CLASS_ACTION_SEPARATOR.'install'] = _x('button', 'Associate');
-      $actions['PluginShellcommandsShellcommand'.MassiveAction::CLASS_ACTION_SEPARATOR.'uninstall'] = _x('button', 'Dissociate');
+      $actions['PluginShellcommandsShellcommand' . MassiveAction::CLASS_ACTION_SEPARATOR . 'install']   = _x('button', 'Associate');
+      $actions['PluginShellcommandsShellcommand' . MassiveAction::CLASS_ACTION_SEPARATOR . 'uninstall'] = _x('button', 'Dissociate');
 
       return $actions;
    }
@@ -304,7 +343,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
             break;
          case 'generate':
             $PluginShellcommandsShellcommand = new PluginShellcommandsShellcommand();
-            $itemtype = $ma->getItemtype(false);
+            $itemtype                        = $ma->getItemtype(false);
             if (in_array($itemtype, PluginShellcommandsShellcommand::getTypes(true))) {
                $PluginShellcommandsShellcommand->dropdownCommands($itemtype);
                echo "<br><br>";
@@ -318,7 +357,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
     * @since version 0.85
     *
     * @see CommonDBTM::processMassiveActionsForOneItemtype()
-   **/
+    **/
    static function processMassiveActionsForOneItemtype(MassiveAction $ma, CommonDBTM $item,
                                                        array $ids) {
       global $CFG_GLPI;
@@ -352,11 +391,11 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
                $_SESSION["plugin_shellcommands"]["massiveaction"] = $ma;
                $_SESSION["plugin_shellcommands"]["ids"]           = $ids;
 
-               $ma->results['ok'] = 1;
+               $ma->results['ok']         = 1;
                $ma->display_progress_bars = false;
 
                echo "<script type='text/javascript'>";
-               echo "location.href='".$CFG_GLPI['root_doc']."/plugins/shellcommands/front/massiveexec.php';";
+               echo "location.href='" . $CFG_GLPI['root_doc'] . "/plugins/shellcommands/front/massiveexec.php';";
                echo "</script>";
 
             }
@@ -404,20 +443,20 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
       echo "<tr class='tab_bg_1 shellcommands_result_line'>";
       switch ($result) {
          case PluginShellcommandsShellcommand::OK_RESULT :
-            echo "<td class='center'><img src='".$CFG_GLPI["root_doc"]."/plugins/shellcommands/pics/ok.png'></td>";
+            echo "<td class='center'><img src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/ok.png'></td>";
             break;
          case PluginShellcommandsShellcommand::WARNING_RESULT :
-            echo "<td class='center'><img src='".$CFG_GLPI["root_doc"]."/plugins/shellcommands/pics/warning.png'></td>";
+            echo "<td class='center'><img src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/warning.png'></td>";
             break;
          case PluginShellcommandsShellcommand::KO_RESULT :
-            echo "<td class='center'><img src='".$CFG_GLPI["root_doc"]."/plugins/shellcommands/pics/ko.png'></td>";
+            echo "<td class='center'><img src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/ko.png'></td>";
             break;
          case PluginShellcommandsShellcommand::CRITICAL_RESULT :
-            echo "<td class='center'><img src='".$CFG_GLPI["root_doc"]."/plugins/shellcommands/pics/ko.png'></td>";
+            echo "<td class='center'><img src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/ko.png'></td>";
             break;
       }
 
-      echo "<td class='center'>".$shellcommands->getName()."</td>";
+      echo "<td class='center'>" . $shellcommands->getName() . "</td>";
 
       // Result short message
       switch ($result) {
@@ -437,10 +476,10 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
 
       echo "<td>";
       if ($command = PluginShellcommandsShellcommand_Item::getCommandLine($shellcommands->getID(), $targetParam)) {
-         echo "<b> > ".$command."</b><br>";
+         echo "<b> > " . $command . "</b><br>";
       }
       if ($shellcommands->getName() !== PluginShellcommandsShellcommand_Item::WOL_COMMAND_NAME) {
-         echo "<font color='blue'>".nl2br($message)."</font>";
+         echo "<font color='blue'>" . nl2br($message) . "</font>";
       } else {
          echo nl2br($message);
       }
@@ -450,24 +489,24 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
 
    static function getMenuContent() {
       $plugin_page = "/plugins/shellcommands/front/menu.php";
-      $menu = [];
+      $menu        = [];
       //Menu entry in helpdesk
-      $menu['title'] = self::getTypeName(2);
-      $menu['page'] = $plugin_page;
+      $menu['title']           = self::getTypeName(2);
+      $menu['page']            = $plugin_page;
       $menu['links']['search'] = $plugin_page;
 
-      $menu['options']['shellcommand']['title']            = _n('Shell Command', 'Shell Commands', 2, 'shellcommands');
-      $menu['options']['shellcommand']['page']             = '/plugins/shellcommands/front/shellcommand.php';
-      $menu['options']['shellcommand']['links']['add']     = '/plugins/shellcommands/front/shellcommand.form.php';
-      $menu['options']['shellcommand']['links']['search']  = '/plugins/shellcommands/front/shellcommand.php';
+      $menu['options']['shellcommand']['title']           = _n('Shell Command', 'Shell Commands', 2, 'shellcommands');
+      $menu['options']['shellcommand']['page']            = '/plugins/shellcommands/front/shellcommand.php';
+      $menu['options']['shellcommand']['links']['add']    = '/plugins/shellcommands/front/shellcommand.form.php';
+      $menu['options']['shellcommand']['links']['search'] = '/plugins/shellcommands/front/shellcommand.php';
 
-      $menu['options']['commandgroup']['title']            = _n('Command group', 'Command groups', 2, 'shellcommands');
-      $menu['options']['commandgroup']['page']             = '/plugins/shellcommands/front/commandgroup.php';
-      $menu['options']['commandgroup']['links']['add']     = '/plugins/shellcommands/front/commandgroup.form.php';
-      $menu['options']['commandgroup']['links']['search']  = '/plugins/shellcommands/front/commandgroup.php';
+      $menu['options']['commandgroup']['title']           = _n('Command group', 'Command groups', 2, 'shellcommands');
+      $menu['options']['commandgroup']['page']            = '/plugins/shellcommands/front/commandgroup.php';
+      $menu['options']['commandgroup']['links']['add']    = '/plugins/shellcommands/front/commandgroup.form.php';
+      $menu['options']['commandgroup']['links']['search'] = '/plugins/shellcommands/front/commandgroup.php';
 
-      $menu['options']['advanced_execution']['title']      = _n('Advanced execution', 'Advanced executions', 2, 'shellcommands');
-      $menu['options']['advanced_execution']['page']       = '/plugins/shellcommands/front/advanced_execution.php';
+      $menu['options']['advanced_execution']['title'] = _n('Advanced execution', 'Advanced executions', 2, 'shellcommands');
+      $menu['options']['advanced_execution']['page']  = '/plugins/shellcommands/front/advanced_execution.php';
 
       return $menu;
    }
@@ -475,25 +514,25 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
 
    /**
     * Custom fonction to process shellcommand massive action
-   **/
+    **/
    function doMassiveAction(MassiveAction $ma, array $ids) {
 
       if (!empty($ids)) {
          $input = $ma->getInput();
 
-         $itemtype = $ma->getItemType(false);
+         $itemtype    = $ma->getItemType(false);
          $commands_id = $input['command'];
 
          switch ($ma->getAction()) {
             case 'generate':
                $shellcommands_item = new PluginShellcommandsShellcommand_Item();
-               $shellcommands = new PluginShellcommandsShellcommand();
-               $item = getItemForItemtype($itemtype);
+               $shellcommands      = new PluginShellcommandsShellcommand();
+               $item               = getItemForItemtype($itemtype);
 
                echo "<div class='center'>";
                echo "<table class='tab_cadre_fixe center'>";
                echo "<tr class='tab_bg_1'>";
-               echo "<th colspan='4'>".PluginShellcommandsShellcommand::getTypeName(2)."</th>";
+               echo "<th colspan='4'>" . PluginShellcommandsShellcommand::getTypeName(2) . "</th>";
                echo "</tr>";
 
                foreach ($ids as $key => $items_id) {
@@ -516,7 +555,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
                   }
 
                   echo "<tr class='tab_bg_1 shellcommands_result_line'>";
-                  echo "<td class='center' colspan='4'>".__($item->getType()).' : '.$item->getLink()." - ".$selectedTarget."</td>";
+                  echo "<td class='center' colspan='4'>" . __($item->getType()) . ' : ' . $item->getLink() . " - " . $selectedTarget . "</td>";
                   echo "</tr>";
 
                   PluginShellcommandsShellcommand::displayCommandResult($shellcommands, $selectedTarget, $message, $error);

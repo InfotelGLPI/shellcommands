@@ -49,25 +49,26 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
    }
 
    /**
-   * Show form
-   *
-   * @global type $CFG_GLPI
-   * @param type $ID
-   * @param type $options
-   */
+    * Show form
+    *
+    * @global type $CFG_GLPI
+    *
+    * @param type  $ID
+    * @param type  $options
+    */
    function showForm($ID = 0, $options = []) {
       global $CFG_GLPI;
 
       echo "<div class='center first-bloc'>";
-      echo "<form name='field_form' method='post' action='".Toolbox::getItemTypeFormURL(__CLASS__)."'>";
+      echo "<form name='field_form' method='post' action='" . Toolbox::getItemTypeFormURL(__CLASS__) . "'>";
       echo "<table class='tab_cadre_fixe'>";
       echo "<tr class='tab_bg_1'>";
-      echo "<th>".self::getTypeName()."</th>";
+      echo "<th>" . self::getTypeName() . "</th>";
       echo "</tr>";
 
       echo "<tr class='tab_bg_1'>";
       echo "<td class='tab_bg_2 center'>";
-      echo PluginShellcommandsCommandGroup::getTypeName(1)." ";
+      echo PluginShellcommandsCommandGroup::getTypeName(1) . " ";
       Dropdown::show('PluginShellcommandsCommandGroup', ['entity' => $_SESSION['glpiactive_entity'], 'width' => 200]);
       echo "</td>";
       echo "</tr>";
@@ -80,7 +81,7 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
 
       echo "<tr>";
       echo "<td class='tab_bg_2 center'>";
-      echo "<input type='button' class='submit' onclick='shellcommand_advanced_execution(\"".$CFG_GLPI['root_doc']."\",\"field_form\", \"advanced_execution_result\");' name='advanced_execution' value='".__('Execute')."'/>";
+      echo "<input type='button' class='submit' onclick='shellcommand_advanced_execution(\"" . $CFG_GLPI['root_doc'] . "\",\"field_form\", \"advanced_execution_result\");' name='advanced_execution' value='" . __('Execute') . "'/>";
       echo "</td>";
       echo "</tr>";
 
@@ -92,15 +93,15 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
    }
 
    /**
-   * View custom values for items or types
-   *
-   * @return html
-   */
+    * View custom values for items or types
+    *
+    * @return html
+    */
    function getEditValue() {
       global $CFG_GLPI;
 
       echo "<table width='100%' class='shellcommands_show_values'>";
-      echo "<tr><th colspan='2'>"._n('Item', 'Items', 2)."</th></tr>";
+      echo "<tr><th colspan='2'>" . _n('Item', 'Items', 2) . "</th></tr>";
       echo "<tr><td>";
       echo '<table class="shellcommands_show_custom_fields">';
       echo "<tr>";
@@ -118,48 +119,48 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
    }
 
    /**
-   * Init values
-   *
-   * @param array $count
-   */
+    * Init values
+    *
+    * @param array $count
+    */
    static function initCustomValue($count) {
       global $CFG_GLPI;
 
-      echo '<input type="hidden" id="count_custom_values" value="'.$count.'"/>';
+      echo '<input type="hidden" id="count_custom_values" value="' . $count . '"/>';
 
       echo "&nbsp;<img style='cursor:pointer' 
-            onclick='shellcommands_add_custom_values(\"show_custom_fields\", \"".$CFG_GLPI['root_doc']."\");' 
-            src='".$CFG_GLPI['root_doc']."/plugins/shellcommands/pics/add.png' 
-            alt='"._sx("button", "Add")."'
-            title='"._sx("button", "Add")."'/>&nbsp;";
+            onclick='shellcommands_add_custom_values(\"show_custom_fields\", \"" . $CFG_GLPI['root_doc'] . "\");' 
+            src='" . $CFG_GLPI['root_doc'] . "/plugins/shellcommands/pics/add.png' 
+            alt='" . _sx("button", "Add") . "'
+            title='" . _sx("button", "Add") . "'/>&nbsp;";
 
       echo '<img style="cursor:pointer" 
             onclick="shellcommands_delete_custom_values(\'custom_values\')" 
-            src="'.$CFG_GLPI['root_doc'].'/plugins/shellcommands/pics/delete.png"
-            alt="'._sx('button', 'Delete permanently').'" 
-            title="'._sx('button', 'Delete permanently').'"/>';
+            src="' . $CFG_GLPI['root_doc'] . '/plugins/shellcommands/pics/delete.png"
+            alt="' . _sx('button', 'Delete permanently') . '" 
+            title="' . _sx('button', 'Delete permanently') . '"/>';
    }
 
    /**
-   * Add new value to form
-   *
-   * @param array $valueId
-   */
+    * Add new value to form
+    *
+    * @param array $valueId
+    */
    static function addNewValue($valueId) {
       global $CFG_GLPI;
 
-      echo "<div id='custom_values$valueId' class='shellcommands_custom_values'><span>".__('Item').' '.$valueId.'</span> ';
+      echo "<div id='custom_values$valueId' class='shellcommands_custom_values'><span>" . __('Item') . ' ' . $valueId . '</span> ';
       self::dropdownAllDevices('items', null, 0, 1, 0, $_SESSION['glpiactive_entity']);
       echo "</div>";
    }
 
    /**
-   * Launch a command
-   *
-   * @param array $values
-   *
-   * @return void
-   */
+    * Launch a command
+    *
+    * @param array $values
+    *
+    * @return void
+    */
    static function lauchCommand($values) {
       global $CFG_GLPI;
 
@@ -168,9 +169,9 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
       if (!empty($items_to_execute)) {
          foreach ($items_to_execute as $key => $items) {
             PluginShellcommandsCommandGroup_Item::lauchCommand(['itemID'   => $items['items_id'],
-                                                                     'itemtype' => $items['itemtype'],
-                                                                     'id'       => $values['command_group'],
-                                                                     'value'    => null]);
+                                                                'itemtype' => $items['itemtype'],
+                                                                'id'       => $values['command_group'],
+                                                                'value'    => null]);
          }
       }
    }
@@ -187,7 +188,7 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
     * @param $tickets_id         Id of the ticket
     *
     * @return nothing (print out an HTML select box)
-   **/
+    **/
    static function dropdownAllDevices($myname, $itemtype, $items_id = 0, $admin = 0, $users_id = 0,
                                       $entity_restrict = -1, $tickets_id = 0) {
       global $CFG_GLPI, $DB;
@@ -201,34 +202,34 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
       } else {
          $rand = mt_rand();
          echo "<span id='tracking_all_devices$rand'>";
-         if ($_SESSION["glpiactiveprofile"]["helpdesk_hardware"]&pow(2,
-                                                                     Ticket::HELPDESK_ALL_HARDWARE)) {
+         if ($_SESSION["glpiactiveprofile"]["helpdesk_hardware"] & pow(2,
+                                                                       Ticket::HELPDESK_ALL_HARDWARE)) {
 
             if ($users_id
-                &&($_SESSION["glpiactiveprofile"]["helpdesk_hardware"]&pow(2,
-                                                                           Ticket::HELPDESK_MY_HARDWARE))) {
-               echo __('Or complete search')."&nbsp;";
+                && ($_SESSION["glpiactiveprofile"]["helpdesk_hardware"] & pow(2,
+                                                                              Ticket::HELPDESK_MY_HARDWARE))) {
+               echo __('Or complete search') . "&nbsp;";
             }
 
-            $types = Ticket::getAllTypesForHelpdesk();
+            $types      = Ticket::getAllTypesForHelpdesk();
             $emptylabel = Dropdown::EMPTY_VALUE;
 
             $rand       = Dropdown::showItemTypes($myname, array_keys($types),
                                                   ['emptylabel' => $emptylabel,
-                                                        'value'      => $itemtype, 'width' => 200]);
+                                                   'value'      => $itemtype, 'width' => 200]);
             $found_type = isset($types[$itemtype]);
 
             $width = 250;
 
-            $params     = ['itemtype'        => '__VALUE__',
-                                'entity_restrict' => $entity_restrict,
-                                'admin'           => $admin,
-                                'width'           => $width,
-                                'myname'          => "items_id",];
+            $params = ['itemtype'        => '__VALUE__',
+                       'entity_restrict' => $entity_restrict,
+                       'admin'           => $admin,
+                       'width'           => $width,
+                       'myname'          => "items_id",];
 
             Ajax::updateItemOnSelectEvent("dropdown_$myname$rand", "results_$myname$rand",
-                                          $CFG_GLPI["root_doc"].
-                                             "/plugins/shellcommands/ajax/dropdownTrackingDeviceType.php",
+                                          $CFG_GLPI["root_doc"] .
+                                          "/plugins/shellcommands/ajax/dropdownTrackingDeviceType.php",
                                           $params);
             echo "<span id='results_$myname$rand'>\n";
 
@@ -236,7 +237,7 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
             if ($found_type
                 && $itemtype) {
                if (($item = getItemForItemtype($itemtype))
-                    && $items_id) {
+                   && $items_id) {
                   if ($item->getFromDB($items_id)) {
                      Dropdown::showFromArray('items_id', [$items_id => $item->getName()],
                                              ['value' => $items_id, 'width' => $width]);
@@ -245,8 +246,8 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
                   $params['itemtype'] = $itemtype;
                   echo "<script type='text/javascript' >\n";
                   Ajax::updateItemJsCode("results_$myname$rand",
-                                         $CFG_GLPI["root_doc"].
-                                            "/plugins/shellcommands/ajax/dropdownTrackingDeviceType.php",
+                                         $CFG_GLPI["root_doc"] .
+                                         "/plugins/shellcommands/ajax/dropdownTrackingDeviceType.php",
                                          $params);
                   echo '</script>';
                }

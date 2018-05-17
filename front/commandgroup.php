@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 Html::header(PluginShellcommandsCommandGroup::getTypeName(2), '', "tools", "pluginshellcommandsshellcommand", "commandgroup");
 
