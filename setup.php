@@ -61,7 +61,7 @@ function plugin_init_shellcommands() {
 function plugin_version_shellcommands() {
    return [
       'name'           => _n('Shell Command', 'Shell Commands', 2, 'shellcommands'),
-      'version'        => '2.1.0',
+      'version'        => '2.2.0',
       'license'        => 'GPLv2+',
       'oldname'        => 'cmd',
       'author'         => 'Xavier Caillaud',
@@ -72,7 +72,7 @@ function plugin_version_shellcommands() {
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_shellcommands_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '9.3', 'lt') || version_compare(GLPI_VERSION, '9.3', 'ge')) {
+   if (version_compare(GLPI_VERSION, '9.3', 'lt') || version_compare(GLPI_VERSION, '9.4', 'ge')) {
       echo __('This plugin requires GLPI >= 9.3');
       return false;
    }
