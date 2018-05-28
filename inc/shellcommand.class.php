@@ -496,6 +496,8 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
                echo "<th colspan='4'>".PluginShellcommandsShellcommand::getTypeName(2)."</th>";
                echo "</tr>";
 
+               $error = 1;
+               $message = '';
                foreach ($ids as $key => $items_id) {
                   if (!$shellcommands_item->getFromDBbyShellCommandsAndItem($commands_id, $itemtype)) {
                      continue;
@@ -505,7 +507,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
                   $targetParam = PluginShellcommandsShellcommand_Item::resolveLinkOfCommand($shellcommands->getID(), $item);
                   // Exec command on each targets : stop on first success
                   $selectedTarget = null;
-                  if ($targetParam !== false) {
+                  if ($targetParam !== false && !empty($targetParam)) {
                      foreach ($targetParam as $target) {
                         list($error, $message) = PluginShellcommandsShellcommand_Item::execCommand($shellcommands->getID(), $target);
                         if (!$error) {
