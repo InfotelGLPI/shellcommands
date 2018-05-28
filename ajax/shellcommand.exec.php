@@ -47,7 +47,6 @@ switch ($_POST['command_type']) {
       break;
    case 'PluginShellcommandsAdvanced_Execution' :
       PluginShellcommandsAdvanced_Execution::lauchCommand($_POST);
-      //Toolbox::logDebug($_POST);
       break;
 }
 

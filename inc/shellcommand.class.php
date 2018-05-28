@@ -510,12 +510,11 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
 
       if (!empty($ids)) {
          $input = $ma->getInput();
-
          $itemtype    = $ma->getItemType(false);
          $commands_id = $input['command'];
-
          switch ($ma->getAction()) {
             case 'generate':
+
                $shellcommands_item = new PluginShellcommandsShellcommand_Item();
                $shellcommands      = new PluginShellcommandsShellcommand();
                $item               = getItemForItemtype($itemtype);
@@ -530,9 +529,19 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
                   if (!$shellcommands_item->getFromDBbyShellCommandsAndItem($commands_id, $itemtype)) {
                      continue;
                   }
+
                   $shellcommands->getFromDB($commands_id);
                   $item->getFromDB($items_id);
+
                   $targetParam = PluginShellcommandsShellcommand_Item::resolveLinkOfCommand($shellcommands->getID(), $item);
+
+                  if($targetParam==[] && $shellcommands->getID()==1){
+                     $error=1;
+                     $message = __('No IP configured','shellcommand');
+                  } else if($targetParam==[] && $shellcommands->getID()==4){
+                     $error=1;
+                     $message = __('No domain configured','shellcommand');
+                  }
                   // Exec command on each targets : stop on first success
                   $selectedTarget = null;
                   if ($targetParam !== false) {
