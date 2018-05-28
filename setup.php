@@ -66,13 +66,13 @@ function plugin_version_shellcommands() {
       'oldname'        => 'cmd',
       'author'         => 'Xavier Caillaud',
       'homepage'       => 'https://github.com/InfotelGLPI/shellcommands',
-      'minGlpiVersion' => '9.3',
+      'minGlpiVersion' => '9.2',
    ];
 }
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_shellcommands_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '9.3', 'lt') || version_compare(GLPI_VERSION, '9.4', 'ge')) {
+   if (version_compare(GLPI_VERSION, '9.2', 'lt') || version_compare(GLPI_VERSION, '9.4', 'ge')) {
       echo __('This plugin requires GLPI >= 9.3');
       return false;
    }

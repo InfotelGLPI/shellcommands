@@ -55,7 +55,7 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
       $temp->deleteByCriteria(['plugin_shellcommands_commandgroups_id' => $this->fields['id']]);
    }
 
-   function rowSearchOptions() {
+   function rawSearchOptions() {
       $tab = [];
 
       $tab[] = [
@@ -69,7 +69,6 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
          'field'    => 'name',
          'name'     => __('Name'),
          'datatype' => 'itemlink',
-         // 'massiveaction'      => false
       ];
 
       $tab[] = [
@@ -86,14 +85,6 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
          'field'    => 'completename',
          'name'     => __('Entity'),
          'datatype' => 'dropdown'
-      ];
-
-      $tab[] = [
-         'id'       => '81',
-         'table'    => $this->getTable(),
-         'field'    => 'is_recursive',
-         'name'     => __('Child entities'),
-         'datatype' => 'bool'
       ];
 
       $tab[] = [
