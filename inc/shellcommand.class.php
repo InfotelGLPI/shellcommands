@@ -503,6 +503,13 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
                   $shellcommands->getFromDB($commands_id);
                   $item->getFromDB($items_id);
                   $targetParam = PluginShellcommandsShellcommand_Item::resolveLinkOfCommand($shellcommands->getID(), $item);
+                  if($targetParam==[] && $shellcommands->getID()==1){
+                     $error=1;
+                     $message = __('No IP configured','shellcommand');
+                  } else if($targetParam==[] && $shellcommands->getID()==4){
+                     $error=1;
+                     $message = __('No domain configured','shellcommand');
+                  }
                   // Exec command on each targets : stop on first success
                   $selectedTarget = null;
                   if ($targetParam !== false) {
