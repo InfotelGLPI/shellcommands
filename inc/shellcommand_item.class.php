@@ -552,7 +552,9 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
          }
          if (strstr($commandLink, '[DOMAIN]')) {
             if (isset($item->fields['domains_id'])) {
-               $currentlyResolvedLink = str_replace('[DOMAIN]', Dropdown::getDropdownName('glpi_domains', $item->getField('domains_id')), $currentlyResolvedLink);
+               if($item->getField('domains_id')!=0){
+                  $currentlyResolvedLink = str_replace('[DOMAIN]', Dropdown::getDropdownName('glpi_domains', $item->getField('domains_id')), $currentlyResolvedLink);
+               }
             }
             $currentlyResolvedLink = str_replace('[DOMAIN]', '', $currentlyResolvedLink); // Clean [DOMAIN] tag
          }
