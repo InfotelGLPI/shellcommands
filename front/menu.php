@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 if ($_SESSION['glpiactiveprofile']['interface'] == 'central') {
    Html::header(PluginShellcommandsMenu::getTypeName(2), '', "tools", "pluginshellcommandsshellcommand");

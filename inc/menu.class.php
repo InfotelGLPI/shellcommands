@@ -68,29 +68,29 @@ class PluginShellcommandsMenu extends CommonDBTM {
       echo "<div align='center'>";
       echo "<table class='tab_cadre' cellpadding='5' height='150'>";
       echo "<tr>";
-      echo "<th colspan='5'>".PluginShellcommandsShellcommand::getTypeName(2)."</th>";
+      echo "<th colspan='5'>" . PluginShellcommandsShellcommand::getTypeName(2) . "</th>";
       echo "</tr>";
       echo "<tr class='tab_bg_1' style='background-color:white;'>";
 
       // Add shell command
       echo "<td class='center shellcommands_menu_item'>";
       echo "<a  class='shellcommands_menu_a' href=\"./shellcommand.php\">";
-      echo "<img class='shellcommands_menu_img' src='".$CFG_GLPI["root_doc"]."/plugins/shellcommands/pics/shellcommand.png' alt=\"".PluginShellcommandsShellcommand::getTypeName(2)."\">";
-      echo "<br>".PluginShellcommandsShellcommand::getTypeName(2)."</a>";
+      echo "<img class='shellcommands_menu_img' src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/shellcommand.png' alt=\"" . PluginShellcommandsShellcommand::getTypeName(2) . "\">";
+      echo "<br>" . PluginShellcommandsShellcommand::getTypeName(2) . "</a>";
       echo "</td>";
 
       // Command group
       echo "<td class='center shellcommands_menu_item'>";
       echo "<a  class='shellcommands_menu_a' href=\"./commandgroup.php\">";
-      echo "<img class='shellcommands_menu_img' src='".$CFG_GLPI["root_doc"]."/plugins/shellcommands/pics/commandgroup.png' alt=\"".PluginShellcommandsCommandGroup::getTypeName(2)."\">";
-      echo "<br>".PluginShellcommandsCommandGroup::getTypeName(2)."</a>";
+      echo "<img class='shellcommands_menu_img' src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/commandgroup.png' alt=\"" . PluginShellcommandsCommandGroup::getTypeName(2) . "\">";
+      echo "<br>" . PluginShellcommandsCommandGroup::getTypeName(2) . "</a>";
       echo "</td>";
 
       // Advanced execution
       echo "<td class='center shellcommands_menu_item'>";
       echo "<a  class='shellcommands_menu_a' href=\"./advanced_execution.php\">";
-      echo "<img class='shellcommands_menu_img' src='".$CFG_GLPI["root_doc"]."/plugins/shellcommands/pics/advanced_execution.png' alt=\"".PluginShellcommandsAdvanced_Execution::getTypeName(2)."\">";
-      echo "<br>".PluginShellcommandsAdvanced_Execution::getTypeName(2)."</a>";
+      echo "<img class='shellcommands_menu_img' src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/advanced_execution.png' alt=\"" . PluginShellcommandsAdvanced_Execution::getTypeName(2) . "\">";
+      echo "<br>" . PluginShellcommandsAdvanced_Execution::getTypeName(2) . "</a>";
       echo "</td>";
 
       echo "</table></div>";

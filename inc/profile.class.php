@@ -37,8 +37,8 @@ class PluginShellcommandsProfile extends Profile {
 
    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0) {
 
-      if ($item->getType()=='Profile'
-         && $item->getField('interface')!='helpdesk') {
+      if ($item->getType() == 'Profile'
+          && $item->getField('interface') != 'helpdesk') {
          return PluginShellcommandsShellcommand::getTypeName(2);
       }
       return '';
@@ -47,12 +47,12 @@ class PluginShellcommandsProfile extends Profile {
    static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0) {
       global $CFG_GLPI;
 
-      if ($item->getType()=='Profile') {
-         $ID = $item->getID();
+      if ($item->getType() == 'Profile') {
+         $ID   = $item->getID();
          $prof = new self();
 
          self::addDefaultProfileInfos($ID,
-                                    ['shellcommands' => 0]);
+                                      ['shellcommands' => 0]);
          $prof->showForm($ID);
       }
 
@@ -72,7 +72,7 @@ class PluginShellcommandsProfile extends Profile {
       if (($canedit = Session::haveRightsOr(self::$rightname, [CREATE, UPDATE, PURGE]))
           && $openform) {
          $profile = new Profile();
-         echo "<form method='post' action='".$profile->getFormURL()."'>";
+         echo "<form method='post' action='" . $profile->getFormURL() . "'>";
       }
 
       $profile = new Profile();
@@ -80,8 +80,8 @@ class PluginShellcommandsProfile extends Profile {
 
       $rights = $this->getAllRights();
       $profile->displayRightsChoiceMatrix($rights, ['canedit'       => $canedit,
-                                                         'default_class' => 'tab_bg_2',
-                                                         'title'         => __('General')]);
+                                                    'default_class' => 'tab_bg_2',
+                                                    'title'         => __('General')]);
 
       if ($canedit
           && $closeform) {
@@ -98,10 +98,10 @@ class PluginShellcommandsProfile extends Profile {
    }
 
    static function getAllRights($all = false) {
-      $rights = [['itemtype'  => 'PluginShellcommandsShellcommand',
-                            'label'     => _n('Shell Command', 'Shell Commands', 2, 'shellcommands'),
-                            'field'     => 'plugin_shellcommands'
-                ]];
+      $rights = [['itemtype' => 'PluginShellcommandsShellcommand',
+                  'label'    => _n('Shell Command', 'Shell Commands', 2, 'shellcommands'),
+                  'field'    => 'plugin_shellcommands'
+                 ]];
 
       return $rights;
    }
@@ -130,10 +130,11 @@ class PluginShellcommandsProfile extends Profile {
 
 
    /**
-   * @since 0.85
-   * Migration rights from old system to the new one for one profile
-   * @param $profiles_id the profile ID
-   */
+    * @since 0.85
+    * Migration rights from old system to the new one for one profile
+    *
+    * @param $profiles_id the profile ID
+    */
    static function migrateOneProfile($profiles_id) {
       global $DB;
       //Cannot launch migration if there's nothing to migrate...
@@ -144,12 +145,12 @@ class PluginShellcommandsProfile extends Profile {
       foreach ($DB->request('glpi_plugin_shellcommands_profiles',
                             "`profiles_id`='$profiles_id'") as $profile_data) {
 
-         $matching = ['shellcommands' => 'plugin_shellcommands'];
+         $matching       = ['shellcommands' => 'plugin_shellcommands'];
          $current_rights = ProfileRight::getProfileRights($profiles_id, array_values($matching));
          foreach ($matching as $old => $new) {
             if (!isset($current_rights[$old])) {
                $query = "UPDATE `glpi_profilerights` 
-                         SET `rights`='".self::translateARight($profile_data[$old])."' 
+                         SET `rights`='" . self::translateARight($profile_data[$old]) . "' 
                          WHERE `name`='$new' AND `profiles_id`='$profiles_id'";
                $DB->query($query);
             }
@@ -158,8 +159,8 @@ class PluginShellcommandsProfile extends Profile {
    }
 
    /**
-   * Initialize profiles, and migrate it necessary
-   */
+    * Initialize profiles, and migrate it necessary
+    */
    static function initProfile() {
       global $DB;
       $profile = new self();
@@ -167,7 +168,7 @@ class PluginShellcommandsProfile extends Profile {
       //Add new rights in glpi_profilerights table
       foreach ($profile->getAllRights(true) as $data) {
          if ($dbu->countElementsInTable("glpi_profilerights",
-                                  "`name` = '".$data['field']."'") == 0) {
+                                        "`name` = '" . $data['field'] . "'") == 0) {
             ProfileRight::addProfileRights([$data['field']]);
          }
       }
@@ -178,21 +179,21 @@ class PluginShellcommandsProfile extends Profile {
       }
       foreach ($DB->request("SELECT *
                            FROM `glpi_profilerights` 
-                           WHERE `profiles_id`='".$_SESSION['glpiactiveprofile']['id']."' 
+                           WHERE `profiles_id`='" . $_SESSION['glpiactiveprofile']['id'] . "' 
                               AND `name` LIKE '%plugin_shellcommands%'") as $prof) {
          $_SESSION['glpiactiveprofile'][$prof['name']] = $prof['rights'];
       }
    }
 
-     /**
-   * Initialize profiles, and migrate it necessary
-   */
+   /**
+    * Initialize profiles, and migrate it necessary
+    */
    static function changeProfile() {
       global $DB;
 
       foreach ($DB->request("SELECT *
                            FROM `glpi_profilerights` 
-                           WHERE `profiles_id`='".$_SESSION['glpiactiveprofile']['id']."' 
+                           WHERE `profiles_id`='" . $_SESSION['glpiactiveprofile']['id'] . "' 
                               AND `name` LIKE '%plugin_shellcommands%'") as $prof) {
          $_SESSION['glpiactiveprofile'][$prof['name']] = $prof['rights'];
       }
@@ -222,17 +223,17 @@ class PluginShellcommandsProfile extends Profile {
 
    /**
     * @param $profile
-   **/
+    **/
    static function addDefaultProfileInfos($profiles_id, $rights, $drop_existing = false) {
       $dbu          = new DbUtils();
       $profileRight = new ProfileRight();
       foreach ($rights as $right => $value) {
          if ($dbu->countElementsInTable('glpi_profilerights',
-                                   "`profiles_id`='$profiles_id' AND `name`='$right'") && $drop_existing) {
+                                        "`profiles_id`='$profiles_id' AND `name`='$right'") && $drop_existing) {
             $profileRight->deleteByCriteria(['profiles_id' => $profiles_id, 'name' => $right]);
          }
          if (!$dbu->countElementsInTable('glpi_profilerights',
-                                   "`profiles_id`='$profiles_id' AND `name`='$right'")) {
+                                         "`profiles_id`='$profiles_id' AND `name`='$right'")) {
             $myright['profiles_id'] = $profiles_id;
             $myright['name']        = $right;
             $myright['rights']      = $value;

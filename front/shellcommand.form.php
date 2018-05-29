@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-include ('../../../inc/includes.php');
+include('../../../inc/includes.php');
 
 if (!isset($_GET["id"])) {
    $_GET["id"] = "";
@@ -36,7 +36,7 @@ if (!isset($_GET["withtemplate"])) {
    $_GET["withtemplate"] = "";
 }
 
-$command = new PluginShellcommandsShellcommand();
+$command      = new PluginShellcommandsShellcommand();
 $command_item = new PluginShellcommandsShellcommand_Item();
 
 if (isset($_POST["add"])) {

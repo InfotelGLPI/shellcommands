@@ -42,9 +42,9 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
    static $rightname = 'plugin_shellcommands';
 
    /**
-     * Name of Wake on LAN command
-     * @var string
-     */
+    * Name of Wake on LAN command
+    * @var string
+    */
    const WOL_COMMAND_NAME = 'Wake on Lan';
 
    static function canView() {
@@ -82,13 +82,13 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
 
       if (!$withtemplate) {
          if ($item->getType() == 'PluginShellcommandsShellcommand'
-                 && count(PluginShellcommandsShellcommand::getTypes(false))) {
+             && count(PluginShellcommandsShellcommand::getTypes(false))) {
             if ($_SESSION['glpishow_count_on_tabs']) {
                return self::createTabEntry(__('Associated item'), self::countForShellcommand($item));
             }
             return __('Associated item');
          } else if (in_array($item->getType(), PluginShellcommandsShellcommand::getTypes(true))
-                 && self::canView()) {
+                    && self::canView()) {
             if ($_SESSION['glpishow_count_on_tabs']) {
                return self::createTabEntry(PluginShellcommandsShellcommand::getTypeName(2), self::countForItem($item));
             }
@@ -134,13 +134,13 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
                 LEFT JOIN `glpi_plugin_shellcommands_shellcommands`
                  ON (`glpi_plugin_shellcommands_shellcommands_items`.`plugin_shellcommands_shellcommands_id`=`glpi_plugin_shellcommands_shellcommands`.`id`)
                 LEFT JOIN `glpi_entities` ON (`glpi_plugin_shellcommands_shellcommands`.`entities_id`=`glpi_entities`.`id`)
-                WHERE `glpi_plugin_shellcommands_shellcommands_items`.`itemtype` = '".$item->getType()."' ";
+                WHERE `glpi_plugin_shellcommands_shellcommands_items`.`itemtype` = '" . $item->getType() . "' ";
 
       $query .= getEntitiesRestrictRequest(" AND", "glpi_plugin_shellcommands_shellcommands", '', '', true);
 
       $result = $DB->query($query);
       $number = $DB->numrows($result);
-      $i = 0;
+      $i      = 0;
 
       $shells = [];
       if ($number) {
@@ -150,7 +150,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       }
 
       $countCommand = [];
-      $count = 0;
+      $count        = 0;
 
       if ($number) {
 
@@ -161,30 +161,30 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
 
             if (strstr($link, '[NAME]')) {
                // NAME
-               $countCommand['[NAME]'.$data['id']][] = 1;
+               $countCommand['[NAME]' . $data['id']][] = 1;
                $count++;
             } else if (strstr($link, '[ID]')) {
                // ID
-               $countCommand['[ID]'.$data['id']][] = 1;
+               $countCommand['[ID]' . $data['id']][] = 1;
                $count++;
             } else if (strstr($link, '[DOMAIN]')) {
                // DOMAIN
                if (isset($item->fields['domains_id'])) {
-                  $countCommand['[DOMAIN]'.$data['id']][] = 1;
+                  $countCommand['[DOMAIN]' . $data['id']][] = 1;
                   $count++;
                }
             } else if (strstr($link, '[IP]') || strstr($link, '[MAC]')) {
-               $mac = [];
-               $ip = [];
-               $i = 0;
-               $query2 = "SELECT `glpi_networkports`.*, `glpi_ipaddresses`.`name` as ip
+               $mac     = [];
+               $ip      = [];
+               $i       = 0;
+               $query2  = "SELECT `glpi_networkports`.*, `glpi_ipaddresses`.`name` as ip
                               FROM `glpi_networkports`
                               LEFT JOIN `glpi_networknames`
                                  ON (`glpi_networknames`.`items_id`=`glpi_networkports`.`id`)                            
                               LEFT JOIN `glpi_ipaddresses`
                                  ON (`glpi_networknames`.`id`=`glpi_ipaddresses`.`items_id`) 
                               WHERE `glpi_networkports`.`items_id` = '$ID' 
-                              AND `glpi_networkports`.`itemtype` = '".$item->getType()."' 
+                              AND `glpi_networkports`.`itemtype` = '" . $item->getType() . "' 
                               ORDER BY `glpi_networkports`.`logical_number`";
                $result2 = $DB->query($query2);
                if ($DB->numrows($result2) > 0) {
@@ -202,13 +202,13 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
                if (strstr($link, '[IP]')) {
                   // IP internal switch
                   if ($item->getType() == 'NetworkEquipment') {
-                     $countCommand['[IP]'.$data['id']][] = 1;
+                     $countCommand['[IP]' . $data['id']][] = 1;
                      $count++;
                   }
 
                   if (count($ip) > 0) {
                      foreach ($ip as $val) {
-                        $countCommand['[IP]'.$data['id']][] = 1;
+                        $countCommand['[IP]' . $data['id']][] = 1;
                      }
                      $count++;
                   }
@@ -216,13 +216,13 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
                if (strstr($link, '[MAC]')) {
                   // MAC internal switch
                   if ($item->getType() == 'NetworkEquipment') {
-                     $countCommand['[MAC]'.$data['id']][] = 1;
+                     $countCommand['[MAC]' . $data['id']][] = 1;
                      $count++;
                   }
 
                   if (count($mac) > 0) {
                      foreach ($mac as $val) {
-                        $countCommand['[MAC]'.$data['id']][] = 1;
+                        $countCommand['[MAC]' . $data['id']][] = 1;
                      }
                      $count++;
                   }
@@ -232,14 +232,14 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       }
 
       if (isset($options['type']) && isset($options['itemId'])
-              && isset($countCommand['[IP]'.$options['itemId']])
-              && stristr($options['type'], 'ip')) {
-         return sizeof($countCommand['[IP]'.$options['itemId']]);
+          && isset($countCommand['[IP]' . $options['itemId']])
+          && stristr($options['type'], 'ip')) {
+         return sizeof($countCommand['[IP]' . $options['itemId']]);
 
       } else if (isset($options['type']) && isset($options['itemId'])
-              && isset($countCommand['[MAC]'.$options['itemId']])
-              && stristr($options['type'], 'mac')) {
-         return sizeof($countCommand['[MAC]'.$options['itemId']]);
+                 && isset($countCommand['[MAC]' . $options['itemId']])
+                 && stristr($options['type'], 'mac')) {
+         return sizeof($countCommand['[MAC]' . $options['itemId']]);
 
       } else if (isset($options['type']) && $options['type'] == 'ALL') {
          return $countCommand;
@@ -252,9 +252,9 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
    function getFromDBbyShellCommandsAndItem($plugin_shellcommands_shellcommands_id, $itemtype) {
       global $DB;
 
-      $query = "SELECT * FROM `".$this->getTable()."` ".
-              "WHERE `plugin_shellcommands_shellcommands_id` = '".$plugin_shellcommands_shellcommands_id."' 
-         AND `itemtype` = '".$itemtype."' ";
+      $query = "SELECT * FROM `" . $this->getTable() . "` " .
+               "WHERE `plugin_shellcommands_shellcommands_id` = '" . $plugin_shellcommands_shellcommands_id . "' 
+         AND `itemtype` = '" . $itemtype . "' ";
       if ($result = $DB->query($query)) {
          if ($DB->numrows($result) != 1) {
             return false;
@@ -322,23 +322,23 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       $shell_id = $shellcommand->getField('id');
 
       $canedit = $shellcommand->can($shell_id, UPDATE);
-      $rand = mt_rand();
+      $rand    = mt_rand();
 
       if (!Session::haveRight("link", READ)
-              || !$shellcommand->can($shell_id, READ)) {
+          || !$shellcommand->can($shell_id, READ)) {
          return false;
       }
 
-      $query = "SELECT *
+      $query  = "SELECT *
                 FROM `glpi_plugin_shellcommands_shellcommands_items`
                 WHERE `plugin_shellcommands_shellcommands_id` = '$shell_id'
                 ORDER BY `itemtype`";
       $result = $DB->query($query);
-      $types = [];
-      $used = [];
+      $types  = [];
+      $used   = [];
       if ($numrows = $DB->numrows($result)) {
          while ($data = $DB->fetch_assoc($result)) {
-            $types[$data['id']] = $data;
+            $types[$data['id']]      = $data;
             $used[$data['itemtype']] = $data['itemtype'];
          }
       }
@@ -346,16 +346,16 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       if ($canedit) {
          echo "<div class='firstbloc'>";
          echo "<form name='changeticket_form$rand' id='changeticket_form$rand' method='post'
-                action='".Toolbox::getItemTypeFormURL('PluginShellcommandsShellcommand')."'>";
+                action='" . Toolbox::getItemTypeFormURL('PluginShellcommandsShellcommand') . "'>";
 
          echo "<table class='tab_cadre_fixe'>";
-         echo "<tr class='tab_bg_2'><th colspan='2'>".__('Add an item type')."</th></tr>";
+         echo "<tr class='tab_bg_2'><th colspan='2'>" . __('Add an item type') . "</th></tr>";
 
          echo "<tr class='tab_bg_2'><td class='right'>";
          echo "<input type='hidden' name='plugin_shellcommands_shellcommands_id' value='$shell_id'>";
          Dropdown::showItemTypes('itemtype', PluginShellcommandsShellcommand::getTypes(true));
          echo "</td><td class='center'>";
-         echo "<input type='submit' name='additem' value=\""._sx('button', 'Add')."\" class='submit'>";
+         echo "<input type='submit' name='additem' value=\"" . _sx('button', 'Add') . "\" class='submit'>";
          echo "</td></tr>";
 
          echo "</table>";
@@ -365,16 +365,16 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
 
       echo "<div class='spaced'>";
       if ($canedit && $numrows) {
-         Html::openMassiveActionsForm('mass'.__CLASS__.$rand);
-         $massiveactionparams = ['item' => __CLASS__, 'container' => 'mass'.__CLASS__.$rand, 'num_displayed' => $numrows];
+         Html::openMassiveActionsForm('mass' . __CLASS__ . $rand);
+         $massiveactionparams = ['item' => __CLASS__, 'container' => 'mass' . __CLASS__ . $rand, 'num_displayed' => $numrows];
          Html::showMassiveActions($massiveactionparams);
       }
       echo "<table class='tab_cadre_fixe'>";
       echo "<tr>";
       if ($canedit && $numrows) {
-         echo "<th width='10'>".Html::getCheckAllAsCheckbox('mass'.__CLASS__.$rand)."</th>";
+         echo "<th width='10'>" . Html::getCheckAllAsCheckbox('mass' . __CLASS__ . $rand) . "</th>";
       }
-      echo "<th>".__('Type')."</th>";
+      echo "<th>" . __('Type') . "</th>";
       echo "</tr>";
 
       foreach ($types as $data) {
@@ -406,7 +406,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
     * @since version 0.84
     *
     * @param $item            CommonDBTM object for which associated shellcommands must be displayed
-    * @param $withtemplate    (default '')
+    * @param $withtemplate (default '')
     * */
    static function showForItem(CommonDBTM $item, $withtemplate = '') {
       global $DB, $CFG_GLPI;
@@ -438,7 +438,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
                 LEFT JOIN `glpi_plugin_shellcommands_shellcommands`
                  ON (`glpi_plugin_shellcommands_shellcommands_items`.`plugin_shellcommands_shellcommands_id`=`glpi_plugin_shellcommands_shellcommands`.`id`)
                 LEFT JOIN `glpi_entities` ON (`glpi_plugin_shellcommands_shellcommands`.`entities_id`=`glpi_entities`.`id`)
-                WHERE `glpi_plugin_shellcommands_shellcommands_items`.`itemtype` = '".$item->getType()."' 
+                WHERE `glpi_plugin_shellcommands_shellcommands_items`.`itemtype` = '" . $item->getType() . "' 
                   AND !`glpi_plugin_shellcommands_shellcommands`.`is_deleted`";
       $query .= getEntitiesRestrictRequest(" AND", "glpi_plugin_shellcommands_shellcommands", '', '', true);
       $query .= " ORDER BY `assocName`";
@@ -456,36 +456,36 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       echo "<div class='spaced'>";
       echo "<table class='tab_cadre_fixe'>";
       echo "<tr>";
-      echo "<th>".__('Associated Commands', 'shellcommands')."</th>";
+      echo "<th>" . __('Associated Commands', 'shellcommands') . "</th>";
       echo "</tr>";
 
       if ($number) {
          Session::initNavigateListItems('PluginShellcommandsShellcommand',
-                 //TRANS : %1$s is the itemtype name,
-                 //        %2$s is the name of the item (used for headings of a list)
-                 sprintf(__('%1$s = %2$s'), $item->getTypeName(1), $item->getName()));
+            //TRANS : %1$s is the itemtype name,
+            //        %2$s is the name of the item (used for headings of a list)
+                                        sprintf(__('%1$s = %2$s'), $item->getTypeName(1), $item->getName()));
 
          $selectCommandName[0] = Dropdown::EMPTY_VALUE;
          foreach ($shells as $data) {
-            $selectCommandName[$data['link'].'-'.$data['id']] = $data['assocName'];
+            $selectCommandName[$data['link'] . '-' . $data['id']] = $data['assocName'];
          }
 
          echo "<tr class='tab_bg_2'>
-               <td class='center'>".PluginShellcommandsShellcommand::getTypeName(1)." ";
+               <td class='center'>" . PluginShellcommandsShellcommand::getTypeName(1) . " ";
          $randSelect = Dropdown::showFromArray("name", $selectCommandName, ['width' => $width]);
          echo "<span id='command_name$randSelect'></span></td>";
          echo "</tr>";
 
-         Ajax::updateItemOnSelectEvent("dropdown_name$randSelect", "command_name$randSelect", $CFG_GLPI["root_doc"]."/plugins/shellcommands/ajax/dropdownCommandValue.php",
-                 ['idtable'        => $item->getType(),
-                       'width'          => $width,
-                       'value'          => '__VALUE__',
-                       'itemID'         => $ID,
-                       'countItem'      => 1,
-                       'itemtype'       => $item->getType(),
-                       'toupdate'       => 'shellcommand_result',
-                       'command_type'   => 'PluginShellcommandsShellcommand',
-                       'myname'         => "command_name"]);
+         Ajax::updateItemOnSelectEvent("dropdown_name$randSelect", "command_name$randSelect", $CFG_GLPI["root_doc"] . "/plugins/shellcommands/ajax/dropdownCommandValue.php",
+                                       ['idtable'      => $item->getType(),
+                                        'width'        => $width,
+                                        'value'        => '__VALUE__',
+                                        'itemID'       => $ID,
+                                        'countItem'    => 1,
+                                        'itemtype'     => $item->getType(),
+                                        'toupdate'     => 'shellcommand_result',
+                                        'command_type' => 'PluginShellcommandsShellcommand',
+                                        'myname'       => "command_name"]);
       }
 
       echo "</table>";
@@ -494,12 +494,12 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
    }
 
    /**
-   * Launch a command
-   *
-   * @param array $values
-   *
-   * @return void
-   */
+    * Launch a command
+    *
+    * @param array $values
+    *
+    * @return void
+    */
    static function lauchCommand($values) {
       global $CFG_GLPI;
 
@@ -514,7 +514,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       echo "<div class='center'>";
       echo "<table class='tab_cadre_fixe center'>";
       echo "<tr class='tab_bg_1'>";
-      echo "<th colspan='4'>".__('Result details')."</th>";
+      echo "<th colspan='4'>" . __('Result details') . "</th>";
       echo "</tr>";
 
       PluginShellcommandsShellcommand::displayCommandResult($shellcommands, $targetParam, $message, $error);
@@ -524,24 +524,24 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
    }
 
    /**
-   * Resolve the "link" of a command for a specific inventory item
-   *
-   * @param integer $commandId        Shellcommand ID
-   * @param mixed $item               GLPI Item for which the command's link should be resolved
-   * @param boolean $fetchItemName    (Optional) Also fetches the items' names
-   *
-   * @return array|boolean            Resolved links, bool(false) in case of any error
-   */
+    * Resolve the "link" of a command for a specific inventory item
+    *
+    * @param integer $commandId Shellcommand ID
+    * @param mixed   $item GLPI Item for which the command's link should be resolved
+    * @param boolean $fetchItemName (Optional) Also fetches the items' names
+    *
+    * @return array|boolean            Resolved links, bool(false) in case of any error
+    */
    static function resolveLinkOfCommand($commandId, $item, $fetchItemName = false) {
       global $DB;
 
-      $resolvedLinks = [];
-      $currentlyResolvedLink = [];
+      $resolvedLinks            = [];
+      $currentlyResolvedLink    = [];
       $networkportResolvedLinks = [];
 
       $command = new PluginShellcommandsShellcommand();
       if ($command->getFromDB($commandId) && $item instanceof CommonDBTM && $item->getID() != -1) { // If both command and $item exists
-         $commandLink = $command->fields['link'];
+         $commandLink           = $command->fields['link'];
          $currentlyResolvedLink = $commandLink;
 
          if (strstr($commandLink, '[NAME]')) { // Handle "NAME" tag
@@ -644,13 +644,13 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
    }
 
    /**
-   * Compute the command
-   *
-   * @param integer $commandId     ID of the command to execute
-   * @param string $targetParam    Target of the command
-   *
-   * @return string|null    Command line, null if no command line for this shellcommand
-   */
+    * Compute the command
+    *
+    * @param integer $commandId ID of the command to execute
+    * @param string  $targetParam Target of the command
+    *
+    * @return string|null    Command line, null if no command line for this shellcommand
+    */
    static function getCommandLine($commandId, $targetParam) {
       $commandToExec = '';
 
@@ -661,13 +661,13 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
          if ($command->fields['name'] === self::WOL_COMMAND_NAME) {
             $commandToExec = null;
          } else {
-            $commandPath = Dropdown::getDropdownName('glpi_plugin_shellcommands_shellcommandpaths',
-                                                      $command->fields["plugin_shellcommands_shellcommandpaths_id"]);
+            $commandPath       = Dropdown::getDropdownName('glpi_plugin_shellcommands_shellcommandpaths',
+                                                           $command->fields["plugin_shellcommands_shellcommandpaths_id"]);
             $commandParameters = $command->fields["parameters"];
             if ($command->fields["tag_position"]) {
-               $commandToExec = $commandPath.' '.$commandParameters.' '.$targetParam;
+               $commandToExec = $commandPath . ' ' . $commandParameters . ' ' . $targetParam;
             } else {
-               $commandToExec = $commandPath.' '.$targetParam.' '.$commandParameters;
+               $commandToExec = $commandPath . ' ' . $targetParam . ' ' . $commandParameters;
             }
          }
       }
@@ -675,20 +675,20 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
    }
 
    /**
-   * Actually executes the Shellcommand
-   *
-   * @param integer $commandId     ID of the command to execute
-   * @param string $targetParam    Target of the command
-   *
-   * @return string    Execution output, bool(false) in case of error
-   */
+    * Actually executes the Shellcommand
+    *
+    * @param integer $commandId ID of the command to execute
+    * @param string  $targetParam Target of the command
+    *
+    * @return string    Execution output, bool(false) in case of error
+    */
    static function execCommand($commandId, $targetParam) {
 
       $output    = null;
       $execOuput = [];
       $error     = 1;
 
-      $command = new PluginShellcommandsShellcommand();
+      $command      = new PluginShellcommandsShellcommand();
       $commandFound = $command->getFromDB($commandId);
 
       // Lauch command
@@ -701,7 +701,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
 
          } else {
             if (($commandToExec = self::getCommandLine($commandId, $targetParam)) !== null) {
-               exec($commandToExec." 2>&1", $execOuput, $error);
+               exec($commandToExec . " 2>&1", $execOuput, $error);
             }
          }
       }
@@ -709,7 +709,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       // Format output message
       foreach ($execOuput as $currentOutputLine) {
          if (!is_array($currentOutputLine)) {
-            $output .= Toolbox::encodeInUtf8($currentOutputLine).PHP_EOL;
+            $output .= Toolbox::encodeInUtf8($currentOutputLine) . PHP_EOL;
          }
       }
 
@@ -770,14 +770,14 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       //Les adresses MAC doivent etre s�par�es par des ":"
       //c'est normalement le cas si les donnees ont ete importees avec OCS
       $fragment = explode(":", $MacAddress);
-      $body = '';
+      $body     = '';
 
       for ($i = 0; $i < 16; $i++) {
          for ($j = 0; $j < 6; $j++) {
             $body .= chr(hexdec($fragment[$j]));
          }
       }
-      return $p_header.$body;
+      return $p_header . $body;
    }
 
    //envoie le packet magique en UDP
@@ -785,16 +785,16 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
    function sendMagicPacket($macaddress, $ip = null, $netmask = null) {
       $packet = $this->doMagicPacket($macaddress);
 
-      $ip = ip2long($ip);
-      $mask = ip2long($netmask);
+      $ip        = ip2long($ip);
+      $mask      = ip2long($netmask);
       $broadcast = null;
       // Si l'IP et le masque sont fournis (et sont valides) on tente de calculer l'adresse de broadcast du reseau
       if ($ip !== false && $mask !== false) {
-         $mask = ~ $mask;
+         $mask      = ~$mask;
          $broadcast = long2ip($ip | $mask);
       }
 
-      $error = 0;
+      $error     = 0;
       $mcastaddr = "224.0.0.1";
 
       /* TO BE TESTED
@@ -808,11 +808,11 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
 
          //j'arrive pas a faire du broadcast avec cette methode alors c'est du multicast pour tous les
          //postes d'un ss reseau
-         $sock = fsockopen("udp://".$mcastaddr, 9, $errno, $errostr);
+         $sock = fsockopen("udp://" . $mcastaddr, 9, $errno, $errostr);
          //$sock = fsockopen("udp://255.255.255.255", 9, $errno, $errostr);
          if (!$sock) {
-            echo __('There is an error with socket creation', 'shellcommands')." : ";
-            echo Toolbox::encodeInUtf8($errostr)." ".Toolbox::encodeInUtf8($errno);
+            echo __('There is an error with socket creation', 'shellcommands') . " : ";
+            echo Toolbox::encodeInUtf8($errostr) . " " . Toolbox::encodeInUtf8($errno);
             echo "<br />";
             $error = 1;
          } else {
@@ -826,20 +826,20 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
          //TO BE TESTED $sock = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
 
          if ($sock < 0) {
-            echo "Error creating socket : ".strerror($sock)."\n";
-            echo "Error code is '".socket_last_error($sock)."' - ";
+            echo "Error creating socket : " . strerror($sock) . "\n";
+            echo "Error code is '" . socket_last_error($sock) . "' - ";
             echo socket_strerror(socket_last_error($sock));
             $error = 1;
          } else {
             $opt_ret = socket_set_option($sock, 1, 6, true);
             if ($opt_ret < 0) {
-               echo "setsockopt() failed, error: ".strerror($opt_ret)."\n";
+               echo "setsockopt() failed, error: " . strerror($opt_ret) . "\n";
                $error = 1;
             } else {
                $send_ret = socket_sendto($sock, $packet, strlen($packet), 0, $broadcast, 9);
                //TO BE TESTED $send_ret = socket_sendto($sock, $packet, strlen($packet), 0, $ip, $socket_number) $socket_number=7 ?
                if ($send_ret < 0) {
-                  echo "Error when sending packet ".strerror($send_ret)."<BR>\n";
+                  echo "Error when sending packet " . strerror($send_ret) . "<BR>\n";
                   $error = 1;
                } else {
                   socket_close($sock);
@@ -850,7 +850,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
 
       if ($error != 1) {
          $txt = is_null($broadcast) ? $mcastaddr : $broadcast;
-         echo __('Magic packet sending to', 'shellcommands')." ".$macaddress." (".$txt.")";
+         echo __('Magic packet sending to', 'shellcommands') . " " . $macaddress . " (" . $txt . ")";
       } else {
          echo __('The packet cannot be send', 'shellcommands');
       }
@@ -864,7 +864,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
     * @return an array of massive actions
     * */
    public function getForbiddenStandardMassiveAction() {
-      $forbidden = parent::getForbiddenStandardMassiveAction();
+      $forbidden   = parent::getForbiddenStandardMassiveAction();
       $forbidden[] = 'update';
 
       return $forbidden;

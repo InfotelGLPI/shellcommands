@@ -36,7 +36,7 @@ function plugin_init_shellcommands() {
    //Clean Plugin on Profile delete
    $PLUGIN_HOOKS['pre_item_purge']['shellcommands'] = ['Profile' => ['PluginShellcommandsProfile', 'purgeProfiles']];
 
-   $PLUGIN_HOOKS['add_css']['shellcommands'] = ['shellcommands.css'];
+   $PLUGIN_HOOKS['add_css']['shellcommands']        = ['shellcommands.css'];
    $PLUGIN_HOOKS['add_javascript']['shellcommands'] = ['shellcommands.js'];
 
    if (Session::getLoginUserID()) {
@@ -45,7 +45,7 @@ function plugin_init_shellcommands() {
          // Menu
          $PLUGIN_HOOKS['helpdesk_menu_entry']['shellcommands'] = '/front/menu.php';
          $PLUGIN_HOOKS['menu_entry']['shellcommands']          = 'front/menu.php';
-         $PLUGIN_HOOKS['menu_toadd']['shellcommands'] = ['tools' => 'PluginShellcommandsShellcommand'];
+         $PLUGIN_HOOKS['menu_toadd']['shellcommands']          = ['tools' => 'PluginShellcommandsShellcommand'];
       }
 
       $PLUGIN_HOOKS['use_massive_action']['shellcommands'] = 1;
@@ -60,20 +60,20 @@ function plugin_init_shellcommands() {
 // Get the name and the version of the plugin - Needed
 function plugin_version_shellcommands() {
    return [
-       'name' => _n('Shell Command', 'Shell Commands', 2, 'shellcommands'),
-       'version' => '2.1.0',
-       'license' => 'GPLv2+',
-       'oldname' => 'cmd',
-       'author' => 'Xavier Caillaud',
-       'homepage' => 'https://github.com/InfotelGLPI/shellcommands',
-       'minGlpiVersion' => '9.2',
+      'name'           => _n('Shell Command', 'Shell Commands', 2, 'shellcommands'),
+      'version'        => '2.2.0',
+      'license'        => 'GPLv2+',
+      'oldname'        => 'cmd',
+      'author'         => 'Xavier Caillaud',
+      'homepage'       => 'https://github.com/InfotelGLPI/shellcommands',
+      'minGlpiVersion' => '9.3',
    ];
 }
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_shellcommands_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '9.2', 'lt') || version_compare(GLPI_VERSION, '9.3', 'ge')) {
-      echo __('This plugin requires GLPI >= 9.2');
+   if (version_compare(GLPI_VERSION, '9.3', 'lt') || version_compare(GLPI_VERSION, '9.4', 'ge')) {
+      echo __('This plugin requires GLPI >= 9.3');
       return false;
    }
    return true;
