@@ -552,13 +552,9 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
          }
          if (strstr($commandLink, '[DOMAIN]')) {
             if (isset($item->fields['domains_id'])) {
-               if($item->getField('domains_id')!=0){
-                  $currentlyResolvedLink = str_replace('[DOMAIN]', Dropdown::getDropdownName('glpi_domains', $item->getField('domains_id')), $currentlyResolvedLink);
-               }
-
+               $currentlyResolvedLink = str_replace('[DOMAIN]', Dropdown::getDropdownName('glpi_domains', $item->getField('domains_id')), $currentlyResolvedLink);
             }
             $currentlyResolvedLink = str_replace('[DOMAIN]', '', $currentlyResolvedLink); // Clean [DOMAIN] tag
-
          }
          if (strstr($commandLink, '[IP]') || strstr($commandLink, '[MAC]')) { // Handle "IP" and "MAC" tags
             $handledTags = [
@@ -705,7 +701,6 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
 
          } else {
             if (($commandToExec = self::getCommandLine($commandId, $targetParam)) !== null) {
-
                exec($commandToExec . " 2>&1", $execOuput, $error);
             }
          }
