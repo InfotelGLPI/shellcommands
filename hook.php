@@ -34,7 +34,7 @@ function plugin_shellcommands_install() {
 
    $update = false;
    if (!$DB->tableExists("glpi_plugin_cmd_profiles") && !$DB->tableExists("glpi_plugin_shellcommands_shellcommands")) {
-      $DB->runFile(GLPI_ROOT . "/plugins/shellcommands/sql/empty-1.7.0.sql");
+      $DB->runFile(GLPI_ROOT . "/plugins/shellcommands/sql/empty-2.2.0.sql");
 
    } else if ($DB->tableExists("glpi_plugin_cmd_profiles") && !$DB->tableExists("glpi_plugin_cmd_path")) {
       $update = true;
