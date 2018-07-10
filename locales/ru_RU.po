@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - shellcommands plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-29 15:22+0200\n"
+"POT-Creation-Date: 2018-07-10 08:50+0200\n"
 "PO-Revision-Date: 2018-03-29 13:23+0000\n"
 "Last-Translator: Amandine Manceau\n"
 "Language-Team: Russian (Russia) (http://www.transifex.com/tsmr/GLPI_shellcommands/language/ru_RU/)\n"
@@ -18,9 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru_RU\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Poedit 2.0.6\n"
 
-#: hook.php:147 inc/shellcommand.class.php:106 inc/shellcommand.class.php:187
+#: hook.php:147 inc/shellcommand.class.php:117 inc/shellcommand.class.php:216
 #: inc/shellcommandpath.class.php:40
 msgid "Path"
 msgid_plural "Pathes"
@@ -38,7 +37,7 @@ msgid "Command group launch"
 msgstr "Запуск группы команд"
 
 #: setup.php:63 inc/profile.class.php:102 inc/shellcommand.class.php:49
-#: inc/shellcommand.class.php:459
+#: inc/shellcommand.class.php:489
 msgid "Shell Command"
 msgid_plural "Shell Commands"
 msgstr[0] "Служебная команда"
@@ -46,7 +45,7 @@ msgstr[1] "Служебные команды"
 msgstr[2] "Служебные команды"
 msgstr[3] "Служебные команды"
 
-#: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:469
+#: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:499
 msgid "Advanced execution"
 msgid_plural "Advanced executions"
 msgstr[0] "Расширенный запуск"
@@ -55,7 +54,7 @@ msgstr[2] "Расширенных запусков"
 msgstr[3] "Расширенный запуск"
 
 #: inc/commandgroup.class.php:40 inc/commandgroup_item.class.php:58
-#: inc/shellcommand.class.php:464
+#: inc/shellcommand.class.php:494
 msgid "Command group"
 msgid_plural "Command groups"
 msgstr[0] "Группа команд"
@@ -63,27 +62,27 @@ msgstr[1] "Групп команд"
 msgstr[2] "Групп команд"
 msgstr[3] "Группы команд"
 
-#: inc/commandgroup.class.php:107
+#: inc/commandgroup.class.php:122
 msgid "Check command"
 msgstr "Команда для проверки"
 
-#: inc/commandgroup_item.class.php:154
+#: inc/commandgroup_item.class.php:158
 msgid "Add a command"
 msgstr "Добавить команду"
 
-#: inc/commandgroup_item.class.php:207
+#: inc/commandgroup_item.class.php:212
 msgid "Add a command group"
 msgstr "Создать группу команд"
 
-#: inc/commandgroup_item.class.php:395
+#: inc/commandgroup_item.class.php:402
 msgid "Order"
 msgstr "Порядок выполнения"
 
-#: inc/commandgroup_item.class.php:539
+#: inc/commandgroup_item.class.php:550
 msgid "Host UP"
 msgstr "Узел ВКЛ."
 
-#: inc/commandgroup_item.class.php:570
+#: inc/commandgroup_item.class.php:581
 msgid "Host DOWN"
 msgstr "Узел ВЫКЛ."
 
@@ -91,19 +90,19 @@ msgstr "Узел ВЫКЛ."
 msgid "Shellcommands menu"
 msgstr "Меню служебных команд"
 
-#: inc/shellcommand.class.php:111 inc/shellcommand.class.php:182
+#: inc/shellcommand.class.php:125 inc/shellcommand.class.php:211
 msgid "Windows"
 msgstr "Windows"
 
-#: inc/shellcommand.class.php:174
+#: inc/shellcommand.class.php:203
 msgid "Tag position"
 msgstr "Позиция тега"
 
-#: inc/shellcommand.class.php:176
+#: inc/shellcommand.class.php:205
 msgid "Before parameters"
 msgstr "До параметров"
 
-#: inc/shellcommand.class.php:176
+#: inc/shellcommand.class.php:205
 msgid "After parameters"
 msgstr "После параметров"
 

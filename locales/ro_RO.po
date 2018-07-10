@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - shellcommands plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-29 15:22+0200\n"
+"POT-Creation-Date: 2018-07-10 08:50+0200\n"
 "PO-Revision-Date: 2018-03-29 13:23+0000\n"
 "Last-Translator: Amandine Manceau\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/tsmr/GLPI_shellcommands/language/ro_RO/)\n"
@@ -18,9 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ro_RO\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
-"X-Generator: Poedit 2.0.6\n"
 
-#: hook.php:147 inc/shellcommand.class.php:106 inc/shellcommand.class.php:187
+#: hook.php:147 inc/shellcommand.class.php:117 inc/shellcommand.class.php:216
 #: inc/shellcommandpath.class.php:40
 msgid "Path"
 msgid_plural "Pathes"
@@ -37,14 +36,14 @@ msgid "Command group launch"
 msgstr "Lansare grup comada"
 
 #: setup.php:63 inc/profile.class.php:102 inc/shellcommand.class.php:49
-#: inc/shellcommand.class.php:459
+#: inc/shellcommand.class.php:489
 msgid "Shell Command"
 msgid_plural "Shell Commands"
 msgstr[0] "Comandă Shell"
 msgstr[1] "Comenzi Shell"
 msgstr[2] "Comenzi  Shell "
 
-#: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:469
+#: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:499
 msgid "Advanced execution"
 msgid_plural "Advanced executions"
 msgstr[0] "Executie avansata"
@@ -52,34 +51,34 @@ msgstr[1] "Executii avansate"
 msgstr[2] "Executii avansate"
 
 #: inc/commandgroup.class.php:40 inc/commandgroup_item.class.php:58
-#: inc/shellcommand.class.php:464
+#: inc/shellcommand.class.php:494
 msgid "Command group"
 msgid_plural "Command groups"
 msgstr[0] "Grup comanda"
 msgstr[1] "Grupuri comanda"
 msgstr[2] "Grupuri comanda"
 
-#: inc/commandgroup.class.php:107
+#: inc/commandgroup.class.php:122
 msgid "Check command"
 msgstr "Verifica comanda"
 
-#: inc/commandgroup_item.class.php:154
+#: inc/commandgroup_item.class.php:158
 msgid "Add a command"
 msgstr "Add o comanda"
 
-#: inc/commandgroup_item.class.php:207
+#: inc/commandgroup_item.class.php:212
 msgid "Add a command group"
 msgstr "Add o comanda group"
 
-#: inc/commandgroup_item.class.php:395
+#: inc/commandgroup_item.class.php:402
 msgid "Order"
 msgstr "Comanda"
 
-#: inc/commandgroup_item.class.php:539
+#: inc/commandgroup_item.class.php:550
 msgid "Host UP"
 msgstr "Host UP"
 
-#: inc/commandgroup_item.class.php:570
+#: inc/commandgroup_item.class.php:581
 msgid "Host DOWN"
 msgstr "Host DOWN"
 
@@ -87,19 +86,19 @@ msgstr "Host DOWN"
 msgid "Shellcommands menu"
 msgstr "Meniu comenzi Shell"
 
-#: inc/shellcommand.class.php:111 inc/shellcommand.class.php:182
+#: inc/shellcommand.class.php:125 inc/shellcommand.class.php:211
 msgid "Windows"
 msgstr "Windows"
 
-#: inc/shellcommand.class.php:174
+#: inc/shellcommand.class.php:203
 msgid "Tag position"
 msgstr "Pozitie Tag"
 
-#: inc/shellcommand.class.php:176
+#: inc/shellcommand.class.php:205
 msgid "Before parameters"
 msgstr "Parametri inainte"
 
-#: inc/shellcommand.class.php:176
+#: inc/shellcommand.class.php:205
 msgid "After parameters"
 msgstr "Parametri dupa"
 

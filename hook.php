@@ -34,7 +34,7 @@ function plugin_shellcommands_install() {
 
    $update = false;
    if (!$DB->tableExists("glpi_plugin_cmd_profiles") && !$DB->tableExists("glpi_plugin_shellcommands_shellcommands")) {
-      $DB->runFile(GLPI_ROOT . "/plugins/shellcommands/sql/empty-1.7.0.sql");
+      $DB->runFile(GLPI_ROOT . "/plugins/shellcommands/sql/empty-2.2.0.sql");
 
    } else if ($DB->tableExists("glpi_plugin_cmd_profiles") && !$DB->tableExists("glpi_plugin_cmd_path")) {
       $update = true;
@@ -65,13 +65,13 @@ function plugin_shellcommands_install() {
             $query  = "UPDATE `glpi_plugin_shellcommands_profiles`
                   SET `profiles_id` = '" . $data["id"] . "'
                   WHERE `id` = '" . $data["id"] . "';";
-            $result = $DB->query($query);
+            $DB->query($query);
          }
       }
 
       $query  = "ALTER TABLE `glpi_plugin_shellcommands_profiles`
                DROP `name` ;";
-      $result = $DB->query($query);
+      $DB->query($query);
    }
 
    PluginShellcommandsProfile::initProfile();

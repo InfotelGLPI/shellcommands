@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI Project - shellcommands plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-29 15:22+0200\n"
+"POT-Creation-Date: 2018-07-10 08:50+0200\n"
 "PO-Revision-Date: 2018-03-29 13:23+0000\n"
 "Last-Translator: Amandine Manceau\n"
 "Language-Team: Polish (Poland) (http://www.transifex.com/tsmr/GLPI_shellcommands/language/pl_PL/)\n"
@@ -17,9 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl_PL\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Poedit 2.0.6\n"
 
-#: hook.php:147 inc/shellcommand.class.php:106 inc/shellcommand.class.php:187
+#: hook.php:147 inc/shellcommand.class.php:117 inc/shellcommand.class.php:216
 #: inc/shellcommandpath.class.php:40
 msgid "Path"
 msgid_plural "Pathes"
@@ -37,7 +36,7 @@ msgid "Command group launch"
 msgstr "Uruchom grupę poleceń"
 
 #: setup.php:63 inc/profile.class.php:102 inc/shellcommand.class.php:49
-#: inc/shellcommand.class.php:459
+#: inc/shellcommand.class.php:489
 msgid "Shell Command"
 msgid_plural "Shell Commands"
 msgstr[0] "Polecenie powłoki"
@@ -45,7 +44,7 @@ msgstr[1] "Polecenia powłoki"
 msgstr[2] "Polecenia powłoki"
 msgstr[3] "Polecenia powłoki"
 
-#: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:469
+#: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:499
 msgid "Advanced execution"
 msgid_plural "Advanced executions"
 msgstr[0] "Zaawansowane uruchomienie"
@@ -54,7 +53,7 @@ msgstr[2] "Zaawansowane uruchomienia"
 msgstr[3] "Zaawansowane uruchomienia"
 
 #: inc/commandgroup.class.php:40 inc/commandgroup_item.class.php:58
-#: inc/shellcommand.class.php:464
+#: inc/shellcommand.class.php:494
 msgid "Command group"
 msgid_plural "Command groups"
 msgstr[0] "Grupa komend"
@@ -62,27 +61,27 @@ msgstr[1] "Grup poleceń"
 msgstr[2] "Grupy poleceń"
 msgstr[3] "Grupy poleceń"
 
-#: inc/commandgroup.class.php:107
+#: inc/commandgroup.class.php:122
 msgid "Check command"
 msgstr "Sprawdź polecenie"
 
-#: inc/commandgroup_item.class.php:154
+#: inc/commandgroup_item.class.php:158
 msgid "Add a command"
 msgstr "Dodaj polecenie"
 
-#: inc/commandgroup_item.class.php:207
+#: inc/commandgroup_item.class.php:212
 msgid "Add a command group"
 msgstr "Dodaj polecenie grupowe"
 
-#: inc/commandgroup_item.class.php:395
+#: inc/commandgroup_item.class.php:402
 msgid "Order"
 msgstr "Kolejność"
 
-#: inc/commandgroup_item.class.php:539
+#: inc/commandgroup_item.class.php:550
 msgid "Host UP"
 msgstr "Host włączony"
 
-#: inc/commandgroup_item.class.php:570
+#: inc/commandgroup_item.class.php:581
 msgid "Host DOWN"
 msgstr "Host wyłączony"
 
@@ -90,19 +89,19 @@ msgstr "Host wyłączony"
 msgid "Shellcommands menu"
 msgstr "Menu poleceń"
 
-#: inc/shellcommand.class.php:111 inc/shellcommand.class.php:182
+#: inc/shellcommand.class.php:125 inc/shellcommand.class.php:211
 msgid "Windows"
 msgstr "Windows"
 
-#: inc/shellcommand.class.php:174
+#: inc/shellcommand.class.php:203
 msgid "Tag position"
 msgstr "Pozycja TAGu"
 
-#: inc/shellcommand.class.php:176
+#: inc/shellcommand.class.php:205
 msgid "Before parameters"
 msgstr "Parametry przed"
 
-#: inc/shellcommand.class.php:176
+#: inc/shellcommand.class.php:205
 msgid "After parameters"
 msgstr "Parametry po"
 
