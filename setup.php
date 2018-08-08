@@ -29,7 +29,7 @@
 
 // Init the hooks of the plugins -Needed
 function plugin_init_shellcommands() {
-   global $PLUGIN_HOOKS, $CFG_GLPI;
+   global $PLUGIN_HOOKS;
 
    $PLUGIN_HOOKS['csrf_compliant']['shellcommands'] = true;
    $PLUGIN_HOOKS['change_profile']['shellcommands'] = ['PluginShellcommandsProfile', 'changeProfile'];

@@ -77,7 +77,6 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
    }
 
    function cleanDBonPurge() {
-      global $DB;
 
       $temp = new PluginShellcommandsShellcommand_Item();
       $temp->deleteByCriteria(['plugin_shellcommands_shellcommands_id' => $this->fields['id']]);
@@ -177,7 +176,6 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
    }
 
    function showForm($ID, $options = []) {
-      global $CFG_GLPI;
 
       $this->initForm($ID, $options);
       $this->showFormHeader($options);
@@ -462,7 +460,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
             break;
          case PluginShellcommandsShellcommand::CRITICAL_RESULT :
             echo "<td class='center'><div class='shellcommands_result_ko'>CRITICAL</div></td>";
-            break;
+            break;http://10.2.1.215
       }
 
       echo "<td>";
@@ -470,7 +468,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
          echo "<b> > " . $command . "</b><br>";
       }
       if ($shellcommands->getName() !== PluginShellcommandsShellcommand_Item::WOL_COMMAND_NAME) {
-         echo "<font color='blue'>" . nl2br($message) . "</font>";
+         echo "<span class='shellcommands_font_blue'>" . nl2br($message) . "</span>";
       } else {
          echo nl2br($message);
       }
@@ -516,9 +514,10 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
 
          switch ($ma->getAction()) {
             case 'generate':
+               $dbu                = new DbUtils();
                $shellcommands_item = new PluginShellcommandsShellcommand_Item();
                $shellcommands      = new PluginShellcommandsShellcommand();
-               $item               = getItemForItemtype($itemtype);
+               $item               = $dbu->getItemForItemtype($itemtype);
 
                echo "<div class='center'>";
                echo "<table class='tab_cadre_fixe center'>";

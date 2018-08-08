@@ -42,4 +42,4 @@ CREATE TABLE `glpi_plugin_cmd_profiles` (
 `update_cmd` char(1) default NULL,
 PRIMARY KEY  (`ID`),
 KEY `interface` (`interface`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

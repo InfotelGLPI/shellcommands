@@ -151,7 +151,6 @@ function plugin_shellcommands_getDropdown() {
 }
 
 function plugin_shellcommands_postinit() {
-   global $CFG_GLPI, $PLUGIN_HOOKS;
 
    foreach (PluginShellcommandsShellcommand::getTypes(true) as $type) {
       CommonGLPI::registerStandardTab($type, 'PluginShellcommandsShellcommand_Item');
@@ -176,7 +175,7 @@ function plugin_shellcommands_registerWebservicesMethods() {
 
 //display custom fields in the search
 function plugin_shellcommands_giveItem($type, $ID, $data, $num) {
-   global $CFG_GLPI, $DB;
+   global $DB;
 
    $searchopt = &Search::getOptions($type);
    $table     = $searchopt[$ID]["table"];
@@ -192,7 +191,6 @@ function plugin_shellcommands_giveItem($type, $ID, $data, $num) {
          $result_device = $DB->query($query_device);
          $number_device = $DB->numrows($result_device);
          $out           = '';
-         $shellcommands = $data['id'];
          if ($number_device > 0) {
             for ($i = 0; $i < $number_device; $i++) {
                $itemtype = $DB->result($result_device, $i, "itemtype");

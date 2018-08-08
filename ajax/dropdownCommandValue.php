@@ -45,9 +45,9 @@ if (!isset($_POST['value'])) {
 }
 
 $tabValue = explode('-', $_POST['value']);
-
+$dbu      = new DbUtils();
 // Security
-if (!($item = getItemForItemtype($_POST['itemtype'])) || sizeof($tabValue) < 2) {
+if (!($item = $dbu->getItemForItemtype($_POST['itemtype'])) || sizeof($tabValue) < 2) {
    exit();
 }
 
@@ -55,7 +55,7 @@ $link    = $tabValue[0];
 $shellId = $tabValue[1];
 
 $item->getFromDB($_POST['itemID']);
-$shell_item = getItemForItemtype($_POST['command_type']);
+$shell_item = $dbu->getItemForItemtype($_POST['command_type']);
 $shell_item->getFromDB($shellId);
 $foreign_key = $shell_item->getForeignKeyField();
 

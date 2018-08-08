@@ -49,7 +49,6 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
    }
 
    function cleanDBonPurge() {
-      global $DB;
 
       $temp = new PluginShellcommandsCommandGroup_Item();
       $temp->deleteByCriteria(['plugin_shellcommands_commandgroups_id' => $this->fields['id']]);
@@ -108,7 +107,6 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
    }
 
    function showForm($ID, $options = []) {
-      global $CFG_GLPI;
 
       $this->initForm($ID, $options);
       $this->showFormHeader($options);
@@ -138,8 +136,6 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
     * @return nothing: display
     **/
    static function showMassiveActionsSubForm(MassiveAction $ma) {
-
-      $PluginShellcommandsShellcommand = new PluginShellcommandsShellcommand();
 
       switch ($ma->getAction()) {
          case 'generate':

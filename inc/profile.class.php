@@ -45,7 +45,6 @@ class PluginShellcommandsProfile extends Profile {
    }
 
    static function displayTabContentForItem(CommonGLPI $item, $tabnum = 1, $withtemplate = 0) {
-      global $CFG_GLPI;
 
       if ($item->getType() == 'Profile') {
          $ID   = $item->getID();

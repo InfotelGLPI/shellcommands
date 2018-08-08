@@ -242,7 +242,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
     * @param $withtemplate (default '')
     * */
    static function showForItem(CommonDBTM $item, $withtemplate = '') {
-      global $DB, $CFG_GLPI;
+      global $CFG_GLPI;
 
       $ID = $item->getField('id');
 
@@ -257,14 +257,13 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
          return false;
       }
 
-      if (empty($withtemplate)) {
-         $withtemplate = 0;
-      }
-
       $width = 200;
+      $dbu   = new DbUtils();
 
       $command_group = new PluginShellcommandsCommandGroup();
-      $restrict      = getEntitiesRestrictRequest(" AND", "glpi_plugin_shellcommands_commandgroups", '', '', true);
+      $restrict      = $dbu->getEntitiesRestrictRequest(" AND",
+                                                        "glpi_plugin_shellcommands_commandgroups",
+                                                        '', '', true);
       $data          = $command_group->find("1" . $restrict);
       $shells        = [0 => Dropdown::EMPTY_VALUE];
       if (!empty($data)) {
@@ -285,7 +284,8 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
       echo "<span id='command_name$randSelect'></span></td>";
       echo "</tr>";
 
-      Ajax::updateItemOnSelectEvent("dropdown_name$randSelect", "command_name$randSelect", $CFG_GLPI["root_doc"] . "/plugins/shellcommands/ajax/dropdownCommandValue.php",
+      Ajax::updateItemOnSelectEvent("dropdown_name$randSelect", "command_name$randSelect",
+                                    $CFG_GLPI["root_doc"] . "/plugins/shellcommands/ajax/dropdownCommandValue.php",
                                     ['idtable'      => $item->getType(),
                                      'value'        => '__VALUE__',
                                      'itemID'       => $ID,
@@ -312,16 +312,15 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
     * @param type  $rand
     */
    private function listItemsForShellCommand($data, $canedit) {
-      global $CFG_GLPI;
 
       $rand    = mt_rand();
       $numrows = count($data);
-      $target  = Toolbox::getItemTypeFormURL('PluginShellcommandsCommandGroup_Item');
 
       echo "<div class='center'>";
       if ($canedit) {
          Html::openMassiveActionsForm('mass' . __CLASS__ . $rand);
-         $massiveactionparams = ['item' => __CLASS__, 'container' => 'mass' . __CLASS__ . $rand, 'num_displayed' => $numrows];
+         $massiveactionparams = ['item' => __CLASS__, 'container' => 'mass' . __CLASS__ . $rand,
+                                 'num_displayed' => $numrows];
          Html::showMassiveActions($massiveactionparams);
       }
 
@@ -375,7 +374,6 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
     * @param type  $rand
     */
    private function listItems($data, $canedit) {
-      global $CFG_GLPI;
 
       $rand    = mt_rand();
       $numrows = count($data);
@@ -507,10 +505,10 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
     * @return void
     */
    static function lauchCommand($values) {
-      global $CFG_GLPI;
 
       if (!empty($values['itemtype']) && !empty($values['itemID'])) {
-         $item = getItemForItemtype($values['itemtype']);
+         $dbu  = new DbUtils();
+         $item = $dbu->getItemForItemtype($values['itemtype']);
          $item->getFromDB($values['itemID']);
 
          $shellcommands_item  = new PluginShellcommandsShellcommand_Item();

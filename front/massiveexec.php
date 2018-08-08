@@ -37,7 +37,8 @@ $ids = $_SESSION["plugin_shellcommands"]["ids"];
 unset($_SESSION["plugin_shellcommands"]["ids"]);
 
 // Launch massive action
-$processor = getItemForItemtype($ma->processor);
+$dbu       = new DbUtils();
+$processor = $dbu->getItemForItemtype($ma->processor);
 $processor->doMassiveAction($ma, $ids);
 
 Html::footer();

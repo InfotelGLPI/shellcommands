@@ -124,7 +124,8 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
    static function countForItem(CommonDBTM $item, $options = []) {
       global $DB;
 
-      $ID = $item->getField('id');
+      $ID  = $item->getField('id');
+      $dbu = new DbUtils();
 
       $query = "SELECT `glpi_plugin_shellcommands_shellcommands_items`.`id` AS assocID,
                        `glpi_entities`.`id` AS entity,
@@ -136,7 +137,8 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
                 LEFT JOIN `glpi_entities` ON (`glpi_plugin_shellcommands_shellcommands`.`entities_id`=`glpi_entities`.`id`)
                 WHERE `glpi_plugin_shellcommands_shellcommands_items`.`itemtype` = '" . $item->getType() . "' ";
 
-      $query .= getEntitiesRestrictRequest(" AND", "glpi_plugin_shellcommands_shellcommands", '', '', true);
+      $query .= $dbu->getEntitiesRestrictRequest(" AND", "glpi_plugin_shellcommands_shellcommands",
+                                                 '', '', true);
 
       $result = $DB->query($query);
       $number = $DB->numrows($result);
@@ -277,7 +279,6 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
     * @return array $itemtype
     * */
    function getShellCommandItemtypes($plugin_shellcommands_shellcommands_id) {
-      global $DB;
 
       $itemtypes = [];
 
@@ -317,7 +318,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
     * @return nothing (HTML display)
     * */
    public static function showForShellcommands(PluginShellcommandsShellcommand $shellcommand) {
-      global $DB, $CFG_GLPI;
+      global $DB;
 
       $shell_id = $shellcommand->getField('id');
 
@@ -377,9 +378,11 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       echo "<th>" . __('Type') . "</th>";
       echo "</tr>";
 
+      $dbu = new DbUtils();
+
       foreach ($types as $data) {
          $typename = NOT_AVAILABLE;
-         if ($item = getItemForItemtype($data['itemtype'])) {
+         if ($item = $dbu->getItemForItemtype($data['itemtype'])) {
             $typename = $item->getTypeName(1);
             echo "<tr class='tab_bg_1'>";
             if ($canedit) {
@@ -429,6 +432,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       }
 
       $width = 200;
+      $dbu   = new DbUtils();
 
       $query = "SELECT `glpi_plugin_shellcommands_shellcommands_items`.`id` AS assocID,
                        `glpi_entities`.`id` AS entity,
@@ -440,7 +444,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
                 LEFT JOIN `glpi_entities` ON (`glpi_plugin_shellcommands_shellcommands`.`entities_id`=`glpi_entities`.`id`)
                 WHERE `glpi_plugin_shellcommands_shellcommands_items`.`itemtype` = '" . $item->getType() . "' 
                   AND !`glpi_plugin_shellcommands_shellcommands`.`is_deleted`";
-      $query .= getEntitiesRestrictRequest(" AND", "glpi_plugin_shellcommands_shellcommands", '', '', true);
+      $query .= $dbu->getEntitiesRestrictRequest(" AND", "glpi_plugin_shellcommands_shellcommands", '', '', true);
       $query .= " ORDER BY `assocName`";
 
       $result = $DB->query($query);
@@ -501,7 +505,6 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
     * @return void
     */
    static function lauchCommand($values) {
-      global $CFG_GLPI;
 
       $targetParam = $values['value'];
       $commandName = Dropdown::getDropdownName("glpi_plugin_shellcommands_shellcommands", $values['id']);

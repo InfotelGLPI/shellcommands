@@ -98,7 +98,6 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
     * @return html
     */
    function getEditValue() {
-      global $CFG_GLPI;
 
       echo "<table width='100%' class='shellcommands_show_values'>";
       echo "<tr><th colspan='2'>" . _n('Item', 'Items', 2) . "</th></tr>";
@@ -147,7 +146,6 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
     * @param array $valueId
     */
    static function addNewValue($valueId) {
-      global $CFG_GLPI;
 
       echo "<div id='custom_values$valueId' class='shellcommands_custom_values'><span>" . __('Item') . ' ' . $valueId . '</span> ';
       self::dropdownAllDevices('items', null, 0, 1, 0, $_SESSION['glpiactive_entity']);
@@ -162,7 +160,6 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
     * @return void
     */
    static function lauchCommand($values) {
-      global $CFG_GLPI;
 
       $items_to_execute = json_decode(stripslashes($values['items_to_execute']), true);
 
@@ -191,7 +188,7 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
     **/
    static function dropdownAllDevices($myname, $itemtype, $items_id = 0, $admin = 0, $users_id = 0,
                                       $entity_restrict = -1, $tickets_id = 0) {
-      global $CFG_GLPI, $DB;
+      global $CFG_GLPI;
 
       $rand = mt_rand();
 
@@ -236,7 +233,8 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
             // Display default value if itemtype is displayed
             if ($found_type
                 && $itemtype) {
-               if (($item = getItemForItemtype($itemtype))
+               $dbu = new DbUtils();
+               if (($item = $dbu->getItemForItemtype($itemtype))
                    && $items_id) {
                   if ($item->getFromDB($items_id)) {
                      Dropdown::showFromArray('items_id', [$items_id => $item->getName()],
