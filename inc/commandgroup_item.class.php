@@ -83,7 +83,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
                $dbu = new DbUtils();
                return self::createTabEntry(PluginShellcommandsShellcommand::getTypeName(2),
                                            $dbu->countElementsInTable($this->getTable(),
-                                                                      "`plugin_shellcommands_commandgroups_id` = '" . $item->getID() . "'"));
+                                                                      ["plugin_shellcommands_commandgroups_id" => $item->getID()]));
             }
          } else if ($item->getType() == 'PluginShellcommandsShellcommand'
                     && self::canView()) {
@@ -91,7 +91,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
                $dbu = new DbUtils();
                return self::createTabEntry(PluginShellcommandsCommandGroup::getTypeName(2),
                                            $dbu->countElementsInTable($this->getTable(),
-                                                                      "`plugin_shellcommands_shellcommands_id` = '" . $item->getID() . "'"));
+                                                                      ["plugin_shellcommands_shellcommands_id" => $item->getID()]));
             }
             return PluginShellcommandsCommandGroup::getTypeName(2);
          }
