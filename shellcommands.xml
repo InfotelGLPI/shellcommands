@@ -6,12 +6,13 @@
    <logo>https://raw.githubusercontent.com/InfotelGLPI/shellcommands/master/shellcommands.png</logo>
    <description>
       <short>
-         <fr><![CDATA[Commandes Shell. Ce plugin vous permet de lancer des commandes shell et des groupes de commandes (exemple Ping, Tracert, Nslookup ou Wake on lan) sur le matériel recensé dans GLPI.]]></fr>
+         <cs><![CDATA[Příkazy shellu. Tento zásuvný modul umožňuje spouštět shellové příkazy a skupiny příkazů (příklad: ping, tracert, nslookup and wol) na GLPI vybavení.]]></cs>
          <en><![CDATA[Shell Commands. This plugin allow you to launch shell commands and commands groups (Example : Ping, Tracert, Nslookup ou Wake on lan) with equiments of GLPI.]]></en>
+         <fr><![CDATA[Commandes Shell. Ce plugin vous permet de lancer des commandes shell et des groupes de commandes (exemple Ping, Tracert, Nslookup ou Wake on lan) sur le matériel recensé dans GLPI.]]></fr>
       </short>
       <long>
+         <cs><![CDATA[Tento zásuvný modul umožňuje spouštět shellové příkazy a skupiny příkazů:<br />- ping (na název nebo IP adresu),<br />- tracert (na název nebo IP adresu),<br />- nslookup (na doménu),<br />- wol (na IP),<br />- Příkaz přiřadíte k typu vybavení a příkazy můžete spouštět přímo z podrobností o vybavení.<br />- Je možné vytvářet i úplně nové příkazy.]]></cs>n
          <fr><![CDATA[Ce plugin vous permet de lancer des commandes shell et des groupes de commandes :<br />- Ping (sur le nom ou l'ip),<br />- Tracert (sur le nom ou l'ip),<br />- Nslookup (sur le domaine),<br />- Wake on lan (sur l'ip),<br />- Vous associez une commande à des types de matériels et vous pouvez directement depuis le détail du matériel, et lancer vos commandes.<br />- Vous pouvez aussi créer de nouvelles commandes.]]></fr>
-         <en><![CDATA[This plugin allow you to launch shell commands and commands groups :<br />- Ping (with name or ip),<br />- Tracert (with name or ip),<br />- Nslookup (with domain),<br />- Wake on lan (with ip),<br />- You associate a command with equipment types and you can directly from equipment detail, launch commands.<br />- You can create new commands.]]></en>n
       </long>
    </description>
    <homepage>https://github.com/InfotelGLPI/shellcommands</homepage>
@@ -23,10 +24,6 @@
       <author>Infotel</author>
    </authors>
    <versions>
-       <version>
-           <num>2.2.1</num>
-           <compatibility>9.3</compatibility>
-       </version>
        <version>
            <num>2.2.0</num>
            <compatibility>9.3</compatibility>
@@ -117,15 +114,20 @@
    </langs>
    <license><![CDATA[GPL v2+]]></license>
    <tags>
-         <fr>
-            <tag>Réseau</tag>
+         <cs>
+            <tag>Síť</tag>
             <tag>Shell</tag>
-            <tag>Commandes</tag>
-         </fr>
+            <tag>Příkazy</tag>
+         </cs>
          <en>
             <tag>Network</tag>
             <tag>Shell</tag>
             <tag>Commands</tag>
          </en>
+         <fr>
+            <tag>Réseau</tag>
+            <tag>Shell</tag>
+            <tag>Commandes</tag>
+         </fr>
    </tags>
 </root>
