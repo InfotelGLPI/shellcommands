@@ -59,7 +59,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
 
       static $types = [
          'Computer', 'NetworkEquipment', 'Peripheral',
-         'Phone', 'Printer'
+         'Phone', 'Printer', 'Monitor'
       ];
 
       if ($all) {
