@@ -84,8 +84,18 @@ if (!isset($_POST['emptylabel']) || $_POST['emptylabel'] == '') {
 switch ($_POST['myname']) {
    case "command_name":
       // NAME or ID
-      if (strstr($link, '[NAME]') || strstr($link, '[ID]')) {
+      if (strstr($link, '[NAME]')) {
          $tLink        = str_replace("[NAME]", $item->getField('name'), $link);
+         $shellExecute = "onClick='shellcommandsActions(\"" . $CFG_GLPI["root_doc"] . "\", \"" . $_POST['toupdate'] . "\", 
+                    " . json_encode(['id'           => $shell_item->getID(),
+                                     'command_type' => $_POST['command_type'],
+                                     'itemID'       => $_POST['itemID'],
+                                     'itemtype'     => $_POST['itemtype'],
+                                     'value'        => $tLink]) . ");'";
+
+         // DOMAIN
+      } else if (strstr($link, '[ID]')) {
+         $tLink        = str_replace("[ID]", $item->getID(), $link);
          $shellExecute = "onClick='shellcommandsActions(\"" . $CFG_GLPI["root_doc"] . "\", \"" . $_POST['toupdate'] . "\", 
                     " . json_encode(['id'           => $shell_item->getID(),
                                      'command_type' => $_POST['command_type'],
