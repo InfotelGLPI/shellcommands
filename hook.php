@@ -221,11 +221,14 @@ function plugin_shellcommands_forceGroupBy($type) {
 
 function plugin_shellcommands_MassiveActions($type) {
 
-   if (in_array($type, PluginShellcommandsShellcommand::getTypes(true))) {
-      return [
-         'PluginShellcommandsShellcommand' . MassiveAction::CLASS_ACTION_SEPARATOR . "generate" => __('Command launch', 'shellcommands'),
-         'PluginShellcommandsCommandGroup' . MassiveAction::CLASS_ACTION_SEPARATOR . "generate" => __('Command group launch', 'shellcommands')
-      ];
+   $plugin = new Plugin();
+   if ($plugin->isActivated("shellcommands")) {
+      if (in_array($type, PluginShellcommandsShellcommand::getTypes(true))) {
+         return [
+            'PluginShellcommandsShellcommand' . MassiveAction::CLASS_ACTION_SEPARATOR . "generate" => __('Command launch', 'shellcommands'),
+            'PluginShellcommandsCommandGroup' . MassiveAction::CLASS_ACTION_SEPARATOR . "generate" => __('Command group launch', 'shellcommands')
+         ];
+      }
    }
    return [];
 }

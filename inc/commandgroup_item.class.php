@@ -140,7 +140,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
 
       $used = [];
 
-      $dataGroup = $this->find('`plugin_shellcommands_commandgroups_id` = ' . $item->fields['id'], "`rank`");
+      $dataGroup = $this->find(['plugin_shellcommands_commandgroups_id' => $item->fields['id']], "`rank`");
 
       $shellcommand = new PluginShellcommandsShellcommand();
       $canedit      = $shellcommand->can($item->fields['id'], UPDATE);
@@ -194,7 +194,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
 
       $used = [];
 
-      $dataGroup = $this->find('`plugin_shellcommands_shellcommands_id` = ' . $item->fields['id'], "`rank`");
+      $dataGroup = $this->find(['plugin_shellcommands_commandgroups_id' => $item->fields['id']], "`rank`");
 
       $shellcommand = new PluginShellcommandsShellcommand();
       $canedit      = $shellcommand->can($item->fields['id'], UPDATE);
@@ -261,10 +261,8 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
       $dbu   = new DbUtils();
 
       $command_group = new PluginShellcommandsCommandGroup();
-      $restrict      = $dbu->getEntitiesRestrictRequest(" AND",
-                                                        "glpi_plugin_shellcommands_commandgroups",
-                                                        '', '', true);
-      $data          = $command_group->find("1" . $restrict);
+      $condition  = $dbu->getEntitiesRestrictCriteria('glpi_plugin_shellcommands_commandgroups', '', '', true);
+      $data          = $command_group->find($condition);
       $shells        = [0 => Dropdown::EMPTY_VALUE];
       if (!empty($data)) {
          foreach ($data as $val) {
@@ -515,7 +513,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
          $shellcommands       = new PluginShellcommandsShellcommand();
          $commandgroups       = new PluginShellcommandsCommandGroup();
          $commandgroups_item  = new PluginShellcommandsCommandGroup_Item();
-         $commandgroups_items = $commandgroups_item->find("`plugin_shellcommands_commandgroups_id`=" . $values['id'], "`rank`");
+         $commandgroups_items = $commandgroups_item->find(['plugin_shellcommands_commandgroups_id' => $values['id']], "`rank`");
 
          echo "<div class='center'>";
          echo "<table class='tab_cadre_fixe shellcommands_result_line'>";

@@ -283,7 +283,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
 
       $itemtypes = [];
 
-      $data = $this->find("`plugin_shellcommands_shellcommands_id` = $plugin_shellcommands_shellcommands_id");
+      $data = $this->find(['plugin_shellcommands_shellcommands_id' => $plugin_shellcommands_shellcommands_id]);
 
       if (!empty($data)) {
          foreach ($data as $val) {

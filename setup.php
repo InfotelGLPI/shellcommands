@@ -27,6 +27,8 @@
  --------------------------------------------------------------------------
  */
 
+define('PLUGIN_SHELLCOMMANDS_VERSION', '2.3.0');
+
 // Init the hooks of the plugins -Needed
 function plugin_init_shellcommands() {
    global $PLUGIN_HOOKS;
@@ -61,19 +63,27 @@ function plugin_init_shellcommands() {
 function plugin_version_shellcommands() {
    return [
       'name'           => _n('Shell Command', 'Shell Commands', 2, 'shellcommands'),
-      'version'        => '2.2.2',
+      'version'        => PLUGIN_SHELLCOMMANDS_VERSION,
       'license'        => 'GPLv2+',
       'oldname'        => 'cmd',
       'author'         => 'Xavier Caillaud',
       'homepage'       => 'https://github.com/InfotelGLPI/shellcommands',
-      'minGlpiVersion' => '9.3',
+      'requirements'   => [
+                     'glpi' => [
+                        'min' => '9.4',
+                        'dev' => false
+                     ]
+                  ]
    ];
 }
 
 // Optional : check prerequisites before install : may print errors or add to message after redirect
 function plugin_shellcommands_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '9.3', 'lt') || version_compare(GLPI_VERSION, '9.4', 'ge')) {
-      echo __('This plugin requires GLPI >= 9.3');
+   if (version_compare(GLPI_VERSION, '9.4', 'lt') 
+         || version_compare(GLPI_VERSION, '9.5', 'ge')) {
+      if (method_exists('Plugin', 'messageIncompatible')) {
+         echo Plugin::messageIncompatible('core', '9.4');
+      }
       return false;
    }
    return true;

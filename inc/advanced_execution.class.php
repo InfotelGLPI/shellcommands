@@ -162,13 +162,14 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
    static function lauchCommand($values) {
 
       $items_to_execute = json_decode(stripslashes($values['items_to_execute']), true);
-
       if (!empty($items_to_execute)) {
          foreach ($items_to_execute as $key => $items) {
-            PluginShellcommandsCommandGroup_Item::lauchCommand(['itemID'   => $items['items_id'],
-                                                                'itemtype' => $items['itemtype'],
-                                                                'id'       => $values['command_group'],
-                                                                'value'    => null]);
+            if (isset($items['items_id'])) {
+               PluginShellcommandsCommandGroup_Item::lauchCommand(['itemID'   => $items['items_id'],
+                                                                   'itemtype' => $items['itemtype'],
+                                                                   'id'       => $values['command_group'],
+                                                                   'value'    => null]);
+            }
          }
       }
    }

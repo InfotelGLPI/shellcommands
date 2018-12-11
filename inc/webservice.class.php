@@ -56,9 +56,9 @@ class PluginShellcommandsWebservice {
       $command      = new PluginShellcommandsShellcommand();
       $commandItems = new PluginShellcommandsShellcommand_Item();
 
-      foreach ($command->find('is_deleted = 0', 'name ASC') as $currentCommand) {
+      foreach ($command->find(['is_deleted' => 0], 'name ASC') as $currentCommand) {
          $currentCommandTargets = [];
-         foreach ($commandItems->find('`plugin_shellcommands_shellcommands_id` = ' . $currentCommand['id'] . '') as $currentItem) {
+         foreach ($commandItems->find(['plugin_shellcommands_shellcommands_id' => $currentCommand['id']]) as $currentItem) {
             $currentCommandTargets[] = $currentItem['itemtype'];
          }
          $shellcommandsList[] = [
@@ -152,7 +152,7 @@ class PluginShellcommandsWebservice {
          $target_names = (array)$params['target_name'];
          foreach ($target_names as $currentTargetName) {
             $target = new $params['target_type']();
-            if ($found = $target->find("`name` LIKE '" . $DB->escape($currentTargetName) . "'")) {
+            if ($found = $target->find(['name' => $DB->escape($currentTargetName)])) {
                $targetIds = array_merge($targetIds, array_keys($found));
             } else {
                $invalidTargets[] = $currentTargetName;

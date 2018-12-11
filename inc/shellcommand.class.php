@@ -432,16 +432,16 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
       echo "<tr class='tab_bg_1 shellcommands_result_line'>";
       switch ($result) {
          case PluginShellcommandsShellcommand::OK_RESULT :
-            echo "<td class='center'><img src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/ok.png'></td>";
+            echo "<td class='center'><i style='color:forestgreen' class='fa fa-check-circle fa-2x'></i></td>";
             break;
          case PluginShellcommandsShellcommand::WARNING_RESULT :
-            echo "<td class='center'><img src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/warning.png'></td>";
+            echo "<td class='center'><i style='color:orange' class='fa fa-exclamation-triangle fa-2x'></i></td>";
             break;
          case PluginShellcommandsShellcommand::KO_RESULT :
-            echo "<td class='center'><img src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/ko.png'></td>";
+            echo "<td class='center'><i style='color:orange' class='fa fa-exclamation-triangle fa-2x'></i></td>";
             break;
          case PluginShellcommandsShellcommand::CRITICAL_RESULT :
-            echo "<td class='center'><img src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/ko.png'></td>";
+            echo "<td class='center'><i style='color:darkred' class='fa fa-times-circle fa-2x'></i></td>";
             break;
       }
 
