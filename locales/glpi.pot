@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Shellcommands plugin 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-10 08:50+0200\n"
+"POT-Creation-Date: 2018-12-11 09:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,42 +18,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: hook.php:147 inc/shellcommand.class.php:117 inc/shellcommand.class.php:216
+#: hook.php:147 inc/shellcommand.class.php:116 inc/shellcommand.class.php:214
 #: inc/shellcommandpath.class.php:40
 msgid "Path"
 msgid_plural "Pathes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: hook.php:228
+#: hook.php:226
 msgid "Command launch"
 msgstr ""
 
-#: hook.php:229
+#: hook.php:227
 msgid "Command group launch"
 msgstr ""
 
-#: setup.php:63 inc/profile.class.php:102 inc/shellcommand.class.php:49
-#: inc/shellcommand.class.php:489
+#: setup.php:63 inc/profile.class.php:101 inc/shellcommand.class.php:49
+#: inc/shellcommand.class.php:487
 msgid "Shell Command"
 msgid_plural "Shell Commands"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:499
+#: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:497
 msgid "Advanced execution"
 msgid_plural "Advanced executions"
 msgstr[0] ""
 msgstr[1] ""
 
 #: inc/commandgroup.class.php:40 inc/commandgroup_item.class.php:58
-#: inc/shellcommand.class.php:494
+#: inc/shellcommand.class.php:492
 msgid "Command group"
 msgid_plural "Command groups"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/commandgroup.class.php:122
+#: inc/commandgroup.class.php:120
 msgid "Check command"
 msgstr ""
 
@@ -65,15 +65,15 @@ msgstr ""
 msgid "Add a command group"
 msgstr ""
 
-#: inc/commandgroup_item.class.php:402
+#: inc/commandgroup_item.class.php:400
 msgid "Order"
 msgstr ""
 
-#: inc/commandgroup_item.class.php:550
+#: inc/commandgroup_item.class.php:548
 msgid "Host UP"
 msgstr ""
 
-#: inc/commandgroup_item.class.php:581
+#: inc/commandgroup_item.class.php:579
 msgid "Host DOWN"
 msgstr ""
 
@@ -81,34 +81,34 @@ msgstr ""
 msgid "Shellcommands menu"
 msgstr ""
 
-#: inc/shellcommand.class.php:125 inc/shellcommand.class.php:211
+#: inc/shellcommand.class.php:124 inc/shellcommand.class.php:209
 msgid "Windows"
 msgstr ""
 
-#: inc/shellcommand.class.php:203
+#: inc/shellcommand.class.php:201
 msgid "Tag position"
 msgstr ""
 
-#: inc/shellcommand.class.php:205
+#: inc/shellcommand.class.php:203
 msgid "Before parameters"
 msgstr ""
 
-#: inc/shellcommand.class.php:205
+#: inc/shellcommand.class.php:203
 msgid "After parameters"
 msgstr ""
 
-#: inc/shellcommand_item.class.php:459
+#: inc/shellcommand_item.class.php:464
 msgid "Associated Commands"
 msgstr ""
 
-#: inc/shellcommand_item.class.php:814
+#: inc/shellcommand_item.class.php:818
 msgid "There is an error with socket creation"
 msgstr ""
 
-#: inc/shellcommand_item.class.php:853
+#: inc/shellcommand_item.class.php:857
 msgid "Magic packet sending to"
 msgstr ""
 
-#: inc/shellcommand_item.class.php:855
+#: inc/shellcommand_item.class.php:859
 msgid "The packet cannot be send"
 msgstr ""
