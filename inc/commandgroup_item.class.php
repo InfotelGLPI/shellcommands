@@ -194,7 +194,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
 
       $used = [];
 
-      $dataGroup = $this->find(['plugin_shellcommands_commandgroups_id' => $item->fields['id']], "`rank`");
+      $dataGroup = $this->find(['plugin_shellcommands_shellcommands_id' => $item->fields['id']], "`rank`");
 
       $shellcommand = new PluginShellcommandsShellcommand();
       $canedit      = $shellcommand->can($item->fields['id'], UPDATE);
