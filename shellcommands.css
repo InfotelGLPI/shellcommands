@@ -47,11 +47,6 @@ td.shellcommands_menu_item:hover {
    margin-top: 30px;
 }
 
-.shellcommands_menu_img {
-   width: 64px;
-   height: 64px;
-}
-
 .shellcommands_show_custom_fields {
    margin-left: auto;
    margin-right: auto;

@@ -75,21 +75,21 @@ class PluginShellcommandsMenu extends CommonDBTM {
       // Add shell command
       echo "<td class='center shellcommands_menu_item'>";
       echo "<a  class='shellcommands_menu_a' href=\"./shellcommand.php\">";
-      echo "<img class='shellcommands_menu_img' src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/shellcommand.png' alt=\"" . PluginShellcommandsShellcommand::getTypeName(2) . "\">";
+      echo "<i class='fas fa-terminal fa-5x' style='color:#b5b5b5' title=\"" . PluginShellcommandsShellcommand::getTypeName(2) . "\"></i>";
       echo "<br>" . PluginShellcommandsShellcommand::getTypeName(2) . "</a>";
       echo "</td>";
 
       // Command group
       echo "<td class='center shellcommands_menu_item'>";
       echo "<a  class='shellcommands_menu_a' href=\"./commandgroup.php\">";
-      echo "<img class='shellcommands_menu_img' src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/commandgroup.png' alt=\"" . PluginShellcommandsCommandGroup::getTypeName(2) . "\">";
+      echo "<i class='far fa-list-alt fa-5x' style='color:#b5b5b5' title=\"" . PluginShellcommandsCommandGroup::getTypeName(2) . "\"></i>";
       echo "<br>" . PluginShellcommandsCommandGroup::getTypeName(2) . "</a>";
       echo "</td>";
 
       // Advanced execution
       echo "<td class='center shellcommands_menu_item'>";
       echo "<a  class='shellcommands_menu_a' href=\"./advanced_execution.php\">";
-      echo "<img class='shellcommands_menu_img' src='" . $CFG_GLPI["root_doc"] . "/plugins/shellcommands/pics/advanced_execution.png' alt=\"" . PluginShellcommandsAdvanced_Execution::getTypeName(2) . "\">";
+      echo "<i class='fas fa-angle-double-right fa-5x' style='color:#b5b5b5' title=\"" . PluginShellcommandsAdvanced_Execution::getTypeName(2) . "\"></i>";
       echo "<br>" . PluginShellcommandsAdvanced_Execution::getTypeName(2) . "</a>";
       echo "</td>";
 

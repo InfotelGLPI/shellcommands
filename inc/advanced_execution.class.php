@@ -127,17 +127,13 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
 
       echo '<input type="hidden" id="count_custom_values" value="' . $count . '"/>';
 
-      echo "&nbsp;<img style='cursor:pointer' 
+      echo "&nbsp;<i class='fas fa-plus-circle fa-2x' style='cursor:pointer;color:forestgreen' 
             onclick='shellcommands_add_custom_values(\"show_custom_fields\", \"" . $CFG_GLPI['root_doc'] . "\");' 
-            src='" . $CFG_GLPI['root_doc'] . "/plugins/shellcommands/pics/add.png' 
-            alt='" . _sx("button", "Add") . "'
-            title='" . _sx("button", "Add") . "'/>&nbsp;";
+            title='"._sx("button", "Add")."'></i>&nbsp;";
 
-      echo '<img style="cursor:pointer" 
-            onclick="shellcommands_delete_custom_values(\'custom_values\')" 
-            src="' . $CFG_GLPI['root_doc'] . '/plugins/shellcommands/pics/delete.png"
-            alt="' . _sx('button', 'Delete permanently') . '" 
-            title="' . _sx('button', 'Delete permanently') . '"/>';
+      echo "&nbsp;<i class='fas fa-times-circle fa-2x' style='cursor:pointer;color:red'
+           onclick='shellcommands_delete_custom_values(\"custom_values\");'
+            title='"._sx('button', 'Delete permanently')."'/></i>&nbsp;";
    }
 
    /**
