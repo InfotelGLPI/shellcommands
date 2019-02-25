@@ -66,7 +66,7 @@ function plugin_version_shellcommands() {
       'version'        => PLUGIN_SHELLCOMMANDS_VERSION,
       'license'        => 'GPLv2+',
       'oldname'        => 'cmd',
-      'author'         => 'Xavier Caillaud',
+      'author'         => "<a href='http://blogglpi.infotel.com'>Infotel</a>",
       'homepage'       => 'https://github.com/InfotelGLPI/shellcommands',
       'requirements'   => [
                      'glpi' => [
