@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Shellcommands plugin 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-11 09:29+0100\n"
+"POT-Creation-Date: 2019-02-25 09:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,15 +25,15 @@ msgid_plural "Pathes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: hook.php:226
+#: hook.php:228
 msgid "Command launch"
 msgstr ""
 
-#: hook.php:227
+#: hook.php:229
 msgid "Command group launch"
 msgstr ""
 
-#: setup.php:63 inc/profile.class.php:101 inc/shellcommand.class.php:49
+#: setup.php:65 inc/profile.class.php:101 inc/shellcommand.class.php:49
 #: inc/shellcommand.class.php:487
 msgid "Shell Command"
 msgid_plural "Shell Commands"
@@ -65,15 +65,15 @@ msgstr ""
 msgid "Add a command group"
 msgstr ""
 
-#: inc/commandgroup_item.class.php:400
+#: inc/commandgroup_item.class.php:398
 msgid "Order"
 msgstr ""
 
-#: inc/commandgroup_item.class.php:548
+#: inc/commandgroup_item.class.php:546
 msgid "Host UP"
 msgstr ""
 
-#: inc/commandgroup_item.class.php:579
+#: inc/commandgroup_item.class.php:577
 msgid "Host DOWN"
 msgstr ""
 
