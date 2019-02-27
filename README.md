@@ -2,10 +2,10 @@
 Plugin shellcommands pour GLPI
 
 Ce plugin est sur Transifex - Aidez-nous à le traduire :
-https://www.transifex.com/tsmr/GLPI_shellcommands/
+https://www.transifex.com/infotelGLPI/GLPI_shellcommands/
 
 This plugin is on Transifex - Help us to translate :
-https://www.transifex.com/tsmr/GLPI_shellcommands/
+https://www.transifex.com/infotelGLPI/GLPI_shellcommands/
 
 Ce plugin vous permet de lancer des commandes shell :
 
