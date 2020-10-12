@@ -144,7 +144,7 @@ switch ($_POST['myname']) {
          $result2 = $DB->query($query2);
 
          if ($DB->numrows($result2) > 0) {
-            while ($data2 = $DB->fetch_array($result2)) {
+            while ($data2 = $DB->fetchArray($result2)) {
                if ((!empty($data2["ip"]) && $data2["ip"] != '0.0.0.0')) {
                   if (!empty($data2["name"])) {
                      $ip[$ipCount]['name'] = $data2["name"];

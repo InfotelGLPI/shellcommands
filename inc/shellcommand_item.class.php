@@ -147,7 +147,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
 
       $shells = [];
       if ($number) {
-         while ($data = $DB->fetch_assoc($result)) {
+         while ($data = $DB->fetchAssoc($result)) {
             $shells[$data['assocID']] = $data;
          }
       }
@@ -191,7 +191,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
                               ORDER BY `glpi_networkports`.`logical_number`";
                $result2 = $DB->query($query2);
                if ($DB->numrows($result2) > 0) {
-                  while ($data2 = $DB->fetch_array($result2)) {
+                  while ($data2 = $DB->fetchArray($result2)) {
                      if ((!empty($data2["ip"]) && $data2["ip"] != '0.0.0.0')) {
                         $ip[$i]['ip'] = $data2["ip"];
                         $i++;
@@ -262,7 +262,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
          if ($DB->numrows($result) != 1) {
             return false;
          }
-         $this->fields = $DB->fetch_assoc($result);
+         $this->fields = $DB->fetchAssoc($result);
          if (is_array($this->fields) && count($this->fields)) {
             return true;
          } else {
@@ -339,7 +339,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       $types  = [];
       $used   = [];
       if ($numrows = $DB->numrows($result)) {
-         while ($data = $DB->fetch_assoc($result)) {
+         while ($data = $DB->fetchAssoc($result)) {
             $types[$data['id']]      = $data;
             $used[$data['itemtype']] = $data['itemtype'];
          }
@@ -453,7 +453,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
 
       $shells = [];
       if ($numrows = $DB->numrows($result)) {
-         while ($data = $DB->fetch_assoc($result)) {
+         while ($data = $DB->fetchAssoc($result)) {
             $shells[$data['assocID']] = $data;
          }
       }
@@ -590,7 +590,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
                ORDER
                   BY `glpi_networkports`.`logical_number` ASC');
 
-            while ($networkportRow = $DB->fetch_assoc($networkportsRowset)) { // For each found network port
+            while ($networkportRow = $DB->fetchAssoc($networkportsRowset)) { // For each found network port
                $currentlyResolvedNetworkport = $currentlyResolvedLink;
                foreach ($handledTags as $currentHandledTag => $currentHandledRowsetKey) { // For each handled tags
                   if (strstr($commandLink, $currentHandledTag)) { // Tag in $commandLink?

@@ -66,7 +66,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
          if ($DB->numrows($result) != 1) {
             return false;
          }
-         $this->fields = $DB->fetch_assoc($result);
+         $this->fields = $DB->fetchAssoc($result);
          if (is_array($this->fields) && count($this->fields)) {
             return true;
          } else {
@@ -249,7 +249,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
       $number   = $DB->numrows($result);
       $elements = [Dropdown::EMPTY_VALUE];
       if ($number != "0") {
-         while ($data = $DB->fetch_assoc($result)) {
+         while ($data = $DB->fetchAssoc($result)) {
             $elements[$data["id"]] = $data["name"];
          }
       }
@@ -497,7 +497,16 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
       $menu['options']['advanced_execution']['title'] = _n('Advanced execution', 'Advanced executions', 2, 'shellcommands');
       $menu['options']['advanced_execution']['page']  = '/plugins/shellcommands/front/advanced_execution.php';
 
+      $menu['icon'] = self::getIcon();
+
       return $menu;
+   }
+
+   /**
+    * @return string
+    */
+   static function getIcon() {
+      return "fas fa-keyboard";
    }
 
 

@@ -61,7 +61,7 @@ function plugin_shellcommands_install() {
       $result_ = $DB->query($query_);
       if ($DB->numrows($result_) > 0) {
 
-         while ($data = $DB->fetch_array($result_)) {
+         while ($data = $DB->fetchArray($result_)) {
             $query  = "UPDATE `glpi_plugin_shellcommands_profiles`
                   SET `profiles_id` = '" . $data["id"] . "'
                   WHERE `id` = '" . $data["id"] . "';";
