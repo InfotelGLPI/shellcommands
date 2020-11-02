@@ -1,25 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Shellcommands Development Team
 # This file is distributed under the same license as the GLPI - Shellcommands plugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Ondrej Krejcik <ondra@tachec.org>, 2013
-# Pavel Borecki <pavel.borecki@gmail.com>, 2018
+# Xavier CAILLAUD <thetsmr@gmail.com>, 2020
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: GLPI Project - shellcommands plugin\n"
+"Project-Id-Version: GLPI - Shellcommands plugin 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-10 08:50+0200\n"
-"PO-Revision-Date: 2018-06-26 13:01+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>\n"
-"Language-Team: Czech (Czech Republic) (http://www.transifex.com/tsmr/GLPI_shellcommands/language/cs_CZ/)\n"
+"POT-Creation-Date: 2019-02-25 09:32+0100\n"
+"PO-Revision-Date: 2020-11-02 13:01+0000\n"
+"Last-Translator: Xavier CAILLAUD <thetsmr@gmail.com>, 2020\n"
+"Language-Team: Czech (Czech Republic) (https://www.transifex.com/infotelGLPI/teams/12373/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: cs_CZ\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: hook.php:147 inc/shellcommand.class.php:117 inc/shellcommand.class.php:216
+#: hook.php:147 inc/shellcommand.class.php:116 inc/shellcommand.class.php:214
 #: inc/shellcommandpath.class.php:40
 msgid "Path"
 msgid_plural "Pathes"
@@ -36,8 +38,8 @@ msgstr "Spuštění příkazu"
 msgid "Command group launch"
 msgstr "Spuštění skupiny příkazů"
 
-#: setup.php:63 inc/profile.class.php:102 inc/shellcommand.class.php:49
-#: inc/shellcommand.class.php:489
+#: setup.php:65 inc/profile.class.php:101 inc/shellcommand.class.php:49
+#: inc/shellcommand.class.php:487
 msgid "Shell Command"
 msgid_plural "Shell Commands"
 msgstr[0] "Příkaz shellu"
@@ -45,7 +47,7 @@ msgstr[1] "Příkazy shellu"
 msgstr[2] "Příkazů shellu"
 msgstr[3] "Příkazy shellu"
 
-#: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:499
+#: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:497
 msgid "Advanced execution"
 msgid_plural "Advanced executions"
 msgstr[0] "Pokročilé vykonávání"
@@ -54,7 +56,7 @@ msgstr[2] "Pokročilých vykonávání"
 msgstr[3] "Pokročilá vykonávání"
 
 #: inc/commandgroup.class.php:40 inc/commandgroup_item.class.php:58
-#: inc/shellcommand.class.php:494
+#: inc/shellcommand.class.php:492
 msgid "Command group"
 msgid_plural "Command groups"
 msgstr[0] "Skupina příkazu"
@@ -62,7 +64,7 @@ msgstr[1] "Skupiny příkazu"
 msgstr[2] "Skupin příkazu"
 msgstr[3] "Skupiny příkazu"
 
-#: inc/commandgroup.class.php:122
+#: inc/commandgroup.class.php:120
 msgid "Check command"
 msgstr "Kontrolní příkaz"
 
@@ -74,15 +76,15 @@ msgstr "Přidat příkaz"
 msgid "Add a command group"
 msgstr "Přidat skupinu příkazů"
 
-#: inc/commandgroup_item.class.php:402
+#: inc/commandgroup_item.class.php:398
 msgid "Order"
 msgstr "Pořadí"
 
-#: inc/commandgroup_item.class.php:550
+#: inc/commandgroup_item.class.php:546
 msgid "Host UP"
 msgstr "Stroj DOSTUPNÝ"
 
-#: inc/commandgroup_item.class.php:581
+#: inc/commandgroup_item.class.php:577
 msgid "Host DOWN"
 msgstr "Stroj NEDOSTUPNÝ"
 
@@ -90,34 +92,34 @@ msgstr "Stroj NEDOSTUPNÝ"
 msgid "Shellcommands menu"
 msgstr "Nabídka příkazů shellu"
 
-#: inc/shellcommand.class.php:125 inc/shellcommand.class.php:211
+#: inc/shellcommand.class.php:124 inc/shellcommand.class.php:209
 msgid "Windows"
 msgstr "Parametry"
 
-#: inc/shellcommand.class.php:203
+#: inc/shellcommand.class.php:201
 msgid "Tag position"
 msgstr "Pozice štítku"
 
-#: inc/shellcommand.class.php:205
+#: inc/shellcommand.class.php:203
 msgid "Before parameters"
 msgstr "Před parametry"
 
-#: inc/shellcommand.class.php:205
+#: inc/shellcommand.class.php:203
 msgid "After parameters"
 msgstr "Za parametry"
 
-#: inc/shellcommand_item.class.php:459
+#: inc/shellcommand_item.class.php:464
 msgid "Associated Commands"
 msgstr "Přiřazené příkazy"
 
-#: inc/shellcommand_item.class.php:814
+#: inc/shellcommand_item.class.php:818
 msgid "There is an error with socket creation"
 msgstr "Chyba při vytváření soketu"
 
-#: inc/shellcommand_item.class.php:853
+#: inc/shellcommand_item.class.php:857
 msgid "Magic packet sending to"
 msgstr "Probouzecí paket odeslán na"
 
-#: inc/shellcommand_item.class.php:855
+#: inc/shellcommand_item.class.php:859
 msgid "The packet cannot be send"
 msgstr "Packet nelze poslat"
