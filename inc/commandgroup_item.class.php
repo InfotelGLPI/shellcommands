@@ -425,7 +425,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
             echo "<form id='upDown' method='post' action='$target'>";
             echo "<input type='hidden' name='id' value='" . $field["id"] . "'>";
             echo "<button style='border:0;background:none' type='submit' name='up'  alt=\"" . __s('Bring up') . "\">
-                    <i class='fa fa-chevron-up pointer' title=\"" . __s('Bring up') . "\" alt=\"" . __s('Bring up') . "\"></i>
+                    <i class='fas fa-chevron-up pointer' title=\"" . __s('Bring up') . "\" alt=\"" . __s('Bring up') . "\"></i>
                   </button>";
             Html::closeForm();
             echo "</td>";
@@ -439,10 +439,10 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
             echo "<form method='post' action='$target'>";
             echo "<input type='hidden' name='id' value='" . $field["id"] . "'>";
             echo "<button style='border:0;background:none' type='submit' name='down'  alt=\"" . __s('Bring down') . "\">
-                    <i class='fa fa-chevron-down pointer' title=\"" . __s('Bring down') . "\" alt=\"" . __s('Bring down') . "\"></i>
+                    <i class='fas fa-chevron-down pointer' title=\"" . __s('Bring down') . "\" alt=\"" . __s('Bring down') . "\"></i>
                   </button>";
 
-            // echo "<input type='submit' name='down' class='fa fa-chevron-down pointer'>";
+            // echo "<input type='submit' name='down' class='fas fa-chevron-down pointer'>";
             Html::closeForm();
             echo "</td>";
 
