@@ -33,6 +33,8 @@ Html::header_nocache();
 
 Session::checkLoginUser();
 
+$itemtype = $_POST["itemtype"] ?? '';
+
 // Make a select box
 if (isset($_POST["itemtype"])
     && CommonITILObject::isPossibleToAssignType($_POST["itemtype"])) {
@@ -51,7 +53,11 @@ if (isset($_POST["itemtype"])
          'entity_restrict' => $_POST['entity_restrict'],
          'table'           => $table,
          'width'           => $_POST["width"],
-         'myname'          => $_POST["myname"]];
+         'myname'          => $_POST["myname"],
+         '_idor_token'         => Session::getNewIDORToken($itemtype, [
+            'entity_restrict' => $_POST['entity_restrict'],
+         ]),
+   ];
 
    echo Html::jsAjaxDropdown($_POST['myname'], $field_id,
                              $CFG_GLPI['root_doc'] . "/ajax/getDropdownFindNum.php",
