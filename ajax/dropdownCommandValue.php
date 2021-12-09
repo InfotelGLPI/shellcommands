@@ -218,7 +218,7 @@ switch ($_POST['myname']) {
          echo "<span id='command_ip$randSelect'></span>";
 
       } else if (isset($shellExecute)) {
-         echo "<input type='button' name='execute' value='" . __('Execute') . "' class='submit' $shellExecute>";
+         echo "<input type='button' name='execute' value='" . __('Execute') . "' class='btn btn-primary' $shellExecute>";
       }
 
       break;
@@ -233,7 +233,7 @@ switch ($_POST['myname']) {
                                'itemtype'     => $_POST['itemtype'],
                                'value'        => $ipmac]) . ");'";
       echo "&nbsp";
-      echo "<input type='button' name='execute' value='" . __('Execute') . "' class='submit' $shellExecute>";
+      echo "<input type='button' name='execute' value='" . __('Execute') . "' class='btn btn-primary' $shellExecute>";
       break;
 }
 

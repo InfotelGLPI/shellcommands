@@ -167,8 +167,8 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
 
          echo "<tr>";
          echo "<td class='tab_bg_2 center' colspan='6'>";
-         echo "<input type='submit' name='add' class='submit' value='" . _sx('button', 'Add') . "' >";
-         echo "<input type='hidden' name='plugin_shellcommands_commandgroups_id' class='submit' value='" . $item->fields['id'] . "' >";
+         echo Html::hidden('plugin_shellcommands_commandgroups_id', ['value' => $item->fields['id']]);
+         echo Html::submit(_sx('button', 'Add'), ['name' => 'add', 'class' => 'btn btn-primary']);
          echo "</td>";
          echo "</tr>";
          echo "</table></div>";
@@ -221,8 +221,8 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
 
          echo "<tr>";
          echo "<td class='tab_bg_2 center' colspan='6'>";
-         echo "<input type='submit' name='add' class='submit' value='" . _sx('button', 'Add') . "' >";
-         echo "<input type='hidden' name='plugin_shellcommands_shellcommands_id' class='submit' value='" . $item->fields['id'] . "' >";
+         echo Html::hidden('plugin_shellcommands_shellcommands_id', ['value' => $item->fields['id']]);
+         echo Html::submit(_sx('button', 'Add'), ['name' => 'add', 'class' => 'btn btn-primary']);
          echo "</td>";
          echo "</tr>";
          echo "</table></div>";
@@ -314,7 +314,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
       $rand    = mt_rand();
       $numrows = count($data);
 
-      echo "<div class='center'>";
+      echo "<div class='left'>";
       if ($canedit) {
          Html::openMassiveActionsForm('mass' . __CLASS__ . $rand);
          $massiveactionparams = ['item' => __CLASS__, 'container' => 'mass' . __CLASS__ . $rand,
@@ -351,13 +351,13 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
 
          $i++;
       }
-
+      echo "</table>";
       if ($canedit) {
          $massiveactionparams['ontop'] = false;
          Html::showMassiveActions($massiveactionparams);
          Html::closeForm();
       }
-      echo "</table>";
+
       echo "</div>";
    }
 
@@ -377,7 +377,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
       $numrows = count($data);
       $target  = Toolbox::getItemTypeFormURL('PluginShellcommandsCommandGroup_Item');
 
-      echo "<div class='center'>";
+      echo "<div class='left'>";
       if ($canedit) {
          Html::openMassiveActionsForm('mass' . __CLASS__ . $rand);
          $massiveactionparams = ['item' => __CLASS__, 'container' => 'mass' . __CLASS__ . $rand, 'num_displayed' => $numrows];
@@ -423,8 +423,8 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
          if ($i != 0) {
             echo "<td class='center middle'>";
             echo "<form id='upDown' method='post' action='$target'>";
-            echo "<input type='hidden' name='id' value='" . $field["id"] . "'>";
-            echo "<button style='border:0;background:none' type='submit' name='up'  alt=\"" . __s('Bring up') . "\">
+            echo Html::hidden('id', ['value' => $field["id"]]);
+            echo "<button type='submit' class='btn btn-primary' name='up'  alt=\"" . __s('Bring up') . "\">
                     <i class='fas fa-chevron-up pointer' title=\"" . __s('Bring up') . "\" alt=\"" . __s('Bring up') . "\"></i>
                   </button>";
             Html::closeForm();
@@ -437,12 +437,10 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
          if ($i != ($numrows - 1)) {
             echo "<td class='center middle'>";
             echo "<form method='post' action='$target'>";
-            echo "<input type='hidden' name='id' value='" . $field["id"] . "'>";
-            echo "<button style='border:0;background:none' type='submit' name='down'  alt=\"" . __s('Bring down') . "\">
+            echo Html::hidden('id', ['value' => $field["id"]]);
+            echo "<button class='btn btn-primary' type='submit' name='down'  alt=\"" . __s('Bring down') . "\">
                     <i class='fas fa-chevron-down pointer' title=\"" . __s('Bring down') . "\" alt=\"" . __s('Bring down') . "\"></i>
                   </button>";
-
-            // echo "<input type='submit' name='down' class='fas fa-chevron-down pointer'>";
             Html::closeForm();
             echo "</td>";
 
@@ -453,13 +451,13 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
 
          $i++;
       }
-
+      echo "</table>";
       if ($canedit) {
          $massiveactionparams['ontop'] = false;
          Html::showMassiveActions($massiveactionparams);
          Html::closeForm();
       }
-      echo "</table>";
+
       echo "</div>";
    }
 

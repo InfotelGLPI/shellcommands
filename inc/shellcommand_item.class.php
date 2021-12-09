@@ -332,10 +332,10 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
          echo "<tr class='tab_bg_2'><th colspan='2'>" . __('Add an item type') . "</th></tr>";
 
          echo "<tr class='tab_bg_2'><td class='right'>";
-         echo "<input type='hidden' name='plugin_shellcommands_shellcommands_id' value='$shell_id'>";
          Dropdown::showItemTypes('itemtype', PluginShellcommandsShellcommand::getTypes(true));
          echo "</td><td class='center'>";
-         echo "<input type='submit' name='additem' value=\"" . _sx('button', 'Add') . "\" class='submit'>";
+         echo Html::hidden('plugin_shellcommands_shellcommands_id', ['value' => $shell_id]);
+         echo Html::submit(_sx('button', 'Add'), ['name' => 'additem', 'class' => 'btn btn-primary']);
          echo "</td></tr>";
 
          echo "</table>";
@@ -369,7 +369,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
                Html::showMassiveActionCheckBox(__CLASS__, $data["id"]);
                echo "</td>";
             }
-            echo "<td class='center'>$typename</td>";
+            echo "<td>$typename</td>";
             echo "</tr>";
          }
       }
@@ -634,7 +634,6 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
     * @return string|null    Command line, null if no command line for this shellcommand
     */
    static function getCommandLine($commandId, $targetParam) {
-      $commandToExec = '';
 
       $command = new PluginShellcommandsShellcommand();
       if (!$command->getFromDB($commandId)) { // Command not found

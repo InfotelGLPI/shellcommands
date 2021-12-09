@@ -81,7 +81,7 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
 
       echo "<tr>";
       echo "<td class='tab_bg_2 center'>";
-      echo "<input type='button' class='submit' onclick='shellcommand_advanced_execution(\"" . $CFG_GLPI['root_doc'] . "\",\"field_form\", \"advanced_execution_result\");' name='advanced_execution' value='" . __('Execute') . "'/>";
+      echo "<input type='button' class='btn btn-primary' onclick='shellcommand_advanced_execution(\"" . $CFG_GLPI['root_doc'] . "\",\"field_form\", \"advanced_execution_result\");' name='advanced_execution' value='" . __('Execute') . "'/>";
       echo "</td>";
       echo "</tr>";
 
@@ -190,9 +190,8 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
       $rand = mt_rand();
 
       if ($_SESSION["glpiactiveprofile"]["helpdesk_hardware"] == 0) {
-         echo "<input type='hidden' name='$myname' value=''>";
-         echo "<input type='hidden' name='items_id' value='0'>";
-
+         echo Html::hidden($myname, ['value' => '']);
+         echo Html::hidden('items_id', ['value' => 0]);
       } else {
          $rand = mt_rand();
          echo "<span id='tracking_all_devices$rand'>";

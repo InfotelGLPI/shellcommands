@@ -184,7 +184,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
 
       echo "<td>" . __('Name') . "</td>";
       echo "<td>";
-      Html::autocompletionTextField($this, "name");
+      echo Html::input('name', ['value' => $this->fields['name'], 'size' => 40]);
       echo "</td>";
 
       echo "<td>" . __('Valid tags') . "</td>";
@@ -195,7 +195,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
 
       echo "<td>" . __('Tag') . "</td>";
       echo "<td>";
-      Html::autocompletionTextField($this, "link", ['size' => "50"]);
+      echo Html::input('link', ['value' => $this->fields['link'], 'size' => 50]);
       echo "</td>";
 
       echo "<td>" . __('Tag position', 'shellcommands') . "</td>";
@@ -208,7 +208,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
 
       echo "<td>" . __('Windows', 'shellcommands') . "</td>";
       echo "<td>";
-      Html::autocompletionTextField($this, "parameters");
+      echo Html::input('parameters', ['value' => $this->fields['parameters'], 'size' => 40]);
       echo "</td>";
 
       echo "<td>" . __('Path', 'shellcommands') . "</td>";
@@ -260,10 +260,10 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
    /**
     * For other plugins, add a type to the linkable types
     *
-    * @since version 1.3.0
-    *
     * @param $type string class name
-    * */
+    * *@since version 1.3.0
+    *
+    */
    static function registerType($type) {
       if (!in_array($type, self::$types)) {
          self::$types[] = $type;
@@ -302,12 +302,12 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
    /**
     * Get the specific massive actions
     *
-    * @since version 0.84
-    *
     * @param $checkitem link item to check right   (default NULL)
     *
     * @return an array of massive actions
-    **/
+    **@since version 0.84
+    *
+    */
    public function getSpecificMassiveActions($checkitem = null) {
       $actions = parent::getSpecificMassiveActions($checkitem);
 
@@ -348,7 +348,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
     * @see CommonDBTM::processMassiveActionsForOneItemtype()
     **/
    static function processMassiveActionsForOneItemtype(MassiveAction $ma, CommonDBTM $item,
-                                                       array $ids) {
+                                                       array         $ids) {
       global $CFG_GLPI;
 
       $command_item = new PluginShellcommandsShellcommand_Item();
@@ -434,10 +434,8 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
          case PluginShellcommandsShellcommand::OK_RESULT :
             echo "<td class='center'><i style='color:forestgreen' class='fas fa-check-circle fa-2x'></i></td>";
             break;
+         case PluginShellcommandsShellcommand::KO_RESULT:
          case PluginShellcommandsShellcommand::WARNING_RESULT :
-            echo "<td class='center'><i style='color:orange' class='fas fa-exclamation-triangle fa-2x'></i></td>";
-            break;
-         case PluginShellcommandsShellcommand::KO_RESULT :
             echo "<td class='center'><i style='color:orange' class='fas fa-exclamation-triangle fa-2x'></i></td>";
             break;
          case PluginShellcommandsShellcommand::CRITICAL_RESULT :
@@ -460,7 +458,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
             break;
          case PluginShellcommandsShellcommand::CRITICAL_RESULT :
             echo "<td class='center'><div class='shellcommands_result_ko'>CRITICAL</div></td>";
-            break;http://10.2.1.215
+            break;
       }
 
       echo "<td>";
@@ -506,7 +504,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
     * @return string
     */
    static function getIcon() {
-      return "fas fa-keyboard";
+      return "ti ti-keyboard";
    }
 
 
@@ -534,7 +532,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
                echo "<th colspan='4'>" . PluginShellcommandsShellcommand::getTypeName(2) . "</th>";
                echo "</tr>";
 
-               $error = 1;
+               $error   = 1;
                $message = '';
                foreach ($ids as $key => $items_id) {
                   if (!$shellcommands_item->getFromDBbyShellCommandsAndItem($commands_id, $itemtype)) {

@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_SHELLCOMMANDS_VERSION', '3.0.0');
+define('PLUGIN_SHELLCOMMANDS_VERSION', '4.0.0');
 
 // Init the hooks of the plugins -Needed
 function plugin_init_shellcommands() {
@@ -62,36 +62,18 @@ function plugin_init_shellcommands() {
 // Get the name and the version of the plugin - Needed
 function plugin_version_shellcommands() {
    return [
-      'name'           => _n('Shell Command', 'Shell Commands', 2, 'shellcommands'),
-      'version'        => PLUGIN_SHELLCOMMANDS_VERSION,
-      'license'        => 'GPLv2+',
-      'oldname'        => 'cmd',
-      'author'         => "<a href='http://blogglpi.infotel.com'>Infotel</a>",
-      'homepage'       => 'https://github.com/InfotelGLPI/shellcommands',
-      'requirements'   => [
-                     'glpi' => [
-                        'min' => '9.5',
-                        'dev' => false
-                     ]
-                  ]
+      'name'         => _n('Shell Command', 'Shell Commands', 2, 'shellcommands'),
+      'version'      => PLUGIN_SHELLCOMMANDS_VERSION,
+      'license'      => 'GPLv2+',
+      'oldname'      => 'cmd',
+      'author'       => "<a href='http://blogglpi.infotel.com'>Infotel</a>",
+      'homepage'     => 'https://github.com/InfotelGLPI/shellcommands',
+      'requirements' => [
+         'glpi' => [
+            'min' => '10.0',
+            'max' => '11.0',
+            'dev' => false
+         ]
+      ]
    ];
 }
-
-// Optional : check prerequisites before install : may print errors or add to message after redirect
-function plugin_shellcommands_check_prerequisites() {
-   if (version_compare(GLPI_VERSION, '9.5', 'lt')
-         || version_compare(GLPI_VERSION, '9.6', 'ge')) {
-      if (method_exists('Plugin', 'messageIncompatible')) {
-         echo Plugin::messageIncompatible('core', '9.5');
-      }
-      return false;
-   }
-   return true;
-}
-
-// Uninstall process for plugin : need to return true if succeeded : may display messages or add to message after redirect
-function plugin_shellcommands_check_config() {
-   return true;
-}
-
-

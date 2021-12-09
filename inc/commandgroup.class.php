@@ -48,6 +48,13 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
       return Session::haveRightsOr(self::$rightname, [CREATE, UPDATE, DELETE]);
    }
 
+   /**
+    * @return string
+    */
+   static function getIcon() {
+      return "ti ti-keyboard";
+   }
+
    function cleanDBonPurge() {
 
       $temp = new PluginShellcommandsCommandGroup_Item();
@@ -114,7 +121,7 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
       echo "<tr class='tab_bg_1'>";
       echo "<td>" . __('Name') . "</td>";
       echo "<td>";
-      Html::autocompletionTextField($this, "name");
+      echo Html::input('name', ['value' => $this->fields['name'], 'size' => 40]);
       echo "</td>";
 
       echo "<td>" . __('Check command', 'shellcommands') . "</td>";

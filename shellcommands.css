@@ -43,7 +43,7 @@ td.shellcommands_menu_item:hover {
 .shellcommands_menu_a {
    display: block;
    width: 150px;
-   height: 100px;
+   /*height: 100px;*/
    margin-top: 30px;
 }
 
