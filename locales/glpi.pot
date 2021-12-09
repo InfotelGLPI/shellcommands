@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Shellcommands plugin 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-01 12:31+0000\n"
+"POT-Creation-Date: 2021-12-09 13:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,18 +97,18 @@ msgstr ""
 msgid "After parameters"
 msgstr ""
 
-#: inc/shellcommand_item.class.php:464
+#: inc/shellcommand_item.class.php:442
 msgid "Associated Commands"
 msgstr ""
 
-#: inc/shellcommand_item.class.php:818
+#: inc/shellcommand_item.class.php:796
 msgid "There is an error with socket creation"
 msgstr ""
 
-#: inc/shellcommand_item.class.php:857
+#: inc/shellcommand_item.class.php:835
 msgid "Magic packet sending to"
 msgstr ""
 
-#: inc/shellcommand_item.class.php:859
+#: inc/shellcommand_item.class.php:837
 msgid "The packet cannot be send"
 msgstr ""
