@@ -55,28 +55,6 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
       return Session::haveRightsOr(self::$rightname, [CREATE, UPDATE, DELETE]);
    }
 
-   static function getClasses($all = false) {
-
-      static $types = [
-         'Computer', 'NetworkEquipment', 'Peripheral',
-         'Phone', 'Printer', 'Monitor'
-      ];
-
-      if ($all) {
-         return $types;
-      }
-
-      foreach ($types as $key => $type) {
-         if (!class_exists($type)) {
-            continue;
-         }
-         $item = new $type();
-         if (!$item->canView()) {
-            unset($types[$key]);
-         }
-      }
-      return $types;
-   }
 
    function getTabNameForItem(CommonGLPI $item, $withtemplate = 0) {
 

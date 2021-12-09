@@ -83,7 +83,7 @@ if (!isset($_POST['emptylabel']) || $_POST['emptylabel'] == '') {
 
 switch ($_POST['myname']) {
    case "command_name":
-      // NAME or ID
+      // NAME
       if (strstr($link, '[NAME]')) {
          $tLink        = str_replace("[NAME]", $item->getField('name'), $link);
          $shellExecute = "onClick='shellcommandsActions(\"" . $CFG_GLPI["root_doc"] . "\", \"" . $_POST['toupdate'] . "\", 
@@ -238,11 +238,11 @@ switch ($_POST['myname']) {
 }
 
 
-if (isset($_POST["comment"]) && $_POST["comment"]) {
-   $paramscomment = ['value' => '__VALUE__', 'table' => $table];
-   Ajax::updateItemOnSelectEvent("dropdown_" . $_POST["myname"] . $_POST["rand"],
-                                 "comment_" . $_POST["myname"] . $_POST["rand"],
-                                 $CFG_GLPI["root_doc"] . "/ajax/comments.php", $paramscomment);
-}
+//if (isset($_POST["comment"]) && $_POST["comment"]) {
+//   $paramscomment = ['value' => '__VALUE__', 'table' => $table];
+//   Ajax::updateItemOnSelectEvent("dropdown_" . $_POST["myname"] . $_POST["rand"],
+//                                 "comment_" . $_POST["myname"] . $_POST["rand"],
+//                                 $CFG_GLPI["root_doc"] . "/ajax/comments.php", $paramscomment);
+//}
 
 Ajax::commonDropdownUpdateItem($_POST);

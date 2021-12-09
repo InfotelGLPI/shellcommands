@@ -119,7 +119,7 @@ class PluginShellcommandsWebservice {
       }
       //Post-relation: Either Target ID or name is given
 
-      $possibleTargetTypes = PluginShellcommandsShellcommand_Item::getClasses(true);
+      $possibleTargetTypes = PluginShellcommandsShellcommand::getTypes(true);
       if (!in_array($params['target_type'], $possibleTargetTypes) || !class_exists($params['target_type'])) {
          return PluginWebservicesMethodCommon::Error($protocol, WEBSERVICES_ERROR_BADPARAMETER, '', '"target_type" is "' . $params['target_type'] . '" must be one of: ' . implode(', ', $possibleTargetTypes) . '');
       }

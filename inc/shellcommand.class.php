@@ -34,7 +34,7 @@ if (!defined('GLPI_ROOT')) {
 class PluginShellcommandsShellcommand extends CommonDBTM {
 
    static $types = ['Computer', 'NetworkEquipment', 'Peripheral',
-                    'Phone', 'Printer'];
+                    'Phone', 'Printer', 'Appliance', 'PluginWebapplicationsAppliance'];
 
    static $rightname = 'plugin_shellcommands';
 
@@ -188,7 +188,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
       echo "</td>";
 
       echo "<td>" . __('Valid tags') . "</td>";
-      echo "<td>[ID], [NAME], [IP], [MAC], [NETWORK], [DOMAIN]</td>";
+      echo "<td>[ID], [NAME], [URL], [IP], [MAC], [NETWORK], [DOMAIN]</td>";
 
       echo "</tr>";
       echo "<tr class='tab_bg_1'>";
