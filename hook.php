@@ -30,32 +30,32 @@
 function plugin_shellcommands_install() {
    global $DB;
 
-   include_once(GLPI_ROOT . "/plugins/shellcommands/inc/profile.class.php");
+   include_once(PLUGIN_SHELLCOMMANDS_DIR . "/inc/profile.class.php");
 
    $update = false;
    if (!$DB->tableExists("glpi_plugin_cmd_profiles")
        && !$DB->tableExists("glpi_plugin_shellcommands_shellcommands")) {
-      $DB->runFile(GLPI_ROOT . "/plugins/shellcommands/sql/empty-4.0.0.sql");
+      $DB->runFile(PLUGIN_SHELLCOMMANDS_DIR . "/sql/empty-4.0.0.sql");
 
    } else if ($DB->tableExists("glpi_plugin_cmd_profiles")
               && !$DB->tableExists("glpi_plugin_cmd_path")) {
       $update = true;
-      $DB->runFile(GLPI_ROOT . "/plugins/shellcommands/sql/update-1.1.sql");
-      $DB->runFile(GLPI_ROOT . "/plugins/shellcommands/sql/update-1.2.0.sql");
-      $DB->runFile(GLPI_ROOT . "/plugins/shellcommands/sql/update-1.3.0.sql");
+      $DB->runFile(PLUGIN_SHELLCOMMANDS_DIR . "/sql/update-1.1.sql");
+      $DB->runFile(PLUGIN_SHELLCOMMANDS_DIR . "/sql/update-1.2.0.sql");
+      $DB->runFile(PLUGIN_SHELLCOMMANDS_DIR . "/sql/update-1.3.0.sql");
 
    } else if ($DB->tableExists("glpi_plugin_cmd_profiles")
               && $DB->fieldExists("glpi_plugin_cmd_profiles", "interface")) {
       $update = true;
-      $DB->runFile(GLPI_ROOT . "/plugins/shellcommands/sql/update-1.2.0.sql");
-      $DB->runFile(GLPI_ROOT . "/plugins/shellcommands/sql/update-1.3.0.sql");
+      $DB->runFile(PLUGIN_SHELLCOMMANDS_DIR . "/sql/update-1.2.0.sql");
+      $DB->runFile(PLUGIN_SHELLCOMMANDS_DIR . "/sql/update-1.3.0.sql");
 
    } else if (!$DB->tableExists("glpi_plugin_shellcommands_shellcommands")) {
       $update = true;
-      $DB->runFile(GLPI_ROOT . "/plugins/shellcommands/sql/update-1.3.0.sql");
+      $DB->runFile(PLUGIN_SHELLCOMMANDS_DIR . "/sql/update-1.3.0.sql");
 
    } else if (!$DB->tableExists("glpi_plugin_shellcommands_commandgroups")) {
-      $DB->runFile(GLPI_ROOT . "/plugins/shellcommands/sql/update-1.7.0.sql");
+      $DB->runFile(PLUGIN_SHELLCOMMANDS_DIR . "/sql/update-1.7.0.sql");
    }
 
    if ($update) {
@@ -117,7 +117,7 @@ function plugin_shellcommands_uninstall() {
       $DB->query("DELETE FROM `$table_glpi` WHERE `itemtype` = 'PluginShellcommandsShellcommand';");
    }
 
-   include_once(GLPI_ROOT . "/plugins/shellcommands/inc/profile.class.php");
+   include_once(PLUGIN_SHELLCOMMANDS_DIR . "/inc/profile.class.php");
 
    PluginShellcommandsProfile::removeRightsFromSession();
    PluginShellcommandsProfile::removeRightsFromDB();

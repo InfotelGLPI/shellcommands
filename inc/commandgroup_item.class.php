@@ -283,7 +283,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
       echo "</tr>";
 
       Ajax::updateItemOnSelectEvent("dropdown_name$randSelect", "command_name$randSelect",
-                                    $CFG_GLPI["root_doc"] . "/plugins/shellcommands/ajax/dropdownCommandValue.php",
+                                    PLUGIN_SHELLCOMMANDS_WEBDIR . "/ajax/dropdownCommandValue.php",
                                     ['idtable'      => $item->getType(),
                                      'value'        => '__VALUE__',
                                      'itemID'       => $ID,

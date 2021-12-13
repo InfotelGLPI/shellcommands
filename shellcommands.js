@@ -65,12 +65,12 @@ function shellcommandsActions(root_doc, toupdate, params) {
    if (toupdate != '') {
        var item_bloc = $('#' + toupdate);
        // Loading
-       item_bloc.html('<div style="width:100%;text-align:center"><img src="' + root_doc + '/plugins/shellcommands/pics/large-loading.gif"></div>');
+       item_bloc.html('<div style="width:100%;text-align:center"><img src="' + root_doc + '/pics/large-loading.gif"></div>');
    }
 
     // Send data
     $.ajax({
-         url: root_doc + '/plugins/shellcommands/ajax/shellcommand.exec.php',
+         url: root_doc + '/ajax/shellcommand.exec.php',
          type: "POST",
          dataType: "html",
          data: params,
@@ -102,7 +102,7 @@ function shellcommands_add_custom_values(field_id, root_doc) {
     $('#count_custom_values').val(parseInt(count) + 1);
 
     $.ajax({
-         url: root_doc + '/plugins/shellcommands/ajax/addnewvalue.php',
+         url: root_doc + '/ajax/addnewvalue.php',
          type: "POST",
          dataType: "html",
          data: {

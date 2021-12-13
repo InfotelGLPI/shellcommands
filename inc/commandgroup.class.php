@@ -173,7 +173,7 @@ class PluginShellcommandsCommandGroup extends CommonDBTM {
                $ma->display_progress_bars = false;
 
                echo "<script type='text/javascript'>";
-               echo "location.href='" . $CFG_GLPI['root_doc'] . "/plugins/shellcommands/front/massiveexec.php';";
+               echo "location.href='" . PLUGIN_SHELLCOMMANDS_WEBDIR . "/front/massiveexec.php';";
                echo "</script>";
 
             }

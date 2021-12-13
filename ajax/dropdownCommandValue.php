@@ -86,7 +86,7 @@ switch ($_POST['myname']) {
       // NAME
       if (strstr($link, '[NAME]')) {
          $tLink        = str_replace("[NAME]", $item->getField('name'), $link);
-         $shellExecute = "onClick='shellcommandsActions(\"" . $CFG_GLPI["root_doc"] . "\", \"" . $_POST['toupdate'] . "\", 
+         $shellExecute = "onClick='shellcommandsActions(\"" . PLUGIN_SHELLCOMMANDS_WEBDIR . "\", \"" . $_POST['toupdate'] . "\", 
                     " . json_encode(['id'           => $shell_item->getID(),
                                      'command_type' => $_POST['command_type'],
                                      'itemID'       => $_POST['itemID'],
@@ -96,7 +96,7 @@ switch ($_POST['myname']) {
          // DOMAIN
       } else if (strstr($link, '[ID]')) {
          $tLink        = str_replace("[ID]", $item->getID(), $link);
-         $shellExecute = "onClick='shellcommandsActions(\"" . $CFG_GLPI["root_doc"] . "\", \"" . $_POST['toupdate'] . "\", 
+         $shellExecute = "onClick='shellcommandsActions(\"" . PLUGIN_SHELLCOMMANDS_WEBDIR . "\", \"" . $_POST['toupdate'] . "\", 
                     " . json_encode(['id'           => $shell_item->getID(),
                                      'command_type' => $_POST['command_type'],
                                      'itemID'       => $_POST['itemID'],
@@ -107,7 +107,7 @@ switch ($_POST['myname']) {
       } else if (strstr($link, '[DOMAIN]')) {
          if (isset($item->fields['domains_id'])) {
             $tLink        = str_replace("[DOMAIN]", Dropdown::getDropdownName("glpi_domains", $item->getField('domains_id')), $link);
-            $shellExecute = "onClick='shellcommandsActions(\"" . $CFG_GLPI["root_doc"] . "\"  , \"" . $_POST['toupdate'] . "\", 
+            $shellExecute = "onClick='shellcommandsActions(\"" . PLUGIN_SHELLCOMMANDS_WEBDIR . "\"  , \"" . $_POST['toupdate'] . "\", 
                     " . json_encode(['id'           => $shell_item->getID(),
                                      'command_type' => $_POST['command_type'],
                                      'itemID'       => $_POST['itemID'],
@@ -169,7 +169,7 @@ switch ($_POST['myname']) {
          // Add IP internal switch
          if (strstr($link, '[IP]')) {
             if ($item->getType() == 'NetworkEquipment') {
-               $shellExecute = "onClick='shellcommandsActions(\"" . $CFG_GLPI["root_doc"] . "\", \"" . $_POST['toupdate'] . "\", 
+               $shellExecute = "onClick='shellcommandsActions(\"" . PLUGIN_SHELLCOMMANDS_WEBDIR . "\", \"" . $_POST['toupdate'] . "\", 
                     " . json_encode(['id'           => $shell_item->getID(),
                                      'command_type' => $_POST['command_type'],
                                      'itemID'       => $_POST['itemID'],
@@ -187,7 +187,7 @@ switch ($_POST['myname']) {
          // Add MAC internal switch
          if (strstr($link, '[MAC]')) {
             if ($item->getType() == 'NetworkEquipment') {
-               $shellExecute = "onClick='shellcommandsActions(\"" . $CFG_GLPI["root_doc"] . "\", \"" . $_POST['toupdate'] . "\", 
+               $shellExecute = "onClick='shellcommandsActions(\"" . PLUGIN_SHELLCOMMANDS_WEBDIR . "\", \"" . $_POST['toupdate'] . "\", 
                     " . json_encode(['id'           => $shell_item->getID(),
                                      'command_type' => $_POST['command_type'],
                                      'itemID'       => $_POST['itemID'],
@@ -206,7 +206,7 @@ switch ($_POST['myname']) {
 
       if (isset($resultSelectCommand) && sizeof($resultSelectCommand) > 0) {
          $randSelect = Dropdown::showFromArray("ip", $resultSelectCommand, ['width' => $_POST['width']]);
-         Ajax::updateItemOnSelectEvent("dropdown_ip$randSelect", "command_ip$randSelect", $CFG_GLPI["root_doc"] . "/plugins/shellcommands/ajax/dropdownCommandValue.php",
+         Ajax::updateItemOnSelectEvent("dropdown_ip$randSelect", "command_ip$randSelect", PLUGIN_SHELLCOMMANDS_WEBDIR . "/ajax/dropdownCommandValue.php",
                                        ['idtable'      => 'NetworkPort',
                                         'value'        => '__VALUE__',
                                         'itemID'       => $_POST['itemID'],
@@ -226,7 +226,7 @@ switch ($_POST['myname']) {
    case "command_ip":
       $ipmac = $tabValue[2];
 
-      $shellExecute = "onClick='shellcommandsActions(\"" . $CFG_GLPI["root_doc"] . "\", \"" . $_POST['toupdate'] . "\",
+      $shellExecute = "onClick='shellcommandsActions(\"" . PLUGIN_SHELLCOMMANDS_WEBDIR . "\", \"" . $_POST['toupdate'] . "\",
               " . json_encode(['id'           => $shell_item->getID(),
                                'command_type' => $_POST['command_type'],
                                'itemID'       => $_POST['itemID'],

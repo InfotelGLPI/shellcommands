@@ -29,6 +29,12 @@
 
 define('PLUGIN_SHELLCOMMANDS_VERSION', '4.0.0');
 
+if (!defined("PLUGIN_SHELLCOMMANDS_DIR")) {
+   define("PLUGIN_SHELLCOMMANDS_DIR", Plugin::getPhpDir("shellcommands"));
+   define("PLUGIN_SHELLCOMMANDS_NOTFULL_DIR", Plugin::getPhpDir("shellcommands",false));
+   define("PLUGIN_SHELLCOMMANDS_WEBDIR", Plugin::getWebDir("shellcommands"));
+}
+
 // Init the hooks of the plugins -Needed
 function plugin_init_shellcommands() {
    global $PLUGIN_HOOKS;

@@ -384,7 +384,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
                $ma->display_progress_bars = false;
 
                echo "<script type='text/javascript'>";
-               echo "location.href='" . $CFG_GLPI['root_doc'] . "/plugins/shellcommands/front/massiveexec.php';";
+               echo "location.href='" . PLUGIN_SHELLCOMMANDS_WEBDIR . "/front/massiveexec.php';";
                echo "</script>";
 
             }
@@ -475,7 +475,7 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
    }
 
    static function getMenuContent() {
-      $plugin_page = "/plugins/shellcommands/front/menu.php";
+      $plugin_page = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR."/front/menu.php";
       $menu        = [];
       //Menu entry in helpdesk
       $menu['title']           = self::getTypeName(2);
@@ -483,17 +483,17 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
       $menu['links']['search'] = $plugin_page;
 
       $menu['options']['shellcommand']['title']           = _n('Shell Command', 'Shell Commands', 2, 'shellcommands');
-      $menu['options']['shellcommand']['page']            = '/plugins/shellcommands/front/shellcommand.php';
-      $menu['options']['shellcommand']['links']['add']    = '/plugins/shellcommands/front/shellcommand.form.php';
-      $menu['options']['shellcommand']['links']['search'] = '/plugins/shellcommands/front/shellcommand.php';
+      $menu['options']['shellcommand']['page']            = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'/front/shellcommand.php';
+      $menu['options']['shellcommand']['links']['add']    = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'front/shellcommand.form.php';
+      $menu['options']['shellcommand']['links']['search'] = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'front/shellcommand.php';
 
       $menu['options']['commandgroup']['title']           = _n('Command group', 'Command groups', 2, 'shellcommands');
-      $menu['options']['commandgroup']['page']            = '/plugins/shellcommands/front/commandgroup.php';
-      $menu['options']['commandgroup']['links']['add']    = '/plugins/shellcommands/front/commandgroup.form.php';
-      $menu['options']['commandgroup']['links']['search'] = '/plugins/shellcommands/front/commandgroup.php';
+      $menu['options']['commandgroup']['page']            = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'front/commandgroup.php';
+      $menu['options']['commandgroup']['links']['add']    = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'front/commandgroup.form.php';
+      $menu['options']['commandgroup']['links']['search'] = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'front/commandgroup.php';
 
       $menu['options']['advanced_execution']['title'] = _n('Advanced execution', 'Advanced executions', 2, 'shellcommands');
-      $menu['options']['advanced_execution']['page']  = '/plugins/shellcommands/front/advanced_execution.php';
+      $menu['options']['advanced_execution']['page']  = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'front/advanced_execution.php';
 
       $menu['icon'] = self::getIcon();
 

@@ -459,7 +459,7 @@ class PluginShellcommandsShellcommand_Item extends CommonDBTM {
          echo "<span id='command_name$randSelect'></span></td>";
          echo "</tr>";
 
-         Ajax::updateItemOnSelectEvent("dropdown_name$randSelect", "command_name$randSelect", $CFG_GLPI["root_doc"] . "/plugins/shellcommands/ajax/dropdownCommandValue.php",
+         Ajax::updateItemOnSelectEvent("dropdown_name$randSelect", "command_name$randSelect", PLUGIN_SHELLCOMMANDS_WEBDIR . "/ajax/dropdownCommandValue.php",
                                        ['idtable'      => $item->getType(),
                                         'width'        => $width,
                                         'value'        => '__VALUE__',

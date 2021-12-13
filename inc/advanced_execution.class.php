@@ -81,7 +81,7 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
 
       echo "<tr>";
       echo "<td class='tab_bg_2 center'>";
-      echo "<input type='button' class='btn btn-primary' onclick='shellcommand_advanced_execution(\"" . $CFG_GLPI['root_doc'] . "\",\"field_form\", \"advanced_execution_result\");' name='advanced_execution' value='" . __('Execute') . "'/>";
+      echo "<input type='button' class='btn btn-primary' onclick='shellcommand_advanced_execution(\"" . PLUGIN_SHELLCOMMANDS_WEBDIR . "\",\"field_form\", \"advanced_execution_result\");' name='advanced_execution' value='" . __('Execute') . "'/>";
       echo "</td>";
       echo "</tr>";
 
@@ -128,7 +128,7 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
       echo '<input type="hidden" id="count_custom_values" value="' . $count . '"/>';
 
       echo "&nbsp;<i class='fas fa-plus-circle fa-2x' style='cursor:pointer;color:forestgreen' 
-            onclick='shellcommands_add_custom_values(\"show_custom_fields\", \"" . $CFG_GLPI['root_doc'] . "\");' 
+            onclick='shellcommands_add_custom_values(\"show_custom_fields\", \"" . PLUGIN_SHELLCOMMANDS_WEBDIR . "\");' 
             title='"._sx("button", "Add")."'></i>&nbsp;";
 
       echo "&nbsp;<i class='fas fa-times-circle fa-2x' style='cursor:pointer;color:red'
@@ -221,8 +221,8 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
                        'myname'          => "items_id",];
 
             Ajax::updateItemOnSelectEvent("dropdown_$myname$rand", "results_$myname$rand",
-                                          $CFG_GLPI["root_doc"] .
-                                          "/plugins/shellcommands/ajax/dropdownTrackingDeviceType.php",
+                                          PLUGIN_SHELLCOMMANDS_WEBDIR .
+                                          "/ajax/dropdownTrackingDeviceType.php",
                                           $params);
             echo "<span id='results_$myname$rand'>\n";
 
@@ -240,8 +240,8 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
                   $params['itemtype'] = $itemtype;
                   echo "<script type='text/javascript' >\n";
                   Ajax::updateItemJsCode("results_$myname$rand",
-                                         $CFG_GLPI["root_doc"] .
-                                         "/plugins/shellcommands/ajax/dropdownTrackingDeviceType.php",
+                                         PLUGIN_SHELLCOMMANDS_WEBDIR .
+                                         "/ajax/dropdownTrackingDeviceType.php",
                                          $params);
                   echo '</script>';
                }
