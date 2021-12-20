@@ -322,12 +322,12 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
       switch ($ma->getAction()) {
          case "install":
             Dropdown::showItemTypes("item_item", self::getTypes(true));
-            echo Html::submit(_x('button', 'Post'), ['name' => 'massiveaction']);
+            echo Html::submit(_x('button', 'Post'), ['name' => 'massiveaction', 'class' => 'btn btn-primary']);
             return true;
             break;
          case "uninstall":
             Dropdown::showItemTypes("item_item", self::getTypes(true));
-            echo Html::submit(_x('button', 'Post'), ['name' => 'massiveaction']);
+            echo Html::submit(_x('button', 'Post'), ['name' => 'massiveaction', 'class' => 'btn btn-primary']);
             return true;
             break;
          case 'generate':
