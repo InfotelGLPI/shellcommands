@@ -51,7 +51,6 @@ function plugin_init_shellcommands() {
       Plugin::registerClass('PluginShellcommandsProfile', ['addtabon' => 'Profile']);
       if (Session::haveRight("plugin_shellcommands", READ)) {
          // Menu
-         $PLUGIN_HOOKS['helpdesk_menu_entry']['shellcommands'] = '/front/menu.php';
          $PLUGIN_HOOKS['menu_entry']['shellcommands']          = 'front/menu.php';
          $PLUGIN_HOOKS['menu_toadd']['shellcommands']          = ['tools' => 'PluginShellcommandsShellcommand'];
       }
