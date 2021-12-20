@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Shellcommands plugin 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-15 08:14+0000\n"
+"POT-Creation-Date: 2021-12-20 11:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgstr ""
 msgid "Command group launch"
 msgstr ""
 
-#: setup.php:71 inc/profile.class.php:101 inc/shellcommand.class.php:49
+#: setup.php:70 inc/profile.class.php:101 inc/shellcommand.class.php:49
 #: inc/shellcommand.class.php:485
 msgid "Shell Command"
 msgid_plural "Shell Commands"
