@@ -22,7 +22,7 @@ INSERT INTO `glpi_plugin_shellcommands_shellcommands` VALUES (4,0,1, 'Nslookup',
 DROP TABLE IF EXISTS `glpi_plugin_shellcommands_shellcommandpaths`;
 CREATE TABLE `glpi_plugin_shellcommands_shellcommandpaths` (
   `id` int(11) NOT NULL auto_increment,
-  `name` varchar(255) character set utf8 collate utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) collate utf8mb4_unicode_ci NOT NULL,
   `comment` text collate utf8mb4_unicode_ci,
   PRIMARY KEY  (`id`),
   KEY `name` (`name`)
