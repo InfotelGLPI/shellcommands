@@ -27,7 +27,7 @@
  --------------------------------------------------------------------------
  */
 
-define('PLUGIN_SHELLCOMMANDS_VERSION', '4.0.0-rc1');
+define('PLUGIN_SHELLCOMMANDS_VERSION', '4.0.0-rc2');
 
 if (!defined("PLUGIN_SHELLCOMMANDS_DIR")) {
    define("PLUGIN_SHELLCOMMANDS_DIR", Plugin::getPhpDir("shellcommands"));
