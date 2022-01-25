@@ -424,7 +424,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
             echo "<td class='center middle'>";
             echo "<form id='upDown' method='post' action='$target'>";
             echo Html::hidden('id', ['value' => $field["id"]]);
-            echo "<button type='submit' class='btn btn-primary' name='up'  alt=\"" . __s('Bring up') . "\">
+            echo "<button type='submit' class='submit btn btn-primary' name='up'  alt=\"" . __s('Bring up') . "\">
                     <i class='fas fa-chevron-up pointer' title=\"" . __s('Bring up') . "\" alt=\"" . __s('Bring up') . "\"></i>
                   </button>";
             Html::closeForm();
@@ -438,7 +438,7 @@ class PluginShellcommandsCommandGroup_Item extends CommonDBRelation {
             echo "<td class='center middle'>";
             echo "<form method='post' action='$target'>";
             echo Html::hidden('id', ['value' => $field["id"]]);
-            echo "<button class='btn btn-primary' type='submit' name='down'  alt=\"" . __s('Bring down') . "\">
+            echo "<button class='submit btn btn-primary' type='submit' name='down'  alt=\"" . __s('Bring down') . "\">
                     <i class='fas fa-chevron-down pointer' title=\"" . __s('Bring down') . "\" alt=\"" . __s('Bring down') . "\"></i>
                   </button>";
             Html::closeForm();

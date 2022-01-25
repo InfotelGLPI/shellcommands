@@ -81,7 +81,7 @@ class PluginShellcommandsAdvanced_Execution extends CommonDBTM {
 
       echo "<tr>";
       echo "<td class='tab_bg_2 center'>";
-      echo "<input type='button' class='btn btn-primary' onclick='shellcommand_advanced_execution(\"" . PLUGIN_SHELLCOMMANDS_WEBDIR . "\",\"field_form\", \"advanced_execution_result\");' name='advanced_execution' value='" . __('Execute') . "'/>";
+      echo "<input type='button' class='submit btn btn-primary' onclick='shellcommand_advanced_execution(\"" . PLUGIN_SHELLCOMMANDS_WEBDIR . "\",\"field_form\", \"advanced_execution_result\");' name='advanced_execution' value='" . __('Execute') . "'/>";
       echo "</td>";
       echo "</tr>";
 
