@@ -484,16 +484,16 @@ class PluginShellcommandsShellcommand extends CommonDBTM {
 
       $menu['options']['shellcommand']['title']           = _n('Shell Command', 'Shell Commands', 2, 'shellcommands');
       $menu['options']['shellcommand']['page']            = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'/front/shellcommand.php';
-      $menu['options']['shellcommand']['links']['add']    = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'front/shellcommand.form.php';
-      $menu['options']['shellcommand']['links']['search'] = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'front/shellcommand.php';
+      $menu['options']['shellcommand']['links']['add']    = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'/front/shellcommand.form.php';
+      $menu['options']['shellcommand']['links']['search'] = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'/front/shellcommand.php';
 
       $menu['options']['commandgroup']['title']           = _n('Command group', 'Command groups', 2, 'shellcommands');
-      $menu['options']['commandgroup']['page']            = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'front/commandgroup.php';
-      $menu['options']['commandgroup']['links']['add']    = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'front/commandgroup.form.php';
-      $menu['options']['commandgroup']['links']['search'] = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'front/commandgroup.php';
+      $menu['options']['commandgroup']['page']            = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'/front/commandgroup.php';
+      $menu['options']['commandgroup']['links']['add']    = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'/front/commandgroup.form.php';
+      $menu['options']['commandgroup']['links']['search'] = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'/front/commandgroup.php';
 
       $menu['options']['advanced_execution']['title'] = _n('Advanced execution', 'Advanced executions', 2, 'shellcommands');
-      $menu['options']['advanced_execution']['page']  = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'front/advanced_execution.php';
+      $menu['options']['advanced_execution']['page']  = PLUGIN_SHELLCOMMANDS_NOTFULL_DIR.'/front/advanced_execution.php';
 
       $menu['icon'] = self::getIcon();
 
