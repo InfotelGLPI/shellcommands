@@ -128,9 +128,7 @@ function plugin_shellcommands_uninstall() {
 // Define dropdown relations
 function plugin_shellcommands_getDatabaseRelations() {
 
-   $plugin = new Plugin();
-
-   if ($plugin->isActivated("shellcommands")) {
+   if (Plugin::isPluginActive("shellcommands")) {
       return ["glpi_plugin_shellcommands_shellcommandpaths" => ["glpi_plugin_shellcommands_shellcommands" => "plugin_shellcommands_shellcommandpaths_id"],
               "glpi_profiles"                               => ["glpi_plugin_shellcommands_profiles" => "profiles_id"],
               "glpi_plugin_shellcommands_shellcommands"     => ["glpi_plugin_shellcommands_shellcommands_items" => "plugin_shellcommands_shellcommands_id"],
@@ -144,9 +142,8 @@ function plugin_shellcommands_getDatabaseRelations() {
 
 // Define Dropdown tables to be manage in GLPI :
 function plugin_shellcommands_getDropdown() {
-   $plugin = new Plugin();
 
-   if ($plugin->isActivated("shellcommands")) {
+   if (Plugin::isPluginActive("shellcommands")) {
       return ['PluginShellcommandsShellcommandPath' => __('Path', 'shellcommands')];
    } else {
       return [];
@@ -168,8 +165,7 @@ function plugin_shellcommands_postinit() {
 function plugin_shellcommands_registerWebservicesMethods() {
    global $WEBSERVICES_METHOD;
 
-   $plugin = new Plugin();
-   if ($plugin->isActivated('webservices')) { // If webservices plugin is active
+   if (Plugin::isPluginActive('webservices')) { // If webservices plugin is active
       $WEBSERVICES_METHOD['shellcommands.list'] = ['PluginShellcommandsWebservice', 'methodList'];
       $WEBSERVICES_METHOD['shellcommands.run']  = ['PluginShellcommandsWebservice', 'methodRun'];
    }
@@ -224,8 +220,7 @@ function plugin_shellcommands_forceGroupBy($type) {
 
 function plugin_shellcommands_MassiveActions($type) {
 
-   $plugin = new Plugin();
-   if ($plugin->isActivated("shellcommands")) {
+   if (Plugin::isPluginActive("shellcommands")) {
       if (in_array($type, PluginShellcommandsShellcommand::getTypes(true))) {
          return [
             'PluginShellcommandsShellcommand' . MassiveAction::CLASS_ACTION_SEPARATOR . "generate" => __('Command launch', 'shellcommands'),
