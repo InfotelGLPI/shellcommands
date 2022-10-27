@@ -1,61 +1,65 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Shellcommands Development Team
 # This file is distributed under the same license as the GLPI - Shellcommands plugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 # Translators:
-# Stephan <stephan.rennert@web.de>, 2018
+# Xavier CAILLAUD <thetsmr@gmail.com>, 2020
+# Stephan <stephan.rennert@web.de>, 2022
+# 
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: GLPI Project - shellcommands plugin\n"
+"Project-Id-Version: GLPI - Shellcommands plugin 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-10 08:50+0200\n"
-"PO-Revision-Date: 2018-05-24 11:49+0000\n"
-"Last-Translator: Stephan <stephan.rennert@web.de>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/tsmr/GLPI_shellcommands/language/de_DE/)\n"
+"POT-Creation-Date: 2022-07-26 14:02+0000\n"
+"PO-Revision-Date: 2020-11-02 16:20+0000\n"
+"Last-Translator: Stephan <stephan.rennert@web.de>, 2022\n"
+"Language-Team: German (Germany) (https://www.transifex.com/infotelGLPI/teams/12373/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: hook.php:147 inc/shellcommand.class.php:117 inc/shellcommand.class.php:216
+#: hook.php:147 inc/shellcommand.class.php:116 inc/shellcommand.class.php:214
 #: inc/shellcommandpath.class.php:40
 msgid "Path"
 msgid_plural "Pathes"
 msgstr[0] "Pfad"
 msgstr[1] "Pfade"
 
-#: hook.php:228
+#: hook.php:226
 msgid "Command launch"
-msgstr ""
+msgstr "Befehl ausführen"
 
-#: hook.php:229
+#: hook.php:227
 msgid "Command group launch"
-msgstr ""
+msgstr "Befehlsgruppe ausführen"
 
-#: setup.php:63 inc/profile.class.php:102 inc/shellcommand.class.php:49
-#: inc/shellcommand.class.php:489
+#: setup.php:70 inc/profile.class.php:101 inc/shellcommand.class.php:49
+#: inc/shellcommand.class.php:485
 msgid "Shell Command"
 msgid_plural "Shell Commands"
 msgstr[0] "Shell-Befehl"
 msgstr[1] "Shell-Befehle"
 
-#: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:499
+#: inc/advanced_execution.class.php:40 inc/shellcommand.class.php:495
 msgid "Advanced execution"
 msgid_plural "Advanced executions"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Erweiterte Ausführung"
+msgstr[1] "Erweiterte Ausführungen"
 
 #: inc/commandgroup.class.php:40 inc/commandgroup_item.class.php:58
-#: inc/shellcommand.class.php:494
+#: inc/shellcommand.class.php:490
 msgid "Command group"
 msgid_plural "Command groups"
 msgstr[0] "Kommando-Gruppe"
-msgstr[1] "Kommando-Gruppen"
+msgstr[1] "Befehlsgruppen"
 
-#: inc/commandgroup.class.php:122
+#: inc/commandgroup.class.php:127
 msgid "Check command"
-msgstr ""
+msgstr "Befehl prüfen"
 
 #: inc/commandgroup_item.class.php:158
 msgid "Add a command"
@@ -65,50 +69,50 @@ msgstr "Befehl hinzufügen"
 msgid "Add a command group"
 msgstr "Eine Befehlsgruppe hinzufügen"
 
-#: inc/commandgroup_item.class.php:402
+#: inc/commandgroup_item.class.php:398
 msgid "Order"
 msgstr "Reihenfolge"
 
-#: inc/commandgroup_item.class.php:550
+#: inc/commandgroup_item.class.php:544
 msgid "Host UP"
-msgstr ""
+msgstr "Host UP"
 
-#: inc/commandgroup_item.class.php:581
+#: inc/commandgroup_item.class.php:575
 msgid "Host DOWN"
-msgstr ""
+msgstr "Host DOWN"
 
 #: inc/menu.class.php:47
 msgid "Shellcommands menu"
-msgstr ""
+msgstr "Shell-Befehle Menü"
 
-#: inc/shellcommand.class.php:125 inc/shellcommand.class.php:211
+#: inc/shellcommand.class.php:124 inc/shellcommand.class.php:209
 msgid "Windows"
 msgstr "Befehlszeilenparameter"
 
-#: inc/shellcommand.class.php:203
+#: inc/shellcommand.class.php:201
 msgid "Tag position"
 msgstr "Tag-Position"
 
-#: inc/shellcommand.class.php:205
+#: inc/shellcommand.class.php:203
 msgid "Before parameters"
 msgstr "Vor Parameter"
 
-#: inc/shellcommand.class.php:205
+#: inc/shellcommand.class.php:203
 msgid "After parameters"
 msgstr "Nach Parameter"
 
-#: inc/shellcommand_item.class.php:459
+#: inc/shellcommand_item.class.php:442
 msgid "Associated Commands"
-msgstr ""
+msgstr "Verbundene Befehle"
 
-#: inc/shellcommand_item.class.php:814
+#: inc/shellcommand_item.class.php:795
 msgid "There is an error with socket creation"
-msgstr ""
+msgstr "Bei der Socket-Erstellung ist ein Fehler aufgetreten"
 
-#: inc/shellcommand_item.class.php:853
+#: inc/shellcommand_item.class.php:834
 msgid "Magic packet sending to"
-msgstr "Magic Packet wird gesendet"
+msgstr "Magic Packet wird gesendet an"
 
-#: inc/shellcommand_item.class.php:855
+#: inc/shellcommand_item.class.php:836
 msgid "The packet cannot be send"
 msgstr "Das Paket konnte nicht gesendet werden."
