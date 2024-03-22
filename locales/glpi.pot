@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GLPI - Shellcommands plugin 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-26 14:02+0000\n"
+"POT-Creation-Date: 2024-03-22 10:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,18 +18,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: hook.php:147 inc/shellcommand.class.php:116 inc/shellcommand.class.php:214
+#: hook.php:152 inc/shellcommand.class.php:116 inc/shellcommand.class.php:214
 #: inc/shellcommandpath.class.php:40
 msgid "Path"
 msgid_plural "Pathes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: hook.php:226
+#: hook.php:232
 msgid "Command launch"
 msgstr ""
 
-#: hook.php:227
+#: hook.php:236
 msgid "Command group launch"
 msgstr ""
 
